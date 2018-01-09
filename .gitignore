@@ -21,8 +21,7 @@
 /yarn-error.log
 
 # Ignore application configuration
-/config/database.yml
-.env
+
 
 # secret token
 .secret
