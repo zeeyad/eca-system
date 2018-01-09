@@ -1,1 +1,51 @@
 @import "bootstrap";
+@import "font-awesome";
+
+html,
+body {
+	overflow-x: hidden;
+	height: 100%;
+	font-family: 'Alegreya Sans', sans-serif;
+	font-size:17px;
+}
+
+/* NAVIGATION */
+
+.navbar {
+  border-bottom:1px solid red;
+}
+
+.navbar .nav-link {
+  color: rgba(255, 255, 255, 0.8)	
+}
+
+.navbar .nav-link:hover {
+  color: #fff;
+}
+
+
+/* NAVIGATION Menu Color */
+
+.navbar .nav .nav-link {
+  color: white;
+}
+
+.navbar .nav .nav-link i {
+  color: white;
+}
+
+.navbar .nav .nav-link i:hover {
+  color: rgba(255,255,255, 0.9);
+}
+
+.navbar .nav .btn-logout {
+	margin-top: 2px;
+}
+
+.navbar .nav-item .dropdown-toggle {
+  color: rgba(255,255,255, 0.78);
+}
+
+.navbar .nav-item .dropdown-toggle:hover {
+  color: rgba(255,255,255, 0.9);
+}
