@@ -3,6 +3,18 @@
     <a class="nav-link" href="#">Home</a>
   </li>
 
+  <li class="<%= active?(semesters_path) %> nav-item">
+    <%= link_to 'Sem', semesters_path, class: 'nav-link' %>
+  </li>
+
+  <li class="<%= active?(clubs_path) %> nav-item">
+    <%= link_to 'Club', clubs_path, class: 'nav-link' %>
+  </li>
+
+  <li class="<%= active?(students_path) %> nav-item">
+    <%= link_to 'Student', students_path, class: 'nav-link' %>
+  </li>
+
  <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Admin

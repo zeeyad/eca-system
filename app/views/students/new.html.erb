@@ -1,0 +1,17 @@
+New Student
+<%= form_for @student do |f| %>
+  <div class='form-group'>
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class='form-group'>
+    <%= f.label :student_reg %>
+    <%= f.text_field :student_reg, class: 'form-control' %>
+  </div>
+  <%= f.submit 'Submit', class: 'btn btn-success' %>
+
+<% end %>
+
+<%= @student.inspect %>
+<%= @student.errors.full_messages %>

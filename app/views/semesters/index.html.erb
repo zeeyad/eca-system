@@ -1,0 +1,4 @@
+Semesters
+<% @semesters.each_with_index do |semester, index| %>
+  <p>#<%= index %> | Session: <%= semester.session %>, Year: <%= semester.year %>, Status: <%= semester.status %></p>
+<% end %>

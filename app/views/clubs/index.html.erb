@@ -1,0 +1,4 @@
+Clubs
+<% @clubs.each_with_index do |club, index| %>
+  <p>#<%= index %> | Name: <%= club.name %>, Created by: <%= club.user.name.titleize %>, Semester: <%= club.semester.session %></p>
+<% end %>
