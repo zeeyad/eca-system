@@ -7,9 +7,16 @@
     <%= link_to 'Sem', semesters_path, class: 'nav-link' %>
   </li>
 
-  <li class="<%= active?(clubs_path) %> nav-item">
-    <%= link_to 'Club', clubs_path, class: 'nav-link' %>
+
+ <li class="<%= active?(clubs_path) %> nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="clubDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Club
+    </a>
+    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="clubDropdown">
+      <%= link_to 'Club', clubs_path, class: 'dropdown-item' %>
+    </div>
   </li>
+
 
   <li class="<%= active?(students_path) %> nav-item">
     <%= link_to 'Student', students_path, class: 'nav-link' %>

@@ -1,0 +1,5 @@
+Club Members
+<%= @club.name %>
+<% @club.members.each_with_index do |member, index| %>
+  <p># <%= index %> | <%= member.name %>, <%= link_to 'View', students_path(member) %>
+<% end %>
