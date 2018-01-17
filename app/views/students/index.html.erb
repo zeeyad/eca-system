@@ -1,4 +1,4 @@
 Students
 <% @students.each_with_index do |student, index| %>
-  <p>#<%= index %> | <%= student.name %>, <%= student.student_reg %> </p>
+  <p>#<%= index + 1 %> | <%= student.name %>, <%= student.student_reg %> </p>
 <% end %>

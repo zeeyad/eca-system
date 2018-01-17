@@ -15,4 +15,12 @@ describe 'navigate' do
       expect(page).to have_content(/Club Members/)
     end
   end
+
+
+  describe 'destroy' do
+    xit 'can be deleted by office or club leader' do
+
+    end
+  end
+
 end

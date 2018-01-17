@@ -1,17 +1,18 @@
 Rails.application.routes.draw do
-  resources :attendances
-  resources :activities
+  root to: 'static#homepage'
+  devise_for :users
+  
+  resources :semesters
   resources :members
   resources :students
   resources :clubs do
-    #resources :activities
     member do
       get :members
-      get :activities
+      resources :activities do 
+        resources :attendances
+      end
+      get 'activity/:activity_id', to: 'activities#show', as: :activity
     end
   end
-  resources :semesters
-  devise_for :users
 
-  root to: 'static#homepage'
 end

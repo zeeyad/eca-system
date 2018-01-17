@@ -1,4 +1,4 @@
 Clubs
 <% @clubs.each_with_index do |club, index| %>
-  <p>#<%= index %> | Name: <%= club.name %>, Created by: <%= club.user.name.titleize %>, Semester: <%= club.semester.session %>, <%= link_to 'View Member', members_club_path(club) %>, <%= link_to 'View Club Activity', activities_club_path(club) %></p>
+  <p>#<%= index + 1 %> | Name: <%= club.name %>, Created by: <%= club.user.name.titleize %>, Semester: <%= club.semester.session %>, <%= link_to 'View Member', members_club_path(club) %>, <%= link_to 'View Club Activity', activities_path(club) %></p>
 <% end %>

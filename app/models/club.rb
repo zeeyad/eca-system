@@ -4,6 +4,7 @@ class Club < ApplicationRecord
 
   has_many :members
   has_many :activities
+  has_many :attendances, through: :activities
 
   validates :name, presence: true
 end

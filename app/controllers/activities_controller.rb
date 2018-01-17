@@ -1,8 +1,7 @@
 class ActivitiesController < ApplicationController
 
   def index
-    #@activities = Activity.all
-    @activities = club.activities
+    @club = Club.find(params[:id])
   end
 
   def new
@@ -21,7 +20,8 @@ class ActivitiesController < ApplicationController
   end
 
   def show
-    @activity = Activity.find(params[:id])
+    @activity = Activity.find(params[:activity_id])
+    @club = Club.find(params[:id])
   end
 
   private

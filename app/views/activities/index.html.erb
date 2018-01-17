@@ -1,3 +1,6 @@
-<% @activities.each_with_index do |activity, index| %>
-  <p># <%= index %> | <%= activity.name %></p>
+<p>Club Name: </p><h1><%= @club.name %></h1>
+<br>
+<h1>Showing All Club Activities</h1>
+<% @club.activities.each_with_index do |activity, index| %>
+  <p># <%= index + 1 %> | <%= link_to activity.name, activity_club_path(@club, activity) %> | <%= activity.id %>  | <%= link_to 'View Attendances', activity_attendances_path(@club, activity) %>
 <% end %>

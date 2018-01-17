@@ -1,3 +1,2 @@
-<%= @club.activities.each do |activity| %>
-  
-<% end %>
+<h1>Showing Activity Attendances</h1>
+<%= @activity.name %> | <%= link_to 'View Attendances', activity_attendances_path(@club, @activity) %>

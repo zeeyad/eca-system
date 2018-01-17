@@ -11,6 +11,15 @@ describe 'navigate' do
       visit clubs_path
       expect(page).to have_content(/Clubs/)
     end
+
+    xit 'can view its own members' do
+
+    end
+
+    xit 'can view its own activities' do
+
+    end
+
   end
 
   describe 'new' do
@@ -19,4 +28,7 @@ describe 'navigate' do
       expect(page).to have_content(/New Club/)
     end
   end
+
+
+
 end

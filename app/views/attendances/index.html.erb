@@ -1,0 +1,7 @@
+<% @activity.club.members.zip(@activity.attendances).each do |member, club| %>
+  <p><%= member.student.name %> | <%= club.attend if club.attend %></p>
+<% end %>
+
+<% @activity.attendances.each_with_index do |attendance, index| %>
+  <p># <%= index + 1 %> | <%= attendance.student.name %> |  <%= attendance.attend %> </p>
+<% end %>

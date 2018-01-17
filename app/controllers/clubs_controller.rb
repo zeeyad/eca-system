@@ -8,11 +8,7 @@ class ClubsController < ApplicationController
   def members
     @club = Club.find(params[:id])
   end
-
-  def activities
-    @club = Club.find(params[:id])
-  end
-
+  
   def new
     @club = Club.new
     @semesters = Semester.all
