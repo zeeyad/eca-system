@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180117142122) do
+ActiveRecord::Schema.define(version: 20180119044047) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,12 +27,12 @@ ActiveRecord::Schema.define(version: 20180117142122) do
 
   create_table "attendances", force: :cascade do |t|
     t.bigint "activity_id"
-    t.bigint "student_id"
-    t.boolean "attend", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status", default: 0
+    t.bigint "member_id"
     t.index ["activity_id"], name: "index_attendances_on_activity_id"
-    t.index ["student_id"], name: "index_attendances_on_student_id"
+    t.index ["member_id"], name: "index_attendances_on_member_id"
   end
 
   create_table "clubs", force: :cascade do |t|
@@ -94,7 +94,7 @@ ActiveRecord::Schema.define(version: 20180117142122) do
   add_foreign_key "activities", "clubs"
   add_foreign_key "activities", "users"
   add_foreign_key "attendances", "activities"
-  add_foreign_key "attendances", "students"
+  add_foreign_key "attendances", "members"
   add_foreign_key "clubs", "semesters"
   add_foreign_key "clubs", "users"
   add_foreign_key "members", "clubs"

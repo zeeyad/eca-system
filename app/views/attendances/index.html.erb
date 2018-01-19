@@ -1,7 +1,16 @@
-<% @activity.club.members.zip(@activity.attendances).each do |member, club| %>
-  <p><%= member.student.name %> | <%= club.attend if club.attend %></p>
-<% end %>
+<h1>Club Name: <%= @activity.club.name %></h1>
+<h1>Activity: <%= @activity.name %></h1>
+<%= link_to 'Back', activities_path(@activity.club) %>
 
-<% @activity.attendances.each_with_index do |attendance, index| %>
-  <p># <%= index + 1 %> | <%= attendance.student.name %> |  <%= attendance.attend %> </p>
+<% if @attendances.empty? %>
+  <h3>No record found</h3>
+<% else %>
+  <% @attendances.each_with_index do |attendance, index| %>
+    <p># <%= index + 1 %> | <%= attendance.member.student.name %> |  <%= attendance.status %> | 
+        <% if member_present?(attendance) %>
+    	  <%= link_to 'Absent', absent_activity_attendance_path(@activity, @activity, attendance), class: 'btn btn-danger' %></p>
+    	<% else %>
+          <%= link_to 'Present', present_activity_attendance_path(@activity, @activity, attendance), class: 'btn btn-success' %></p>
+    	<% end %>
+  <% end %>
 <% end %>

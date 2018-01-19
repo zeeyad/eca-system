@@ -1,6 +1,6 @@
 class Attendance < ApplicationRecord
-  belongs_to :activity
-  belongs_to :student
+  enum status: { absent: 0, present: 1 }
 
-  has_many :members, through: :student
+  belongs_to :activity, dependent: :destroy
+  belongs_to :member
 end

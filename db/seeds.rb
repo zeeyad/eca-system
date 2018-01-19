@@ -36,7 +36,7 @@ puts '7 Student has been created'
 
 puts '7 members have been created for the Art club'
 
-7.times { |member| Member.create(club_id: 1, student_id: "#{member + 9}") }
+7.times { |member| Member.create(club_id: 1, student_id: "#{member + 8}") }
 
 puts '7 members have been created for the Kendo club'
 
@@ -48,6 +48,10 @@ puts '3 Activity have been created for the Art club'
 
 puts '7 Activity have been created for the Art club'
 
-15.times { |attend| Attendance.create(activity_id: 1, student_id: "#{attend + 1}", attend: true) }
+15.times { |member| Attendance.create(activity_id: 1, member_id: "#{member + 1}", status: 1) }
 
-puts '15 Attendance have been created for the Art club' 
+puts '15 Attendance have been created for the First Activity' 
+
+15.times { |member| Attendance.create(activity_id: 2, member_id: "#{member + 6}", status: 1) }
+
+puts '15 Attendance have been created for the Second Activity' 
