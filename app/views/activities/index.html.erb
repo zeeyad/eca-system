@@ -1,6 +1,75 @@
-<p>Club Name: </p><h1><%= @club.name %></h1>
-<br>
-<h1>Showing All Club Activities</h1>
-<% @club.activities.each_with_index do |activity, index| %>
-  <p># <%= index + 1 %> | <%= link_to activity.name, activity_club_path(@club, activity) %> | <%= activity.id %>  | <%= link_to 'View Attendances', activity_attendances_path(@club, activity) %>
-<% end %>
+<h1><%= @club.name %> Club</h1>
+
+<%= link_to 'Back', clubs_path %>
+
+<h4>Club Activity Profile</h4>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Aspect Development</th>
+      <th scope="col">Activity</th>
+      <th scope="col">No of Hours</th>
+      <th scope="col">Weightage (%)</th>
+    </tr>
+  </thead>
+  <tbody>
+  	<% @club_activities.each do |activity| %>
+      <tr>
+        <th scope="row"><%= activity.dev_aspect.titleize %></th>
+        <td><%= link_to activity.name, activity_club_path(@club, activity) %></td>
+        <td><%= activity.no_of_hours %></td>
+        <td><%= activity.weightage %></td>
+      </tr>
+    <% end %>
+    <tr>
+      <td></td>
+      <td>Total</td>
+      <td><%= @club.activities.map(&:no_of_hours).sum %></td>
+      <td><%= @club.activities.map(&:weightage).sum %> %</td>
+    </tr>
+  </tbody>
+</table>
+
+Total Points: <%= @total_points %> Points
+<br/>
+<br/>
+
+<h4>Point Allocation & Distribution Form</h4>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Aspect Development</th>
+      <th scope="col">Weightage (%)</th>
+      <th scope="col">Point Allocated</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Physical, Health and Safety</th>
+      <td><%= @physical_health_safety %></td>
+      <td><%= @physical_health_safety %>% of <%= @total_points %> = <%= (@physical_health_safety * 0.01 * @total_points).round %></td>
+    </tr>
+    <tr>
+      <th scope="row">Cultural</th>
+      <td><%= @cultural %></td>
+      <td><%= @cultural %>% of <%= @total_points %> = <%= (@cultural * 0.01 * @total_points).round %></td>
+    </tr>
+    <tr>
+      <th scope="row">Spiritual</th>
+      <td><%= @spiritual %></td>
+      <td><%= @spiritual %>% of <%= @total_points %> = <%= (@spiritual * 0.01 * @total_points).round %></td>
+    </tr>
+    <tr>
+      <th scope="row">Social and Community</th>
+      <td><%= @social_community %></td>
+      <td><%= @social_community %>% of <%= @total_points %> = <%= (@social_community * 0.01 * @total_points).round %></td>
+    </tr>
+    <tr>
+      <th scope="row">Mental and Psychological</th>
+      <td><%= @mental_psychological %></td>
+      <td><%= @mental_psychological %>% of <%= @total_points %> = <%= (@mental_psychological * 0.01 * @total_points).round %></td>
+    </tr>
+  </tbody>
+</table>

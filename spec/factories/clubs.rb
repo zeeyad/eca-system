@@ -8,6 +8,7 @@ FactoryBot.define do
   factory :activity do
   	name "Activity1"
     user
-    club 
+    club
+    dev_aspect 1 
   end
 end

@@ -26,7 +26,7 @@ describe 'navigate' do
 
     it 'can view its own activities' do
       click_link("activity_club_#{club.id}")
-      expect(page).to have_content(/Showing All Club Activities/)
+      expect(page).to have_content(/Club Activity Profile/)
     end
 
   end

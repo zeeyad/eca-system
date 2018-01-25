@@ -7,4 +7,11 @@ class Club < ApplicationRecord
   has_many :attendances, through: :activities
 
   validates :name, presence: true
+
+
+  def total_hours
+  	activities.map(&:no_of_hours).sum
+  end
+
+
 end
