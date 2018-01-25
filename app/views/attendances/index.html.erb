@@ -8,9 +8,9 @@
   <% @attendances.each_with_index do |attendance, index| %>
     <p># <%= index + 1 %> | <%= attendance.member.student.name %> |  <%= attendance.status %> | 
         <% if member_present?(attendance) %>
-    	  <%= link_to 'Absent', absent_activity_attendance_path(@activity, @activity, attendance), class: 'btn btn-danger' %></p>
+    	  <%= link_to 'Absent', absent_activity_attendance_path(@activity, @activity, attendance), class: 'btn btn-danger', id: "absent_#{attendance.id}" %></p>
     	<% else %>
-          <%= link_to 'Present', present_activity_attendance_path(@activity, @activity, attendance), class: 'btn btn-success' %></p>
+          <%= link_to 'Present', present_activity_attendance_path(@activity, @activity, attendance), class: 'btn btn-success', id: "present_#{attendance.id}" %></p>
     	<% end %>
   <% end %>
 <% end %>

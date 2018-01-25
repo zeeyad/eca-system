@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :attendance do
-    activity nil
-    student nil
-    attend false
+    activity
+    member
+    status 0
   end
 end
