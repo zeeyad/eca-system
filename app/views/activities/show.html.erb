@@ -1,2 +1,4 @@
 <h1>Showing Activity Attendances</h1>
+<%= link_to 'Back', activities_path(@club) %>
+<br/>
 <%= @activity.name %> | <%= link_to 'View Attendances', activity_attendances_path(@club, @activity) %>
