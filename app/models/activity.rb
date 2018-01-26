@@ -18,5 +18,12 @@ class Activity < ApplicationRecord
 
   has_many :attendances
 
+  def date_in_words
+    date.strftime("%d %B %Y")
+  end
+
+  def time_in_words
+    time.strftime("%I:%M %p")
+  end
 
 end

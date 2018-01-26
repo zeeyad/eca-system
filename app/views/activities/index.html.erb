@@ -3,29 +3,37 @@
 <%= link_to 'Back', clubs_path %>
 <br/><br/>
 
+<h4>Aspects of Student Holistic Development</h4>
+
 <table class="table table-bordered">
   <thead>
     <tr>
+      <th scope="col">Week No</th>
+      <th scope="col">Date</th>
+      <th scope="col">Name</th>
+      <th scope="col">No. of Hours</th>
+      <th scope="col">Weightage</th>
       <th scope="col">Aspect Development</th>
-      <th scope="col">Activity</th>
-      <th scope="col">No of Hours</th>
-      <th scope="col">Weightage (%)</th>
     </tr>
   </thead>
   <tbody>
-  	<% @club_activities.each do |activity| %>
+    <% @club_activities.each do |activity| %>
       <tr>
-        <th scope="row"><%= activity.dev_aspect.titleize %></th>
+        <th scope="row"><%= activity.week_no %></th>
+        <td><%= activity.date_in_words if activity.date %></td>
         <td><%= link_to activity.name, activity_club_path(@club, activity) %></td>
         <td><%= activity.no_of_hours %></td>
         <td><%= activity.weightage %></td>
+        <td><%= activity.dev_aspect.titleize %></td>
       </tr>
     <% end %>
     <tr>
       <td></td>
+      <td></td>
       <td>Total</td>
       <td><%= @club.activities.map(&:no_of_hours).sum %></td>
       <td><%= @club.activities.map(&:weightage).sum %> %</td>
+      <td></td>
     </tr>
   </tbody>
 </table>

@@ -56,7 +56,8 @@ puts 'Badminton Club has been created'
             week_no: "#{activity + 1}",
             date: Date.today + ("#{(activity + 1) * 7}").to_i.days,
             time: Time.now,
-            description: 'Take bench forkball baltimore chop fall classic, sport passed ball breaking ball relief pitcher. Hot dog force national pastime knuckleball sacrifice walk off base on balls. Corner club sacrifice bunt ball earned run hardball doubleheader diamond. Steal cup of coffee hardball rip screwball double play mound. '
+            description: 'Take bench forkball baltimore chop fall classic, sport passed ball breaking ball relief pitcher. Hot dog force national pastime knuckleball sacrifice walk off base on balls. Corner club sacrifice bunt ball earned run hardball doubleheader diamond. Steal cup of coffee hardball rip screwball double play mound. ',
+            venue: 'Dewan Pusat Belia, Bandar / Scouts Building'
             ) 
         }
 puts '3 Activity have been created for the BADMINTON club'
@@ -68,10 +69,11 @@ puts '3 Activity have been created for the BADMINTON club'
             no_of_hours: 3, 
             weightage: 10, 
             dev_aspect: 3,
-            week_no: "#{activity + 1}",
+            week_no: "#{activity + 4}",
             date: Date.today + ("#{(activity + 4) * 7}").to_i.days,
             time: Time.now,
-            description: 'Take bench forkball baltimore chop fall classic, sport passed ball breaking ball relief pitcher. Hot dog force national pastime knuckleball sacrifice walk off base on balls. Corner club sacrifice bunt ball earned run hardball doubleheader diamond. Steal cup of coffee hardball rip screwball double play mound. '
+            description: 'Take bench forkball baltimore chop fall classic, sport passed ball breaking ball relief pitcher. Hot dog force national pastime knuckleball sacrifice walk off base on balls. Corner club sacrifice bunt ball earned run hardball doubleheader diamond. Steal cup of coffee hardball rip screwball double play mound. ',
+            venue: 'Dewan Pusat Belia, Bandar / Scouts Building'
             ) 
         }
 puts '7 Activity have been created for the BADMINTON club'

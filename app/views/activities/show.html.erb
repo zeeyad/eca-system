@@ -1,4 +1,27 @@
-<h1>Showing Activity Attendances</h1>
+<h1><%= @activity.name %> Activity Details</h1>
 <%= link_to 'Back', activities_path(@club) %>
 <br/>
-<%= @activity.name %> | <%= link_to 'View Attendances', activity_attendances_path(@club, @activity) %>
+<%= link_to 'View Attendances', activity_attendances_path(@club, @activity) %>
+
+<table class="table table-bordered">
+  <tr>
+    <th scope='row'>Week Number</th>
+    <td><%= @activity.week_no %></td>
+  </tr>
+  <tr>
+    <th scope='row'>Description</th>
+    <td><%= @activity.description %></td>
+  </tr>
+  <tr>
+    <th scope='row'>Date</th>
+    <td><%= @activity.date_in_words if @activity.date %></td>
+  </tr>
+  <tr>
+    <th scope='row'>Time</th>
+    <td><%= @activity.time_in_words if @activity.time %></td>
+  </tr>
+  <tr>
+    <th scope='row'>Venue</th>
+    <td><%= @activity.venue %></td>
+  </tr>
+</table>
