@@ -16,16 +16,31 @@ puts 'Semester has been created'
 end
 puts '7 Users have been created'
 
+Student.create( name: 'MUHAMMAD FAIZ BIN SHADUN', student_reg: '12B1143', user_id: 1, faculty: 'APB', degree: 'Bachelor of Arts')
+Student.create( name: 'NUR HAZIRAH BINTI AWG HAJI MATUSIN', student_reg: '12B8014', user_id: 1, faculty: 'APB', degree: 'Bachelor of Arts')
+Student.create( name: 'NURSAFIQAH AMERAH BINTI JEFFREE', student_reg: '12B8015', user_id: 1, faculty: 'APB', degree: 'Bachelor of Arts')
+Student.create( name: 'HAJAH EZZAH FAKHRIAH BTE HAJI MORSIDI', student_reg: '12B8016', user_id: 1, faculty: 'APB', degree: 'Bachelor of Arts')
+Student.create( name: 'MUNA AFIQAH BINTI MASRI', student_reg: '12B8037', user_id: 1, faculty: 'APB', degree: 'Bachelor of Arts')
+Student.create( name: 'ROSRATNADEWI BTE ROSNAN', student_reg: '12B8150', user_id: 1, faculty: 'APB', degree: 'Bachelor of Arts')
+Student.create( name: 'MUHD NUR AZIM BIN ROSLAN', student_reg: '12B8160', user_id: 1, faculty: 'APB', degree: 'Bachelor of Arts')
+Student.create( name: 'SITI NADIAH BTE AWANG TUSIN', student_reg: '12B8162', user_id: 1, faculty: 'APB', degree: 'Bachelor of Arts')
+Student.create( name: 'AMAL HAYATIE BINTI HAJI BAHAR', student_reg: '13B1060', user_id: 1, faculty: 'APB', degree: 'Bachelor of Arts')
+Student.create( name: 'NUR HANIS BINTI PG HJ MOHD JAAFAR', student_reg: '13B1066', user_id: 1, faculty: 'APB', degree: 'Bachelor of Arts')
 
-20.times do |student|
-  Student.create( 
-    name: "Student #{student + 1}",
-    student_reg: "student_reg_#{student + 1}",
-    user_id: 1
-    )
-end
+Student.create( name: 'SAFURAA BINTI KAMARULZAMAN', student_reg: '13B1274', user_id: 1, faculty: 'FASS', degree: 'Bachelor of Arts')
+Student.create( name: 'SARAH JANE WARD', student_reg: '13B1275', user_id: 1, faculty: 'FASS', degree: 'Bachelor of Arts')
+Student.create( name: 'SHEIKH MOHAMED IZZAT BIN SHEIKH KHALID', student_reg: '13B1277', user_id: 1, faculty: 'FASS', degree: 'Bachelor of Arts')
+Student.create( name: 'SITI HAMIZAH BINTI MERALI', student_reg: '13B1281', user_id: 1, faculty: 'FASS', degree: 'Bachelor of Arts')
+Student.create( name: 'SITI HUMAIRAH BINTI SIUMOR', student_reg: '13B1282', user_id: 1, faculty: 'FASS', degree: 'Bachelor of Arts')
 
-puts '7 Student has been created'
+Student.create( name: 'SITI MARIYAM BINTI HAJI OSMAN', student_reg: '13B1286', user_id: 1, faculty: 'FASS', degree: 'Bachelor of Arts')
+Student.create( name: 'SITI NOR AMALINA BINTI AHMAD', student_reg: '13B1284', user_id: 1, faculty: 'FASS', degree: 'Bachelor of Arts')
+Student.create( name: 'SITI NOR AQILAH BINTI HJ ABAS', student_reg: '13B1285', user_id: 1, faculty: 'FASS', degree: 'Bachelor of Arts')
+Student.create( name: 'SITI NOR KAMILAH @ MUNAH BINTI RAHMAN', student_reg: '13B1287', user_id: 1, faculty: 'FASS', degree: 'Bachelor of Arts')
+Student.create( name: 'SITI NORAIN BTE AWANG BASAR', student_reg: '13B1288', user_id: 1, faculty: 'FASS', degree: 'Bachelor of Arts')
+
+puts '20 Student has been created'
+
 
 ##### BADMINTON
 
@@ -83,16 +98,13 @@ puts '7 Activity have been created for the BADMINTON club'
 7.times {|member| Member.create(club_id: 1, student_id: "#{member + 1}") }
 puts '7 members have been created for the BADMINTON club'
 
-7.times { |member| Member.create(club_id: 1, student_id: "#{member + 8}") }
-puts '7 members have been created for the Kendo club'
-
 
 # BADMINTON Attendance
 
-15.times { |member| Attendance.create(activity_id: 1, member_id: "#{member + 1}", status: 1) }
+10.times { |attendance| Attendance.create(activity_id: 1, member_id: "#{attendance + 1}", status: 1) }
 puts '15 Attendance have been created for the First Activity of the BADMINTON Club' 
 
-15.times { |member| Attendance.create(activity_id: 2, member_id: "#{member + 6}", status: 1) }
+10.times { |attendance| Attendance.create(activity_id: 2, member_id: "#{attendance + 1}", status: 1) }
 puts '15 Attendance have been created for the Second Activity of the BADMINTON Club' 
 
 
@@ -157,3 +169,12 @@ Activity.create(user_id: 1, club_id: 4, name: "Forum", no_of_hours: 3, weightage
 puts '6 Activities have been created for the Nasyid club'
 
 
+# NASYID Member
+
+7.times {|member| Member.create(club_id: 4, student_id: "#{member + 8}") }
+puts '7 members have been created for the NASYID club'
+
+# NASYID ATTENDANCE
+
+10.times { |attendance| Attendance.create(activity_id: 11, member_id: "#{attendance + 1}", status: 1) }
+puts '10 Attendance have been created for the First Activity of the NAYSID Club' 

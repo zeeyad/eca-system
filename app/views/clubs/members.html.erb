@@ -1,5 +1,6 @@
-Club Members
-<%= @club.name %>
+<h1><%= @club.name %> Club Members</h1>
+<%= link_to 'Back', clubs_path  %>
+<br>
 <% @club.members.each_with_index do |member, index| %>
-  <p># <%= index %> | <%= member.student.name %>, <%= link_to 'View', students_path(member) %>
+  <p># <%= index %> | <%= member.student.name %>, <%= link_to 'View', student_path(member) %>
 <% end %>

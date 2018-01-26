@@ -1,0 +1,42 @@
+<h1><%= @student.name %></h1>
+<br>
+<%= link_to 'Back', clubs_path %>
+<h4>Student Details</h4>
+<table class="table table-bordered">
+  <tr>
+    <th scope='row'>Student Registration</th>
+    <td><%= @student.student_reg %></td>
+  </tr>
+  <tr>
+  	<th scope='row'>Degree</th>
+  	<td><%= @student.degree %></td>
+  </tr>
+  <tr>
+  	<th scope='row'>Faculty</th>
+    <td><%= @student.faculty %></td>
+  </tr>
+</table>
+
+<h4>Club Member Details</h4>
+<table class="table table-bordered">
+  <tr>
+    <th scope='col'>#</th>
+    <th scope='col'>Club</th>
+    <th scope='col'>Semester</th>
+  </tr>
+  <% @student.members.each_with_index do |member, index| %>
+  <tr>
+    <td><%= index + 1 %></td>
+    <td><%= member.club.name %></td>
+    <td><%= member.club.semester.session %></td>
+  </tr>
+  <% end %>
+</table>
+
+<% @student.members.each do |member| %>
+  <% member.attendances.each do |attendance| %>
+    <%= attendance.activity.name %>/ <%= attendance.status %>  / <%= member.club.name %> <br/>
+  <% end %>
+
+  <p><%#= member.club.activities.map(&:no_of_hours).sum %></p>
+<% end %>
