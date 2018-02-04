@@ -27,6 +27,7 @@ RSpec.describe Club, type: :model do
       @club.user_id = nil
       expect(@club).to_not be_valid
     end
+
   end
 
 end

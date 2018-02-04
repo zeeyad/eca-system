@@ -9,6 +9,7 @@ class Activity < ApplicationRecord
 
   belongs_to :user
   belongs_to :club
+  has_many :attendances
 
   scope :physical, -> { where(dev_aspect: 0).map(&:weightage).sum }
   scope :cultural, -> { where(dev_aspect: 1).map(&:weightage).sum }
@@ -16,7 +17,6 @@ class Activity < ApplicationRecord
   scope :social_community, -> { where(dev_aspect: 3).map(&:weightage).sum }
   scope :mental_psychological, -> { where(dev_aspect: 4).map(&:weightage).sum }
 
-  has_many :attendances
 
   def date_in_words
     date.strftime("%d %B %Y")

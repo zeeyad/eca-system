@@ -2,16 +2,17 @@ class ActivitiesController < ApplicationController
 
   def index
     @club = Club.find(params[:id])
+
+    @phs_weightage = @club.phs_weightage
+    @cult_weightage = @club.culture_weightage
+    @sprt_weightage = @club.spiritual_weightage
+    @soc_weightage= @club.social_weightage
+    @ment_weightage = @club.mental_weightage
+
     @club_activities = club_activities
-    @physical_health_safety = club_activities.physical
 
-    @cultural = club_activities.cultural
     @spiritual = club_activities.spiritual
-    @social_community = club_activities.social_community
-    @mental_psychological = club_activities.mental_psychological
 
-    @total_hours = @club.total_hours
-    @total_points = @total_hours * 10
   end
 
   def new

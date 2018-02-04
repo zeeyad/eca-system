@@ -55,7 +55,7 @@ Club.create(name: 'Badminton',
             community_benefit: 'Well trained members will be able to help the community in improving in the badminton games, as well as able to leadd them towards a healthier lifestyle.',
             usual_day: 'Wednesday',
             hours_per_week: '3',
-            usual_venue: 'Dewan Pusat Belia, Bandar / Scouts Building'
+            usual_venue: 'Dewan Pusat Belia, Bandar / Scouts Building',            
             )
 puts 'Badminton Club has been created'
 
@@ -149,16 +149,38 @@ Activity.create(user_id: 1, club_id: 4, name: "Forum", no_of_hours: 3, weightage
 puts '6 Activities have been created for the BPMFASS club'
 
 
-
-
-##### NASYID - Religious and Spiritual
+## NASYID - Religious and Spiritual
 
 # NASYID Club
 
-Club.create(name: 'Nasyid', semester_id: 1, user_id: 1 )
+Club.create(name: 'Nasyid', 
+            about: 'About Nasyid Club',
+            objective: 'Objective Nasyid Club',
+            member_benefit: 'Member Benefit Nasyid Club',
+            community_benefit: 'Community Benefit Nasyid Club',
+            semester_id: 1, 
+            user_id: 1,
+            phs_activity: 'Larian Ukhwah, Sukan IPT Mulimin dan Muslimat',
+            phs_hours: 4, 
+            phs_weightage: 14,
+            culture_activity: 'NAsyid and Tausyeh Competition',
+            culture_hours: 3,
+            culture_weightage: 10,
+            spiritual_activity: 'Lectures, Seminar, Taddabur',
+            spiritual_hours: 15,
+            spiritual_weightage: 50,
+            social_activity: 'Showcase Booth, Invite IPT participation, invite schools',
+            social_hours: 5,
+            social_weightage: 16,
+            mental_activity: 'Forum',
+            mental_hours: 3,
+            mental_weightage: 10,
+             )
 puts 'Nasyid Club has been created'
 
 # NASYID Activity
+
+# TODO --> Activity 
 
 Activity.create(user_id: 1, club_id: 4, name: "Larian Ukhwah", no_of_hours: 2, weightage: 7, dev_aspect: 0) 
 Activity.create(user_id: 1, club_id: 4, name: "Sukan IPT Muslimin dan Muslimat", no_of_hours: 2, weightage: 7, dev_aspect: 0) 

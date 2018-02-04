@@ -1,4 +1,4 @@
-Clubs
+Clubs | <%= link_to 'New', new_club_path %>
 <% @clubs.each_with_index do |club, index| %>
   <p>#<%= index + 1 %> | Name: <%= club.name %> |  
   	  <%= link_to 'View Club Details', club_path(club), id: "club_#{club.id}" %> | 

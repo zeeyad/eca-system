@@ -8,37 +8,53 @@
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th scope="col">Week No</th>
-      <th scope="col">Date</th>
-      <th scope="col">Name</th>
+      <th scope="col">Aspect of Development</th>
+      <th scope="col">Activity</th>
       <th scope="col">No. of Hours</th>
       <th scope="col">Weightage</th>
-      <th scope="col">Aspect Development</th>
     </tr>
   </thead>
   <tbody>
-    <% @club_activities.each do |activity| %>
-      <tr>
-        <th scope="row"><%= activity.week_no %></th>
-        <td><%= activity.date_in_words if activity.date %></td>
-        <td><%= link_to activity.name, activity_club_path(@club, activity) %></td>
-        <td><%= activity.no_of_hours %></td>
-        <td><%= activity.weightage %></td>
-        <td><%= activity.dev_aspect.titleize %></td>
-      </tr>
-    <% end %>
+    <tr>
+      <th scope="row">Physical, Health and Safety</th>
+      <td><%= @club.phs_activity if @club.phs_activity %></td>
+      <td><%= @club.phs_hours if @club.phs_hours %></td>
+      <td><%= @club.phs_weightage if @club.phs_weightage %></td>
+    </tr>
+    <tr>
+      <th scope="row">Cultural</th>
+      <td><%= @club.culture_activity if @club.culture_activity %></td>
+      <td><%= @club.culture_hours if @club.culture_hours %></td>
+      <td><%= @club.culture_weightage if @club.culture_weightage %></td>
+    </tr>
+    <tr>
+      <th scope="row">Spiritual</th>
+      <td><%= @club.spiritual_activity if @club.spiritual_activity %></td>
+      <td><%= @club.spiritual_hours if @club.spiritual_hours %></td>
+      <td><%= @club.spiritual_weightage if @club.spiritual_weightage %></td>
+    </tr>
+    <tr>
+      <th scope="row">Social and Community</th>
+      <td><%= @club.social_activity if @club.social_activity %></td>
+      <td><%= @club.social_hours if @club.social_hours %></td>
+      <td><%= @club.social_weightage if @club.social_weightage %></td>
+    </tr>
+    <tr>
+      <th scope="row">Mental and Psychological</th>
+      <td><%= @club.mental_activity if @club.mental_activity %></td>
+      <td><%= @club.mental_hours if @club.mental_hours %></td>
+      <td><%= @club.mental_weightage if @club.mental_weightage %></td>
+    </tr>
     <tr>
       <td></td>
-      <td></td>
       <td>Total</td>
-      <td><%= @club.activities.map(&:no_of_hours).sum %></td>
-      <td><%= @club.activities.map(&:weightage).sum %> %</td>
-      <td></td>
+      <td><%= @club.total_planned_hours %></td>
+      <td><%= @club.total_weightage %></td>
     </tr>
   </tbody>
 </table>
 
-Total Points: <%= @total_points %> Points
+Total Points: <%= @club.total_points %> Points
 <br/>
 <br/>
 
@@ -55,28 +71,28 @@ Total Points: <%= @total_points %> Points
   <tbody>
     <tr>
       <th scope="row">Physical, Health and Safety</th>
-      <td><%= @physical_health_safety %></td>
-      <td><%= @physical_health_safety %>% of <%= @total_points %> = <%= (@physical_health_safety * 0.01 * @total_points).round %></td>
+      <td><%= @phs_weightage %></td>
+      <td><%= @phs_weightage %>% of <%= @club.total_points %> = <%= @club.phs_points_to_percentage.round %> </td>
     </tr>
     <tr>
       <th scope="row">Cultural</th>
-      <td><%= @cultural %></td>
-      <td><%= @cultural %>% of <%= @total_points %> = <%= (@cultural * 0.01 * @total_points).round %></td>
+      <td><%= @cult_weightage %></td>
+      <td><%= @cult_weightage %>% of <%= @club.total_points %> = <%= @club.culture_points_to_percentage.round  %></td>
     </tr>
     <tr>
       <th scope="row">Spiritual</th>
-      <td><%= @spiritual %></td>
-      <td><%= @spiritual %>% of <%= @total_points %> = <%= (@spiritual * 0.01 * @total_points).round %></td>
+      <td><%= @sprt_weightage %></td>
+      <td><%= @sprt_weightage %>% of <%= @club.total_points %> = <%= @club.spiritual_points_to_percentage.round %></td>
     </tr>
     <tr>
       <th scope="row">Social and Community</th>
-      <td><%= @social_community %></td>
-      <td><%= @social_community %>% of <%= @total_points %> = <%= (@social_community * 0.01 * @total_points).round %></td>
+      <td><%= @soc_weightage %></td>
+      <td><%= @soc_weightage %>% of <%= @club.total_points %> = <%= @club.social_points_to_percentage.round %></td>
     </tr>
     <tr>
       <th scope="row">Mental and Psychological</th>
-      <td><%= @mental_psychological %></td>
-      <td><%= @mental_psychological %>% of <%= @total_points %> = <%= (@mental_psychological * 0.01 * @total_points).round %></td>
+      <td><%= @ment_weightage %></td>
+      <td><%= @ment_weightage %>% of <%= @club.total_points %> = <%= @club.mental_points_to_percentage.round %></td>
     </tr>
   </tbody>
 </table>

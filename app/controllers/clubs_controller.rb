@@ -17,7 +17,8 @@ class ClubsController < ApplicationController
 
   def create
     @club = Club.new(club_params)
-    @club.user_id = 1
+    # @club.user_id = 1
+    # @club.semester_id = 1
     if @club.save(club_params)
       redirect_to clubs_path
     else
@@ -37,7 +38,29 @@ class ClubsController < ApplicationController
       .permit(
       	:name, 
       	:semester_id, 
-      	:user_id
+      	:user_id,
+        :about,
+        :objective,
+        :member_benefit,
+        :community_benefit,
+        :usual_day,
+        :usual_venue,
+        :hours_per_week,
+        :phs_activity,
+        :phs_hours,
+        :phs_weightage,
+        :culture_activity,
+        :culture_hours,
+        :culture_weightage,
+        :spiritual_activity,
+        :spiritual_hours,
+        :spiritual_weightage,
+        :social_activity,
+        :social_hours,
+        :social_weightage,
+        :mental_activity,
+        :mental_hours,
+        :mental_weightage
        )
   end
 

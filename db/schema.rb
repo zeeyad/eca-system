@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180126060846) do
+ActiveRecord::Schema.define(version: 20180204051656) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,17 @@ ActiveRecord::Schema.define(version: 20180126060846) do
     t.time "time"
     t.index ["club_id"], name: "index_activities_on_club_id"
     t.index ["user_id"], name: "index_activities_on_user_id"
+  end
+
+  create_table "activity_plans", force: :cascade do |t|
+    t.bigint "club_id"
+    t.string "name"
+    t.integer "dev_aspect"
+    t.integer "no_of_hours"
+    t.integer "weightage"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["club_id"], name: "index_activity_plans_on_club_id"
   end
 
   create_table "attendances", force: :cascade do |t|
@@ -56,6 +67,21 @@ ActiveRecord::Schema.define(version: 20180126060846) do
     t.string "usual_day"
     t.string "usual_venue"
     t.integer "hours_per_week"
+    t.string "phs_activity"
+    t.integer "phs_hours"
+    t.integer "phs_weightage"
+    t.string "culture_activity"
+    t.integer "culture_hours"
+    t.integer "culture_weightage"
+    t.string "spiritual_activity"
+    t.integer "spiritual_hours"
+    t.integer "spiritual_weightage"
+    t.string "social_activity"
+    t.integer "social_hours"
+    t.integer "social_weightage"
+    t.string "mental_activity"
+    t.integer "mental_hours"
+    t.integer "mental_weightage"
     t.index ["semester_id"], name: "index_clubs_on_semester_id"
     t.index ["user_id"], name: "index_clubs_on_user_id"
   end
@@ -111,6 +137,7 @@ ActiveRecord::Schema.define(version: 20180126060846) do
 
   add_foreign_key "activities", "clubs"
   add_foreign_key "activities", "users"
+  add_foreign_key "activity_plans", "clubs"
   add_foreign_key "attendances", "activities"
   add_foreign_key "attendances", "members"
   add_foreign_key "clubs", "semesters"
