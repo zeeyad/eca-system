@@ -20,6 +20,11 @@ Rails.application.routes.draw do
       get 'activity/:activity_id', to: 'activities#show', as: :activity
     end
   end
-  
+
+  get 'student_imports', to: 'student_imports#index', as: :student_imports
+  post 'student_imports', to: 'student_imports#create'  
+
+  get 'member_imports', to: 'member_imports#index', as: :member_imports
+  post 'member_imports', to: 'member_imports#create'
 
 end

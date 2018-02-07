@@ -1,9 +1,9 @@
-# SEMESTER Create
+# SEMESTER CREATE
 
 Semester.create(session: 'September 2016', year: 2016, status: true)
 puts 'Semester has been created'
 
-# USER Create
+# USER CREATE
 
 7.times do |user|
   User.create( 
@@ -15,31 +15,6 @@ puts 'Semester has been created'
     )
 end
 puts '7 Users have been created'
-
-Student.create( name: 'MUHAMMAD FAIZ BIN SHADUN', student_reg: '12B1143', user_id: 1, faculty: 'APB', degree: 'Bachelor of Arts')
-Student.create( name: 'NUR HAZIRAH BINTI AWG HAJI MATUSIN', student_reg: '12B8014', user_id: 1, faculty: 'APB', degree: 'Bachelor of Arts')
-Student.create( name: 'NURSAFIQAH AMERAH BINTI JEFFREE', student_reg: '12B8015', user_id: 1, faculty: 'APB', degree: 'Bachelor of Arts')
-Student.create( name: 'HAJAH EZZAH FAKHRIAH BTE HAJI MORSIDI', student_reg: '12B8016', user_id: 1, faculty: 'APB', degree: 'Bachelor of Arts')
-Student.create( name: 'MUNA AFIQAH BINTI MASRI', student_reg: '12B8037', user_id: 1, faculty: 'APB', degree: 'Bachelor of Arts')
-Student.create( name: 'ROSRATNADEWI BTE ROSNAN', student_reg: '12B8150', user_id: 1, faculty: 'APB', degree: 'Bachelor of Arts')
-Student.create( name: 'MUHD NUR AZIM BIN ROSLAN', student_reg: '12B8160', user_id: 1, faculty: 'APB', degree: 'Bachelor of Arts')
-Student.create( name: 'SITI NADIAH BTE AWANG TUSIN', student_reg: '12B8162', user_id: 1, faculty: 'APB', degree: 'Bachelor of Arts')
-Student.create( name: 'AMAL HAYATIE BINTI HAJI BAHAR', student_reg: '13B1060', user_id: 1, faculty: 'APB', degree: 'Bachelor of Arts')
-Student.create( name: 'NUR HANIS BINTI PG HJ MOHD JAAFAR', student_reg: '13B1066', user_id: 1, faculty: 'APB', degree: 'Bachelor of Arts')
-
-Student.create( name: 'SAFURAA BINTI KAMARULZAMAN', student_reg: '13B1274', user_id: 1, faculty: 'FASS', degree: 'Bachelor of Arts')
-Student.create( name: 'SARAH JANE WARD', student_reg: '13B1275', user_id: 1, faculty: 'FASS', degree: 'Bachelor of Arts')
-Student.create( name: 'SHEIKH MOHAMED IZZAT BIN SHEIKH KHALID', student_reg: '13B1277', user_id: 1, faculty: 'FASS', degree: 'Bachelor of Arts')
-Student.create( name: 'SITI HAMIZAH BINTI MERALI', student_reg: '13B1281', user_id: 1, faculty: 'FASS', degree: 'Bachelor of Arts')
-Student.create( name: 'SITI HUMAIRAH BINTI SIUMOR', student_reg: '13B1282', user_id: 1, faculty: 'FASS', degree: 'Bachelor of Arts')
-
-Student.create( name: 'SITI MARIYAM BINTI HAJI OSMAN', student_reg: '13B1286', user_id: 1, faculty: 'FASS', degree: 'Bachelor of Arts')
-Student.create( name: 'SITI NOR AMALINA BINTI AHMAD', student_reg: '13B1284', user_id: 1, faculty: 'FASS', degree: 'Bachelor of Arts')
-Student.create( name: 'SITI NOR AQILAH BINTI HJ ABAS', student_reg: '13B1285', user_id: 1, faculty: 'FASS', degree: 'Bachelor of Arts')
-Student.create( name: 'SITI NOR KAMILAH @ MUNAH BINTI RAHMAN', student_reg: '13B1287', user_id: 1, faculty: 'FASS', degree: 'Bachelor of Arts')
-Student.create( name: 'SITI NORAIN BTE AWANG BASAR', student_reg: '13B1288', user_id: 1, faculty: 'FASS', degree: 'Bachelor of Arts')
-
-puts '20 Student has been created'
 
 
 
@@ -499,7 +474,7 @@ Club.create(name: "FRENCH METROPOLITAIN",
 #######
 #######
 
-###### 1. SBE STUDENT COUNCIL
+# 1. SBE STUDENT COUNCIL
 Club.create(name: "SBE STUDENT COUNCIL", 
             about: 'UBDSBESC is a group of student representatives from the UBD School of Business and Economics; responsible for helping out and responding to the faculty in general inclusive of the staff and students. The club is also responsible for conducting events within the scope of the School of Business and Economics.',
             objective: "1)To help out with the concerns of UBDSBE's staff and students 2)Providing members with an experience of working in an organization",
@@ -512,7 +487,7 @@ Club.create(name: "SBE STUDENT COUNCIL",
             semester_id: 1
             )
 
-###### 2. FIT UNION
+# 2. FIT UNION
 Club.create(name: "FIT UNION", 
             about: 'Faculty of Integrated Technologies Student Council, generally known as FIT Union, leadership skills are practised among the small community of engineering students. FIT Union is also responsible to lead and guide FIT students in organizing events smoothly.',
             objective: "To promote faculty of integrated sciences",
@@ -525,7 +500,7 @@ Club.create(name: "FIT UNION",
             semester_id: 1
             )
 
-###### 3. FACULTY OF SCIENCE STUDENT BODY
+# 3. FACULTY OF SCIENCE STUDENT BODY
 Club.create(name: "FACULTY OF SCIENCE STUDENT BODY", 
             about: '"Established in 2013, with only 18 members. Has participated in various activities within the university and collaborated with various organizations"',
             objective: 'To promote FOS to public, to support welfare of the faculty, to work together with the other student bodies and clubs for organizing activities and events, to strengthen the student-staff relationship',
@@ -538,7 +513,7 @@ Club.create(name: "FACULTY OF SCIENCE STUDENT BODY",
             semester_id: 1
             )
 
-###### 4. BPMFASS
+# 4. BPMFASS
 Club.create(name: "BPMFASS", 
             about: 'BPM FASS is a student body that caters to the welfare of the students and staff of FASS (Faculty Of Arts & Social Sciences).',
             objective: 'To help the UBD Community, especially FASS students; to inspire others and; to make UBD life more memorable',
@@ -551,7 +526,7 @@ Club.create(name: "BPMFASS",
             semester_id: 1
             )
 
-###### 5. PAPRSB IHS STUDENT COUNCIL
+# 5. PAPRSB IHS STUDENT COUNCIL
 Club.create(name: "PAPRSB IHS STUDENT COUNCIL", 
             about: 'IHS Student Council offers a medium for the IHS students on issues that directly influence them. We are also aim to give support to PAPRSB IHS administrative with the purpose of reducing their burden and to help the administration to its simplicity. In addition, we provide opportunities and preparations for PAPRSB IHS students to gain experience and skills as well as information relevant to their respective choice of fields.',
             objective: '• To instill and enrich their leadership skill. 
@@ -566,7 +541,7 @@ Club.create(name: "PAPRSB IHS STUDENT COUNCIL",
             semester_id: 1
             )
 
-###### 6. BADAN PERHUBUNGAN DAN KESEJAHTERAAN MAHASIWA/I AKADEMI PENGAJIAN BRUNEI (BKMAPB)
+# 6. BADAN PERHUBUNGAN DAN KESEJAHTERAAN MAHASIWA/I AKADEMI PENGAJIAN BRUNEI (BKMAPB)
 Club.create(name: "BADAN PERHUBUNGAN DAN KESEJAHTERAAN MAHASIWA/I AKADEMI PENGAJIAN BRUNEI (BKMAPB)", 
             about: 'Penubuhan Badan Perhubungan dan Kesejahteraan Akademi Pengajian Brunei adalah sebagai satu badan di bawah naungan Akademi Pengajian Brunei dan Persatuan Mahasiswa Universiti Brunei Darussalam ',
             objective: '- untuk membolehkan Mahasiswa/i APB dan Mahasiswa/i fakulti lain bergerak sebagai satu badan kebajikan dan sosial
@@ -584,7 +559,7 @@ Club.create(name: "BADAN PERHUBUNGAN DAN KESEJAHTERAAN MAHASIWA/I AKADEMI PENGAJ
             semester_id: 1
             )
 
-###### 7. PLATUN KADET TENTERA UNIVERSITI BRUNEI DARUSSALAM
+# 7. PLATUN KADET TENTERA UNIVERSITI BRUNEI DARUSSALAM
 Club.create(name: "PLATUN KADET TENTERA UNIVERSITI BRUNEI DARUSSALAM", 
             about: 'The very first uniform squad established among the higher-learning institutions and colleges of Brunei Darussalam. Divided into 3 different sections; Uniform, Bravo and Delta. ',
             objective: 'To create a competent uniformed body that will work towards producting a generation of people that are beneficial for the development and the maintainance of peace of the country. To provide a variety of exercises and activities that will produce a generation of people who are knowledgeable, competent and militarily disciplined',
@@ -609,7 +584,7 @@ Club.create(name: "PLATUN KADET TENTERA UNIVERSITI BRUNEI DARUSSALAM",
 
 
 
-###### 1. QURANIC GENERATION (QUGEN) CLUB
+# 1. QURANIC GENERATION (QUGEN) CLUB
 Club.create(name: "QURANIC GENERATION (QUGEN)", 
             about: 'Previously known as “Kelab Al-Qur’an”, Quranic Generation (QuGen) Club is a club under EKK. This semester, our club aims to inspire members to develop their leadership skills and unleash their potentials to motivate others using their own personal talents, using Al-Qur’an as our main source of inspiration. ',
             objective: '- To inspire the members to apply extensive leadership qualities in various aspects and areas according to their own personal creativity and talents,
@@ -624,7 +599,7 @@ Club.create(name: "QURANIC GENERATION (QUGEN)",
             )
 
 
-###### 2. MUSLIM YOUTH CLUB (MYC) CLUB
+# 2. MUSLIM YOUTH CLUB (MYC) CLUB
 Club.create(name: "MUSLIM YOUTH CLUB (MYC)", 
             about: 'Kelab dibawah naungan Badan EKK PMUBD. Ditubuhkan pada Ogos 2009. Ahli terdiri daripada Mahasiswa/wi UBD secara berdaftar.Kegiatan dan aktiviti dikendalikan oleh AJK MYC dan ahli-ahli MYC di samping itu juga mendapat bimbingan dari UKK UBD.',
             objective: 'Untuk menerapkan nilai-nilai Islam dalam kehidupan seharian dengan lebih mendalam dan menghayati ilmu serta nilai-nilai tentang Islam.',
@@ -637,7 +612,7 @@ Club.create(name: "MUSLIM YOUTH CLUB (MYC)",
             semester_id: 1
             )
 
-###### 3. KELAB HADRAH UBD
+# 3. KELAB HADRAH UBD
 Club.create(name: "KELAB HADRAH UBD", 
             about: 'A traditional music club that emphasizes on team play and harmony',
             objective: 'To enable all members to be able to learn and play the tar smoothly ',
@@ -650,7 +625,7 @@ Club.create(name: "KELAB HADRAH UBD",
             semester_id: 1
             )
 
-###### 4. KELAB DIKIR, NASYID DAN TAUSYEH (KDNDT) CLUB with SAMPLE
+# 4. KELAB DIKIR, NASYID DAN TAUSYEH (KDNDT) CLUB with SAMPLE
 Club.create(name: 'KELAB DIKIR, NASYID DAN TAUSYEH (KDNDT)', 
             about: 'This club acts as a platform in UBD for students to learn and enjoy Islamic songs (Nasyid & Tausyeh)',
             objective: '1) To promote dzikir and praises to Allah and His Messenger 2) To expose members to various Islamic tunes and Qasidah  3) To learn Brunei Dikir (Old & New) ',
@@ -680,9 +655,9 @@ Club.create(name: 'KELAB DIKIR, NASYID DAN TAUSYEH (KDNDT)',
 
 puts 'Nasyid Club has been created'
 
-# NASYID Activity
+# NASYID ACTIVITY
 
-# TODO --> Activity 
+# TODO --> ACTIVITY 
 
 Activity.create(user_id: 1, club_id: 4, name: "Larian Ukhwah", no_of_hours: 2, weightage: 7, dev_aspect: 0) 
 Activity.create(user_id: 1, club_id: 4, name: "Sukan IPT Muslimin dan Muslimat", no_of_hours: 2, weightage: 7, dev_aspect: 0) 
@@ -693,7 +668,7 @@ Activity.create(user_id: 1, club_id: 4, name: "Forum", no_of_hours: 3, weightage
 puts '6 Activities have been created for the Nasyid club'
 
 
-# NASYID Member SAMPLE
+# NASYID MEMBER SAMPLE
 
 7.times {|member| Member.create(club_id: 4, student_id: "#{member + 8}") }
 puts '7 members have been created for the NASYID club'

@@ -1,0 +1,41 @@
+<section id="form-member-import">
+  <%= render 'shared/messages' %>
+  <h1>Club Member Import</h1>
+  <p>Happy Importing! </p>
+
+  <%= form_for @member_import do |f| %>
+
+  <% begin  %>
+    <%= f.collection_select :club_id, @club, :id, :name %>
+  <% rescue %>
+
+  <% end %>
+    <% if @member_import.errors.any? %>
+      <div class="row">
+        <div class="col-md-12 ">
+          <div class="alert alert-danger">
+              <h3 class="card-title">
+                <a href="#" class="close" data-dismiss="alert">×</a>
+                Check Errors in the Following Row
+              </h3>
+              <div class="card-block">
+                <ul>
+                  <% @member_import.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                  <% end %>
+                </ul>
+              </div>
+          </div>
+        </div>
+      </div>
+
+    <% end %>
+
+
+    <div class="">
+      <%= f.file_field :file %>
+    </div>
+    <div class="col-md-4 offset-md-5 buttons"><%= f.submit "Import" %></div>
+  <% end %>
+
+</section>
