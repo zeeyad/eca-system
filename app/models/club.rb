@@ -11,25 +11,25 @@ class Club < ApplicationRecord
   validates :objective, presence: true
   validates :member_benefit, presence: true
   validates :community_benefit, presence: true
-  validates :phs_activity, presence: true
-  validates :phs_hours, presence: true
-  validates :phs_weightage, presence: true
-  validates :culture_activity, presence: true
-  validates :culture_hours, presence: true
-  validates :culture_weightage, presence: true
-  validates :spiritual_activity, presence: true
-  validates :spiritual_hours, presence: true
-  validates :spiritual_weightage, presence: true
-  validates :social_activity, presence: true
-  validates :social_hours, presence: true
-  validates :social_weightage, presence: true
-  validates :mental_activity, presence: true
-  validates :mental_hours, presence: true
-  validates :mental_weightage, presence: true
+  # validates :phs_activity, presence: true
+  # validates :phs_hours, presence: true
+  # validates :phs_weightage, presence: true
+  # validates :culture_activity, presence: true
+  # validates :culture_hours, presence: true
+  # validates :culture_weightage, presence: true
+  # validates :spiritual_activity, presence: true
+  # validates :spiritual_hours, presence: true
+  # validates :spiritual_weightage, presence: true
+  # validates :social_activity, presence: true
+  # validates :social_hours, presence: true
+  # validates :social_weightage, presence: true
+  # validates :mental_activity, presence: true
+  # validates :mental_hours, presence: true
+  # validates :mental_weightage, presence: true
   
 
 
-  validate :check_total_weightage
+#  validate :check_total_weightage
 
   def total_planned_hours
   	self.phs_hours + self.culture_hours + self.spiritual_hours + self.social_hours + self.mental_hours
