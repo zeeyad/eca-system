@@ -2,5 +2,5 @@
 <%= link_to 'Back', clubs_path  %>
 <br>
 <% @club.members.each_with_index do |member, index| %>
-  <p># <%= index %> | <%= member.student.name %>, <%= link_to 'View', student_path(member) %>
+  <p># <%= index %> | <%= member.student.name %>, <strong><%= member.position %></strong>, <%= link_to 'View Student Details', student_path(member.student) %>
 <% end %>
