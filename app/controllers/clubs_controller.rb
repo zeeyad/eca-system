@@ -1,8 +1,9 @@
 class ClubsController < ApplicationController
 
+  before_action :set_club, only: [:edit, :update]
+
   def index
-    @clubs = Club.all
-    
+    @clubs = Club.all.order(:name)    
   end
 
   def members
@@ -36,10 +37,23 @@ class ClubsController < ApplicationController
   end
 
   def edit
-    @club = Club.find(params[:id])    
+
+  end
+
+  def update
+    if @club.update(club_params)
+      flash[:success] = 'Club was successfully updated.'
+      redirect_to clubs_path
+    else
+      render 'edit'
+    end    
   end
 
   private
+
+  def set_club
+    @club = Club.find(params[:id])    
+  end
 
   def club_params
     params

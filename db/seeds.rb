@@ -35,6 +35,9 @@ Club.create(name: "KELAB SENI PENCAK SILAT UBD (KSPS UBD)",
             usual_venue: 'Basement, CH',
             usual_day: 'Wednesday',
             hours_per_week: '2 hours',
+            phs_activity: 'SAMPLE ACTIVITY',
+            phs_hours: 30,
+            phs_weightage: 100,
             user_id: 1,
             semester_id: 1
             )
@@ -54,6 +57,9 @@ Club.create(name: "UBD KENDO",
             usual_venue: 'CLT FOYER OR MPH',
             usual_day: 'TUESDAY AND THURSDAY',
             hours_per_week: '2 hours',
+            phs_activity: 'SAMPLE ACTIVITY',
+            phs_hours: 30,
+            phs_weightage: 100,
             user_id: 1,
             semester_id: 1
             )
@@ -76,6 +82,9 @@ Club.create(name: "UBD RENGOKAI KARATE-DO",
             usual_venue: 'Menglait Sports Complex',
             usual_day: 'Wednesday',
             hours_per_week: '2 hours',
+            phs_activity: 'SAMPLE ACTIVITY',
+            phs_hours: 30,
+            phs_weightage: 100,
             user_id: 1,
             semester_id: 1
             )
@@ -89,6 +98,9 @@ Club.create(name: "KARATE WADOKAI",
             usual_venue: 'UBD CLT FOYER',
             usual_day: 'MONDAY & WEDNESDAY',
             hours_per_week: '4 hours',
+            phs_activity: 'SAMPLE ACTIVITY',
+            phs_hours: 30,
+            phs_weightage: 100,            
             user_id: 1,
             semester_id: 1
             )
@@ -102,6 +114,9 @@ Club.create(name: "UBD HOCKEY",
             usual_venue: 'Artificial Hockey Turf, UBD Sports Complex',
             usual_day: 'Wednesday',
             hours_per_week: '2.5 hours',
+            phs_activity: 'SAMPLE ACTIVITY',
+            phs_hours: 30,
+            phs_weightage: 100,        
             user_id: 1,
             semester_id: 1
             )
@@ -116,6 +131,9 @@ Club.create(name: "UBD BASKETBALL",
             usual_venue: 'UBD Multipurpose Hall',
             usual_day: 'THURSDAY',
             hours_per_week: '2 hours',
+            phs_activity: 'SAMPLE ACTIVITY',
+            phs_hours: 30,
+            phs_weightage: 100,            
             user_id: 1,
             semester_id: 1
             )
@@ -130,6 +148,9 @@ Club.create(name: "UBDPPC [ August 2015 (sem 1) ]",
             usual_venue: 'Female Hostel Hall',
             usual_day: 'Wednesday',
             hours_per_week: '3 hours per week in 1 semester',
+            phs_activity: 'SAMPLE ACTIVITY',
+            phs_hours: 30,
+            phs_weightage: 100,        
             user_id: 1,
             semester_id: 1
             )
@@ -144,6 +165,9 @@ Club.create(name: "TAEKWONDO",
             usual_venue: 'Dewan Asrama Peremuan (Monday) and CLT Foyer (Wednesday',
             usual_day: 'Monday and Wednesday',
             hours_per_week: '2 hours each day',
+            phs_activity: 'SAMPLE ACTIVITY',
+            phs_hours: 30,
+            phs_weightage: 100,
             user_id: 1,
             semester_id: 1
             )
@@ -158,6 +182,9 @@ Club.create(name: "UBD DODGEBALL",
             usual_venue: 'Futsal Court 1, UBD Sport Complex.',
             usual_day: 'Thursday',
             hours_per_week: '2 hours',
+            phs_activity: 'SAMPLE ACTIVITY',
+            phs_hours: 30,
+            phs_weightage: 100,
             user_id: 1,
             semester_id: 1
             )
@@ -171,6 +198,9 @@ Club.create(name: "UBD ULTIMATE FRISBEE",
             usual_venue: 'Field A, Sport Complex UBD',
             usual_day: 'Wednesday',
             hours_per_week: '2hour 30 minutes',
+            phs_activity: 'SAMPLE ACTIVITY',
+            phs_hours: 30,
+            phs_weightage: 100,
             user_id: 1,
             semester_id: 1
             )
@@ -184,6 +214,9 @@ Club.create(name: "KELAB SILAT VARSITI GERAK-41",
             usual_venue: 'TAMAN RAKIS, UBD',
             usual_day: 'WEDNESDAY (SEPARATE SESSIONS FOR BOYS & GIRLS) & SATURDAY',
             hours_per_week: '4 HOURS/WEEK.',
+            phs_activity: 'SAMPLE ACTIVITY',
+            phs_hours: 30,
+            phs_weightage: 100,            
             user_id: 1,
             semester_id: 1
             )
@@ -203,6 +236,9 @@ Club.create(name: "UBD VOLLEYBALL",
             usual_venue: 'Dewan Asrama Perempuan(soon to change to sport complex)',
             usual_day: 'Thursday and Saturday',
             hours_per_week: '2  hours 30 mins for one session so total 5 hours',
+            phs_activity: 'SAMPLE ACTIVITY',
+            phs_hours: 30,
+            phs_weightage: 100,
             user_id: 1,
             semester_id: 1
             )
@@ -217,11 +253,12 @@ Club.create(name: 'BADMINTON',
             usual_venue: 'Dewan Pusat Belia, Bandar / Scouts Building',            
             usual_day: 'Wednesday',
             hours_per_week: '3 Hours/week',
+            phs_activity: 'SAMPLE ACTIVITY',
+            phs_hours: 30,
+            phs_weightage: 100,
             semester_id: 1, 
             user_id: 1,
             )
-
-puts 'Badminton Club has been created'
 
 # BADMINTON Activity SAMPLE
 
@@ -239,6 +276,7 @@ puts 'Badminton Club has been created'
             venue: 'Dewan Pusat Belia, Bandar / Scouts Building'
             ) 
         }
+
 puts '3 Activity have been created for the BADMINTON club'
 
 7.times { |activity| Activity.create(
@@ -255,6 +293,7 @@ puts '3 Activity have been created for the BADMINTON club'
             venue: 'Dewan Pusat Belia, Bandar / Scouts Building'
             ) 
         }
+
 puts '7 Activity have been created for the BADMINTON club'
 
 
@@ -267,6 +306,9 @@ Club.create(name: 'PARKOUR',
             usual_venue: 'UTB Silver Jubilee, UBD Grandstand, Stadium',            
             usual_day: 'Wednesday, Friday, Saturday',
             hours_per_week: '2-3 hours per session',
+            phs_activity: 'SAMPLE ACTIVITY',
+            phs_hours: 30,
+            phs_weightage: 100,
             semester_id: 1, 
             user_id: 1,
             )
@@ -282,6 +324,9 @@ Club.create(name: 'UBD RUGBY',
             usual_venue: 'RUGBY FIELD AND TRACK FIELD ',
             usual_day: "MONDAY (CONTACT RUGBY TRAINING), TUESDAY (FITNESS SESSION) RUGBY TRAINING) ', WEDNESDAY (TOUCH RUGBY SESSION @CCA & CONTACT",
             hours_per_week: '2 HOURS PER SESSION AND 3 HOURS PER TRANING SESSION ',
+            phs_activity: 'SAMPLE ACTIVITY',
+            phs_hours: 30,
+            phs_weightage: 100,
             semester_id: 1, 
             user_id: 1,
             )
@@ -295,6 +340,9 @@ Club.create(name: 'NETBALL',
             usual_venue: 'UBD OUTDOOR COURT',
             usual_day: "MONDAY, WEDNESAY AND FRIDAY",
             hours_per_week: '6 HOURS',
+            phs_activity: 'SAMPLE ACTIVITY',
+            phs_hours: 30,
+            phs_weightage: 100,
             semester_id: 1, 
             user_id: 1,
             )
@@ -308,9 +356,14 @@ Club.create(name: 'KELAB BOLASPEAK UNIVERSITI BRUNEI DARUSSALAM',
             usual_venue: 'Padang UBD A',
             usual_day: "Isnin Malam",
             hours_per_week: '2 HOURS',
+            phs_activity: 'SAMPLE ACTIVITY',
+            phs_hours: 30,
+            phs_weightage: 100,
             semester_id: 1, 
             user_id: 1,
             )
+
+puts '17 SPORTS & RECREATION Clubs have been created'
 
 ####### #2
 #######
@@ -331,6 +384,9 @@ Club.create(name: "WRITERS' MOVEMENT (WRITER'S CLUB)",
             usual_venue: 'FASS G.20',
             usual_day: 'Wednesday',
             hours_per_week: '1.5 hours per session',
+            culture_activity: 'SAMPLE ACTIVITY',
+            culture_hours: 30,
+            culture_weightage: 100,
             user_id: 1,
             semester_id: 1
             )
@@ -344,6 +400,9 @@ Club.create(name: "ARABIC CLUB CULTURE",
             usual_venue: 'G.39 & G.40 FASS',
             usual_day: 'Wednesday',
             hours_per_week: '10 hours',
+            culture_activity: 'SAMPLE ACTIVITY',
+            culture_hours: 30,
+            culture_weightage: 100,
             user_id: 1,
             semester_id: 1
             )
@@ -358,6 +417,9 @@ Club.create(name: "KOREAN CULTURE CLUB UNIVERSITI BRUNEI DARUSSALAM (KCCUBD)",
             usual_venue: 'CLT 1.13',
             usual_day: 'Wednesday',
             hours_per_week: '2 hours 30 Minutes',
+            culture_activity: 'SAMPLE ACTIVITY',
+            culture_hours: 30,
+            culture_weightage: 100,
             user_id: 1,
             semester_id: 1
             )
@@ -371,6 +433,9 @@ Club.create(name: "BRUNEI JAPAN FRIENDSHIP ASSOCIATION - UNIVERSITI BRUNEI DARUS
             usual_venue: 'ROOM 4, LANGUAGE CENTRE',
             usual_day: 'Wednesday',
             hours_per_week: '2 HOURS TO 2.30 HOURS',
+            culture_activity: 'SAMPLE ACTIVITY',
+            culture_hours: 30,
+            culture_weightage: 100,
             user_id: 1,
             semester_id: 1
             )
@@ -384,6 +449,9 @@ Club.create(name: "UBD PERFORMING ARTS",
             usual_venue: 'Room 7, Basement Rooms, UBD Chancellor Hall',
             usual_day: 'Wednesday',
             hours_per_week: '3-6 hours per week',
+            culture_activity: 'SAMPLE ACTIVITY',
+            culture_hours: 30,
+            culture_weightage: 100,
             user_id: 1,
             semester_id: 1
             )
@@ -397,6 +465,9 @@ Club.create(name: "PHONEMIC",
             usual_venue: 'Central Lecture Theater, Room 1.11',
             usual_day: 'Wednesday',
             hours_per_week: '2 – 3 hours',
+            culture_activity: 'SAMPLE ACTIVITY',
+            culture_hours: 30,
+            culture_weightage: 100,
             user_id: 1,
             semester_id: 1
             )
@@ -410,6 +481,9 @@ Club.create(name: "KELAB ORKESTRA GULINGTANGAN VARSITI ( KOGV )",
             usual_venue: 'Common room near pmubd office',
             usual_day: 'Wednesday',
             hours_per_week: '2 hours',
+            culture_activity: 'SAMPLE ACTIVITY',
+            culture_hours: 30,
+            culture_weightage: 100,
             user_id: 1,
             semester_id: 1
             )
@@ -423,6 +497,9 @@ Club.create(name: "UBD SAWADDEE CLUB",
             usual_venue: 'CLT ROOM G1.1',
             usual_day: 'Wednesday',
             hours_per_week: '1 HR 30MIN TO 2HRS',
+            culture_activity: 'SAMPLE ACTIVITY',
+            culture_hours: 30,
+            culture_weightage: 100,
             user_id: 1,
             semester_id: 1
             )
@@ -436,6 +513,9 @@ Club.create(name: "KELAB PENDETA BAHASA",
             usual_venue: 'Library',
             usual_day: 'Wednesday',
             hours_per_week: '1 Hour',
+            culture_activity: 'SAMPLE ACTIVITY',
+            culture_hours: 30,
+            culture_weightage: 100,
             user_id: 1,
             semester_id: 1
             )
@@ -449,6 +529,9 @@ Club.create(name: "ART",
             usual_venue: 'SHBIE G.38',
             usual_day: 'Wednesday',
             hours_per_week: 'Two hours (2pm - 4pm).',
+            culture_activity: 'SAMPLE ACTIVITY',
+            culture_hours: 30,
+            culture_weightage: 100,
             user_id: 1,
             semester_id: 1
             )
@@ -462,10 +545,14 @@ Club.create(name: "FRENCH METROPOLITAIN",
             usual_venue: 'Room 6, Language Centre',
             usual_day: 'Wednesday',
             hours_per_week: '11 hours TOTAL',
+            culture_activity: 'SAMPLE ACTIVITY',
+            culture_hours: 30,
+            culture_weightage: 100,
             user_id: 1,
             semester_id: 1
             )
 
+puts '11 ARTS & CULTURE Clubs have been created'
 
 ####### #3
 #######
@@ -483,6 +570,9 @@ Club.create(name: "SBE STUDENT COUNCIL",
             usual_venue: '-',
             usual_day: '-',
             hours_per_week: '-',
+            social_activity: 'SAMPLE ACTIVITY',
+            social_hours: 30,
+            social_weightage: 100,
             user_id: 1,
             semester_id: 1
             )
@@ -496,6 +586,9 @@ Club.create(name: "FIT UNION",
             usual_venue: 'Faculty of integrated sciences building',
             usual_day: 'Wednesday',
             hours_per_week: '-',
+            social_activity: 'SAMPLE ACTIVITY',
+            social_hours: 30,
+            social_weightage: 100,
             user_id: 1,
             semester_id: 1
             )
@@ -509,6 +602,9 @@ Club.create(name: "FACULTY OF SCIENCE STUDENT BODY",
             usual_venue: 'MPH, FSM 2.18, Dewan Asrama Perempuan',
             usual_day: 'Wednesday',
             hours_per_week: '4 hours',
+            social_activity: 'SAMPLE ACTIVITY',
+            social_hours: 30,
+            social_weightage: 100,
             user_id: 1,
             semester_id: 1
             )
@@ -522,6 +618,9 @@ Club.create(name: "BPMFASS",
             usual_venue: 'FASS',
             usual_day: 'Wednesday',
             hours_per_week: '2-3 hours',
+            social_activity: 'SAMPLE ACTIVITY',
+            social_hours: 30,
+            social_weightage: 100,
             user_id: 1,
             semester_id: 1
             )
@@ -537,6 +636,9 @@ Club.create(name: "PAPRSB IHS STUDENT COUNCIL",
             usual_venue: 'PAPRSB IHS area',
             usual_day: 'Wednesday',
             hours_per_week: '-',
+            social_activity: 'SAMPLE ACTIVITY',
+            social_hours: 30,
+            social_weightage: 100,
             user_id: 1,
             semester_id: 1
             )
@@ -555,6 +657,9 @@ Club.create(name: "BADAN PERHUBUNGAN DAN KESEJAHTERAAN MAHASIWA/I AKADEMI PENGAJ
             usual_venue: 'Ofis BPKMAPB',
             usual_day: 'Saturday',
             hours_per_week: '2 Hour',
+            social_activity: 'SAMPLE ACTIVITY',
+            social_hours: 30,
+            social_weightage: 100,
             user_id: 1,
             semester_id: 1
             )
@@ -568,11 +673,14 @@ Club.create(name: "PLATUN KADET TENTERA UNIVERSITI BRUNEI DARUSSALAM",
             usual_venue: 'CHANCELLOR HALL PARKING LOT / ASMDB RIMBA KEM',
             usual_day: 'Wednesday',
             hours_per_week: '3-4 HOURS',
+            social_activity: 'SAMPLE ACTIVITY',
+            social_hours: 30,
+            social_weightage: 100,
             user_id: 1,
             semester_id: 1
             )
 
-
+puts '7 LEADERSHIP & INNOVATION Clubs have been created'
 
 ####### #4
 #######
@@ -594,6 +702,9 @@ Club.create(name: "QURANIC GENERATION (QUGEN)",
             usual_venue: 'Inspiring Hall, Student Centre, UBD',
             usual_day: 'Wednesday',
             hours_per_week: '2.5 hours per week',
+            spiritual_activity: 'SAMPLE ACTIVITY',
+            spiritual_hours: 30,
+            spiritual_weightage: 100,
             user_id: 1,
             semester_id: 1
             )
@@ -608,6 +719,9 @@ Club.create(name: "MUSLIM YOUTH CLUB (MYC)",
             usual_venue: 'Dewan Muzakarah Lelaki dan Perempuan, Masjid UBD',
             usual_day: 'Wednesday',
             hours_per_week: '2 to 3 hours',
+            spiritual_activity: 'SAMPLE ACTIVITY',
+            spiritual_hours: 30,
+            spiritual_weightage: 100,            
             user_id: 1,
             semester_id: 1
             )
@@ -621,6 +735,9 @@ Club.create(name: "KELAB HADRAH UBD",
             usual_venue: 'CLT 1.05',
             usual_day: 'Wednesday',
             hours_per_week: '2 to 3 hours',
+            spiritual_activity: 'SAMPLE ACTIVITY',
+            spiritual_hours: 30,
+            spiritual_weightage: 100,
             user_id: 1,
             semester_id: 1
             )
@@ -653,8 +770,6 @@ Club.create(name: 'KELAB DIKIR, NASYID DAN TAUSYEH (KDNDT)',
             mental_weightage: 10,
             )
 
-puts 'Nasyid Club has been created'
-
 # NASYID ACTIVITY
 
 # TODO --> ACTIVITY 
@@ -678,6 +793,7 @@ puts '7 members have been created for the NASYID club'
 10.times { |attendance| Attendance.create(activity_id: 11, member_id: "#{attendance + 1}", status: 1) }
 puts '10 Attendance have been created for the First Activity of the NAYSID Club' 
 
+puts '4 RELIGIOUS & SPIRITUAL Clubs have been created'
 
 
 ####### #5
@@ -699,7 +815,11 @@ Club.create(name: 'UBD VOLUNTEERING AND CHARITY',
             usual_venue: 'depend on where the events held',
             usual_day: 'Wednesday',
             hours_per_week: '2-4 hours',
+            social_activity: 'SAMPLE ACTIVITY',
+            social_hours: 30,
+            social_weightage: 100,
             user_id: 1,
             semester_id: 1
             )
  
+ puts '4 VOLUNTEERING & CHARITY Clubs have been created'

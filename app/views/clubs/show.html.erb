@@ -1,8 +1,9 @@
 <h1><%= @club.name %> Club </h1>
-<%= link_to 'Back', clubs_path %>
+<%= link_to 'Back', clubs_path %> | <%= link_to 'Edit', edit_club_path(@club) %>
 <br/>
 <br/>
 <h4>Club Details</h4>
+<br/>
 <table class="table table-bordered">
   <tr>
     <th class='table-dark' scope='row'>Name</th>
@@ -43,7 +44,7 @@
 <br>
 
 <h4>Aspects of Student Holistic Development Plan</h4>
-
+<br/>
 <table class="table table-bordered">
   <thead class='thead-dark'>
     <tr>

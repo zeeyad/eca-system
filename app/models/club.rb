@@ -27,9 +27,9 @@ class Club < ApplicationRecord
   # validates :mental_hours, presence: true
   # validates :mental_weightage, presence: true
   
+  validate :check_total_weightage
+  validate :check_total_hours
 
-
-#  validate :check_total_weightage
 
   def total_planned_hours
     [phs_hours.to_i,culture_hours.to_i, spiritual_hours.to_i, social_hours.to_i, mental_hours.to_i ].inject(0){|sum,x| sum + x }
@@ -71,10 +71,16 @@ class Club < ApplicationRecord
 
   def check_total_weightage
     if ( [phs_weightage.to_i, culture_weightage.to_i, spiritual_weightage.to_i, social_weightage.to_i, mental_weightage.to_i].inject(0){|sum,x| sum + x }  < 100 )
-      errors.add(:base, 'Sum of Weightage can not be less than 100')
+      errors.add(:base, 'Total Weightage Percentage can not be less than 100%')
     end
     if ( [phs_weightage.to_i, culture_weightage.to_i, spiritual_weightage.to_i, social_weightage.to_i, mental_weightage.to_i].inject(0){|sum,x| sum + x }  > 100 )
-      errors.add(:base, 'Sum of Weightage can not be more than 100')
+      errors.add(:base, 'Total Weightage Percentage can not be more than 100%')
+    end
+  end
+
+  def check_total_hours
+    if ( [phs_hours.to_i, culture_hours.to_i, spiritual_hours.to_i, social_hours.to_i, mental_hours.to_i].inject(0){|sum,x| sum + x }  > 30 )
+      errors.add(:base, 'Total Hours can not be more than hours')
     end
   end
 

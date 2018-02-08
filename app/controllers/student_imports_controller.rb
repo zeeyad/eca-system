@@ -7,11 +7,11 @@ class StudentImportsController < ApplicationController
   def create
     @student_import = StudentImport.new(params[:student_import])
     if @student_import.save
-      flash[:success] = "Imported Students successfully."
+      flash.now[:success] = "Imported Students successfully."
       redirect_to students_path
 
     else
-      flash[:danger] = "Error Detected in Spreadsheet."
+      flash.now[:danger] = "Error Detected in Spreadsheet."
       render :index
     end
   end
