@@ -4,7 +4,8 @@
 <% @clubs.each_with_index do |club, index| %>
   <p>#<%= index + 1 %> | Name: <%= club.name %> |  
   	  <%= link_to 'View Club Activity Profile', club_path(club), id: "club_#{club.id}" %> | 
-  	  <%= link_to 'View Member', members_club_path(club), id: "member_club_#{club.id}" %> ( <%= club.members.count %> )
+  	  <%= link_to 'View Member', members_club_path(club), id: "member_club_#{club.id}" %> ( <%= club.members.count %> ) |
+  	  <%= link_to 'Delete', club_path(club), method: :delete, data: {confirm: "Are you sure?"} %>
   	  <%#= link_to 'View Club Activity Profile', activities_path(club), id: "activity_club_#{club.id}" %> 
   </p>
 <% end %>

@@ -1,6 +1,6 @@
 class ClubsController < ApplicationController
 
-  before_action :set_club, only: [:edit, :update]
+  before_action :set_club, only: [:edit, :update, :destroy]
 
   def index
     @clubs = Club.all.order(:name)    
@@ -47,6 +47,12 @@ class ClubsController < ApplicationController
     else
       render 'edit'
     end    
+  end
+
+  def destroy
+    @club.delete
+    flash[:danger] = "#{@club.name} was successfully deleted"
+    redirect_to clubs_path
   end
 
   private
