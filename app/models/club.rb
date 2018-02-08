@@ -30,6 +30,7 @@ class Club < ApplicationRecord
   validate :check_total_weightage
   validate :check_total_hours
 
+  POINTS_PER_HOUR = 10
 
   def total_planned_hours
     [phs_hours.to_i,culture_hours.to_i, spiritual_hours.to_i, social_hours.to_i, mental_hours.to_i ].inject(0){|sum,x| sum + x }
@@ -40,31 +41,31 @@ class Club < ApplicationRecord
   end
 
   def total_points
-  	total_planned_hours.to_i * 10
+  	total_planned_hours.to_i * POINTS_PER_HOUR
   end
 
   def phs_total_points
-  	phs_weightage.to_i * total_planned_hours.to_i * 10
+  	phs_weightage.to_i * total_points
   end
 
   def phs_points_to_percentage
-  	phs_weightage.to_i * total_planned_hours.to_i * 10 * 0.01 
+  	phs_weightage.to_i * total_points * 0.01 
   end
 
   def culture_points_to_percentage
-  	culture_weightage.to_i * total_planned_hours.to_i * 10 * 0.01   	
+  	culture_weightage.to_i * total_points * 0.01   	
   end
 
   def spiritual_points_to_percentage
-  	spiritual_weightage.to_i * total_planned_hours.to_i * 10 * 0.01   	
+  	spiritual_weightage.to_i * total_points * 0.01   	
   end
 
   def social_points_to_percentage
-  	social_weightage.to_i * total_planned_hours.to_i * 10 * 0.01   	
+  	social_weightage.to_i * total_points * 0.01   	
   end
 
   def mental_points_to_percentage
-  	mental_weightage.to_i * total_planned_hours.to_i * 10 * 0.01   	
+  	mental_weightage.to_i * total_points * 0.01   	
   end
 
   private
