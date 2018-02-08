@@ -25,11 +25,6 @@ describe 'navigate' do
       expect(page).to have_content(/Club Members/)
     end
 
-    it 'can view its own activities' do
-      click_link("activity_club_#{club.id}")
-      expect(page).to have_content(/Club Activity Profile/)
-    end
-
   end
 
   describe 'new' do
@@ -66,6 +61,7 @@ describe 'navigate' do
       fill_in 'club[user_id]', with: @user.id
       expect { click_on "Save" }.to change(Club, :count).by(1)
     end
+    
   end
 
 
