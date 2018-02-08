@@ -1,8 +1,8 @@
 Clubs ( Total: <%= @clubs.count %> ) | <%= link_to 'New Club', new_club_path %>
 <% @clubs.each_with_index do |club, index| %>
   <p>#<%= index + 1 %> | Name: <%= club.name %> |  
-  	  <%= link_to 'View Club Details', club_path(club), id: "club_#{club.id}" %> | 
+  	  <%= link_to 'View Club Activity Profile', club_path(club), id: "club_#{club.id}" %> | 
   	  <%= link_to 'View Member', members_club_path(club), id: "member_club_#{club.id}" %> ( <%= club.members.count %> ) | 
-  	  <%= link_to 'View Club Activity Profile', activities_path(club), id: "activity_club_#{club.id}" %> 
+  	  <%#= link_to 'View Club Activity Profile', activities_path(club), id: "activity_club_#{club.id}" %> 
   </p>
 <% end %>

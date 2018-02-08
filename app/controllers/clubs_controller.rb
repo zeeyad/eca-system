@@ -28,6 +28,15 @@ class ClubsController < ApplicationController
 
   def show
     @club = Club.find(params[:id])
+    @phs_weightage = @club.phs_weightage
+    @cult_weightage = @club.culture_weightage
+    @sprt_weightage = @club.spiritual_weightage
+    @soc_weightage= @club.social_weightage
+    @ment_weightage = @club.mental_weightage
+  end
+
+  def edit
+    @club = Club.find(params[:id])    
   end
 
   private

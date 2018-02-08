@@ -1,37 +1,168 @@
-<h1><%= @club.name %> Club Details</h1>
+<h1><%= @club.name %> Club </h1>
 <%= link_to 'Back', clubs_path %>
 <br/>
+<br/>
+<h4>Club Details</h4>
 <table class="table table-bordered">
   <tr>
-    <th scope='row'>Name</th>
+    <th class='table-dark' scope='row'>Name</th>
     <td><%= @club.name %></td>
   </tr>
   <tr>
-    <th scope='row'>About</th>
+    <th class='table-dark' scope='row'>About</th>
     <td><%= @club.about %></td>
   </tr>
   <tr>
-    <th scope='row'>Objective</th>
+    <th class='table-dark' scope='row'>Objective</th>
     <td><%= @club.objective %></td>
   </tr>
   <tr>
-    <th scope='row'>Benefit to Member</th>
+    <th class='table-dark' scope='row'>Benefit to Member</th>
     <td><%= @club.member_benefit %></td>
   </tr>
   <tr>
-    <th scope='row'>Benefit to Community</th>
+    <th class='table-dark' scope='row'>Benefit to Community</th>
     <td><%= @club.community_benefit %></td>
   </tr>
   <tr>
-    <th scope='row'>Usual Venue</th>
+    <th class='table-dark' scope='row'>Usual Venue</th>
     <td><%= @club.usual_venue %></td>
   </tr>
   <tr>
-    <th scope='row'>Usual Day</th>
+    <th class='table-dark' scope='row'>Usual Day</th>
     <td><%= @club.usual_day %></td>
   </tr>
   <tr>
-    <th scope='row'>Hours per week</th>
+    <th class='table-dark' scope='row'>Hours per week</th>
     <td><%= @club.hours_per_week %> hours per week</td>
   </tr>
 </table>
+
+<br>
+<hr>
+<br>
+
+<h4>Aspects of Student Holistic Development Plan</h4>
+
+<table class="table table-bordered">
+  <thead class='thead-dark'>
+    <tr>
+      <th scope="col">Aspect of Development</th>
+      <th scope="col">Activity</th>
+      <th scope="col">No. of Hours</th>
+      <th scope="col">Weightage (%)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Physical, Health and Safety</th>
+      <td><%= @club.phs_activity if @club.phs_activity %></td>
+      <td><%= @club.phs_hours if @club.phs_hours %></td>
+      <td><%= @club.phs_weightage if @club.phs_weightage %></td>
+    </tr>
+    <tr>
+      <th scope="row">Cultural</th>
+      <td><%= @club.culture_activity if @club.culture_activity %></td>
+      <td><%= @club.culture_hours if @club.culture_hours %></td>
+      <td><%= @club.culture_weightage if @club.culture_weightage %></td>
+    </tr>
+    <tr>
+      <th scope="row">Spiritual</th>
+      <td><%= @club.spiritual_activity if @club.spiritual_activity %></td>
+      <td><%= @club.spiritual_hours if @club.spiritual_hours %></td>
+      <td><%= @club.spiritual_weightage if @club.spiritual_weightage %></td>
+    </tr>
+    <tr>
+      <th scope="row">Social and Community</th>
+      <td><%= @club.social_activity if @club.social_activity %></td>
+      <td><%= @club.social_hours if @club.social_hours %></td>
+      <td><%= @club.social_weightage if @club.social_weightage %></td>
+    </tr>
+    <tr>
+      <th scope="row">Mental and Psychological</th>
+      <td><%= @club.mental_activity if @club.mental_activity %></td>
+      <td><%= @club.mental_hours if @club.mental_hours %></td>
+      <td><%= @club.mental_weightage if @club.mental_weightage %></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Total</td>
+      <td><%= @club.total_planned_hours %> hours </td>
+      <td><%= @club.total_weightage %> % </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class='container'>
+  <div class='offset-md-2 col-md-8 bg-light pt-3 pb-2'>
+  <h4><strong>Automated Points Calculation</strong></h4>
+  <br/>
+  <h5>Total Points Calculation</h5>
+  <div class='offset-md-1'>
+    <table class='table table-bordered table-light'>
+      <tr><td>1 hour = 10 points</td></tr>
+      <tr><td>Total Number of Points = Total Number of Hours * 10 Points</td></tr>
+    </table>
+  <p>Total Points = <%= @club.total_planned_hours %> hours * 10 points = <i><%= @club.total_points %> Points </i></p>
+  </div>
+  <hr>
+  
+  <h5>Points Allocation Calculation</h5>
+  <div class='offset-md-1'>
+    <table class='table table-bordered table-light'>
+      <tr><td>Points Allocated = Weightage of Development Aspect * Total Points</td></tr>
+    </table>
+    <p>Physical, Health & Safety = <%= @phs_weightage %>% of <%= @club.total_points %> = <i><%= @club.phs_points_to_percentage.round %> Points </i></p>
+    <p>Cultural = <%= @cult_weightage %>% of <%= @club.total_points %> = <i><%= @club.culture_points_to_percentage.round  %>  Points </i></p>
+    <p>Spiritual = <%= @sprt_weightage %>% of <%= @club.total_points %> = <i><%= @club.spiritual_points_to_percentage.round %> Points </i></p>
+    <p>Social and Community = <%= @soc_weightage %>% of <%= @club.total_points %> =<i> <%= @club.social_points_to_percentage.round %> Points </i></p>
+    <p>Mental and Psychological = <%= @ment_weightage %>% of <%= @club.total_points %> = <i><%= @club.mental_points_to_percentage.round %> Points </i></p>
+  </div>
+  </div>
+</div>
+<br/>
+
+
+<div class='container'>
+  <div class="offset-md-2 col-md-8 bg-light pt-3 pb-2">
+  <h4><strong>Automated Point Allocation & Distribution Table</strong></h4>
+  <br/>
+  <table class="table table-bordered">
+    <thead class='thead-dark'>
+      <tr>
+        <th scope="col">Aspect Development</th>
+        <th scope="col">Weightage (%)</th>
+        <th scope="col">Point Allocated</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Physical, Health and Safety</th>
+        <td><%= @phs_weightage %></td>
+        <td><%= @club.phs_points_to_percentage.round %> </td>
+      </tr>
+      <tr>
+        <th scope="row">Cultural</th>
+        <td><%= @cult_weightage %></td>
+        <td><%= @club.culture_points_to_percentage.round  %></td>
+      </tr>
+      <tr>
+        <th scope="row">Spiritual</th>
+        <td><%= @sprt_weightage %></td>
+        <td><%= @club.spiritual_points_to_percentage.round %></td>
+      </tr>
+      <tr>
+        <th scope="row">Social and Community</th>
+        <td><%= @soc_weightage %></td>
+        <td><%= @club.social_points_to_percentage.round %></td>
+      </tr>
+      <tr>
+        <th scope="row">Mental and Psychological</th>
+        <td><%= @ment_weightage %></td>
+        <td><%= @club.mental_points_to_percentage.round %></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+<br/>

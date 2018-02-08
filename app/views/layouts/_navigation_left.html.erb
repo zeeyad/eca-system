@@ -3,12 +3,12 @@
     <a class="nav-link" href="#">Home</a>
   </li>
 
-  <li class="<%= active?(semesters_path) %> nav-item">
-    <%= link_to 'Sem', semesters_path, class: 'nav-link' %>
-  </li>
-
   <li class="<%= active?(clubs_path) %> nav-item">
     <%= link_to 'Clubs', clubs_path, class: 'nav-link' %>
+  </li>
+
+  <li class="<%= active?(semesters_path) %> nav-item">
+    <%= link_to 'Sem', semesters_path, class: 'nav-link' %>
   </li>
 
 
@@ -21,10 +21,8 @@
       Admin
     </a>
     <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
-      <a class="dropdown-item" href="">Import User</a>
       <a class="dropdown-item" href="<%= student_imports_path %>">Upload New Students</a>
       <a class="dropdown-item" href="<%= member_imports_path %>">Upload Club Members</a>
-      <a class="dropdown-item" href="">Dashboard</a>
     </div>
   </li>
 

@@ -1,9 +1,9 @@
-<h1><%= @club.name %> Club Activity Profile</h1>
+<h2><%= @club.name %> Club Activity Profile</h2>
 
 <%= link_to 'Back', clubs_path %>
 <br/><br/>
 
-<h4>Aspects of Student Holistic Development</h4>
+<h4>Aspects of Student Holistic Development Plan</h4>
 
 <table class="table table-bordered">
   <thead>
@@ -11,7 +11,7 @@
       <th scope="col">Aspect of Development</th>
       <th scope="col">Activity</th>
       <th scope="col">No. of Hours</th>
-      <th scope="col">Weightage</th>
+      <th scope="col">Weightage (%)</th>
     </tr>
   </thead>
   <tbody>
@@ -48,51 +48,77 @@
     <tr>
       <td></td>
       <td>Total</td>
-      <td><%= @club.total_planned_hours %></td>
-      <td><%= @club.total_weightage %></td>
+      <td><%= @club.total_planned_hours %> hours </td>
+      <td><%= @club.total_weightage %> % </td>
     </tr>
   </tbody>
 </table>
 
-Total Points: <%= @club.total_points %> Points
-<br/>
+<div class='container'>
+  <div class='col-md-12 bg-light pt-3 pb-2'>
+  <h4>Automated Points Calculation</h4>
+  <br/>
+  <h5>Total Points Calculation</h5>
+  <table class='table table-bordered table-light'>
+    <tr><td>1 hour = 10 points</td></tr>
+    <tr><td>Total Number of Points = Total Number of Hours * 10 Points</td></tr>
+  </table>
+  <p><strong>Total Points = <%= @club.total_planned_hours %> hours * 10 points = <i><%= @club.total_points %> Points </i></strong></p>
+  <br/>
+  
+  <h5>Points Allocation Calculation</h5>
+  <table class='table table-bordered table-light'>
+    <tr><td>Points Allocated = Weightage of Development Aspect * Total Points</td></tr>
+  </table>
+  <p><strong>Physical, Health & Safety = <%= @phs_weightage %>% of <%= @club.total_points %> = <i><%= @club.phs_points_to_percentage.round %> Points </i></strong> </p>
+  <p><strong>Cultural = <%= @cult_weightage %>% of <%= @club.total_points %> = <i><%= @club.culture_points_to_percentage.round  %>  Points </i> </strong> </p>
+  <p><strong>Spiritual = <%= @sprt_weightage %>% of <%= @club.total_points %> = <i><%= @club.spiritual_points_to_percentage.round %> Points </i></strong> </p>
+  <p><strong>Social and Community = <%= @soc_weightage %>% of <%= @club.total_points %> =<i> <%= @club.social_points_to_percentage.round %> Points </i></strong></p>
+  <p><strong>Mental and Psychological = <%= @ment_weightage %>% of <%= @club.total_points %> = <i><%= @club.mental_points_to_percentage.round %> Points </i></strong></p>
+  </div>
+</div>
 <br/>
 
-<h4>Point Allocation & Distribution Form</h4>
 
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th scope="col">Aspect Development</th>
-      <th scope="col">Weightage (%)</th>
-      <th scope="col">Point Allocated</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">Physical, Health and Safety</th>
-      <td><%= @phs_weightage %></td>
-      <td><%= @phs_weightage %>% of <%= @club.total_points %> = <%= @club.phs_points_to_percentage.round %> </td>
-    </tr>
-    <tr>
-      <th scope="row">Cultural</th>
-      <td><%= @cult_weightage %></td>
-      <td><%= @cult_weightage %>% of <%= @club.total_points %> = <%= @club.culture_points_to_percentage.round  %></td>
-    </tr>
-    <tr>
-      <th scope="row">Spiritual</th>
-      <td><%= @sprt_weightage %></td>
-      <td><%= @sprt_weightage %>% of <%= @club.total_points %> = <%= @club.spiritual_points_to_percentage.round %></td>
-    </tr>
-    <tr>
-      <th scope="row">Social and Community</th>
-      <td><%= @soc_weightage %></td>
-      <td><%= @soc_weightage %>% of <%= @club.total_points %> = <%= @club.social_points_to_percentage.round %></td>
-    </tr>
-    <tr>
-      <th scope="row">Mental and Psychological</th>
-      <td><%= @ment_weightage %></td>
-      <td><%= @ment_weightage %>% of <%= @club.total_points %> = <%= @club.mental_points_to_percentage.round %></td>
-    </tr>
-  </tbody>
-</table>
+<div class='container'>
+  <div class="col-md-12 bg-light pt-3 pb-2">
+  <h4>Automated Point Allocation & Distribution Table</h4>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Aspect Development</th>
+        <th scope="col">Weightage (%)</th>
+        <th scope="col">Point Allocated</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Physical, Health and Safety</th>
+        <td><%= @phs_weightage %></td>
+        <td><%= @club.phs_points_to_percentage.round %> </td>
+      </tr>
+      <tr>
+        <th scope="row">Cultural</th>
+        <td><%= @cult_weightage %></td>
+        <td><%= @club.culture_points_to_percentage.round  %></td>
+      </tr>
+      <tr>
+        <th scope="row">Spiritual</th>
+        <td><%= @sprt_weightage %></td>
+        <td><%= @club.spiritual_points_to_percentage.round %></td>
+      </tr>
+      <tr>
+        <th scope="row">Social and Community</th>
+        <td><%= @soc_weightage %></td>
+        <td><%= @club.social_points_to_percentage.round %></td>
+      </tr>
+      <tr>
+        <th scope="row">Mental and Psychological</th>
+        <td><%= @ment_weightage %></td>
+        <td><%= @club.mental_points_to_percentage.round %></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+<br/>
