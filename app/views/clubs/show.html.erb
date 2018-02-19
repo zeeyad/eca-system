@@ -95,14 +95,14 @@
 </table>
 
 <div class='container'>
-  <div class='offset-md-2 col-md-8 bg-light pt-3 pb-2'>
+  <div class='offset-md-2 col-md-8 bg-secondary pt-3 pb-2'>
   <h4><strong>Automated Points Calculation</strong></h4>
   <br/>
   <h5>Total Points Calculation</h5>
   <div class='offset-md-1'>
-    <table class='table table-bordered table-light'>
+    <table class='table table-bordered table-secondary'>
       <tr><td>1 hour = 10 points</td></tr>
-      <tr><td>Total Number of Points = Total Number of Hours * 10 Points</td></tr>
+      <tr><td>Total Points = Total Number of Hours * 10 Points</td></tr>
     </table>
   <p>Total Points = <%= @club.total_planned_hours %> hours * 10 points = <i><%= @club.total_points %> Points </i></p>
   </div>
@@ -110,7 +110,7 @@
   
   <h5>Points Allocation Calculation</h5>
   <div class='offset-md-1'>
-    <table class='table table-bordered table-light'>
+    <table class='table table-bordered table-secondary'>
       <tr><td>Points Allocated = Weightage of Development Aspect * Total Points</td></tr>
     </table>
     <p>Physical, Health & Safety = <%= @phs_weightage %>% of <%= @club.total_points %> = <i><%= @club.phs_points_to_percentage.round %> Points </i></p>
@@ -125,11 +125,11 @@
 
 
 <div class='container'>
-  <div class="offset-md-2 col-md-8 bg-light pt-3 pb-2">
+  <div class="offset-md-2 col-md-8 bg-secondary pt-3 pb-2">
   <h4><strong>Automated Point Allocation & Distribution Table</strong></h4>
   <br/>
   <table class="table table-bordered">
-    <thead class='thead-dark'>
+    <thead class='table-secondary'>
       <tr>
         <th scope="col">Aspect Development</th>
         <th scope="col">Weightage (%)</th>
