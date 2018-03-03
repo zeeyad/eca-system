@@ -1,5 +1,7 @@
-<h1><%= @club.name %> Club </h1>
-<%= link_to 'Back', clubs_path %> | <%= link_to 'Edit', edit_club_path(@club) %>
+<h1><%= @club.name.titleize %> Club </h1>
+<%= link_to 'Back', clubs_path, class: 'btn btn-secondary' %> | <%= link_to 'Edit', edit_club_path(@club), class: 'btn btn-success' %> | 
+<%= link_to 'Delete', club_path(@club), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-danger' %>
+
 <br/>
 <br/>
 <h4>Club Details</h4>

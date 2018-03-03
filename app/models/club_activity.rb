@@ -1,0 +1,2 @@
+class ClubActivity < ApplicationRecord
+end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180207165422) do
+ActiveRecord::Schema.define(version: 20180303145050) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20180207165422) do
     t.string "venue"
     t.text "description"
     t.time "time"
+    t.integer "status", default: 0
     t.index ["club_id"], name: "index_activities_on_club_id"
     t.index ["user_id"], name: "index_activities_on_user_id"
   end

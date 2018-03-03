@@ -14,9 +14,11 @@ class ClubsController < ApplicationController
     @club = Club.new
     @semesters = Semester.all
     @sessions = @semesters.map {|semester| [semester.session, semester.id] }
+    10.times { @club.activities.build }
   end
 
   def create
+    params[:user_id] = 1
     @club = Club.new(club_params)
     # @club.user_id = 1
     # @club.semester_id = 1
@@ -37,11 +39,11 @@ class ClubsController < ApplicationController
   end
 
   def edit
-
+    @activities = @club.activities.order('week_no')
   end
 
   def update
-    if @club.update(club_params)
+    if @club.update_attributes(club_params)
       flash[:success] = 'Club was successfully updated.'
       redirect_to clubs_path
     else
@@ -50,6 +52,7 @@ class ClubsController < ApplicationController
   end
 
   def destroy
+    @club.activities.delete_all
     @club.delete
     flash[:danger] = "#{@club.name} was successfully deleted"
     redirect_to clubs_path
@@ -89,7 +92,8 @@ class ClubsController < ApplicationController
         :social_weightage,
         :mental_activity,
         :mental_hours,
-        :mental_weightage
+        :mental_weightage,
+        activities_attributes: [:id, :date, :name, :week_no, :user_id, :no_of_hours, :weightage, :venue, :status, :_destroy]
        )
   end
 

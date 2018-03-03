@@ -7,9 +7,14 @@ class Activity < ApplicationRecord
   	    Mental_and_Psychological: 4  
   	   }
 
+  enum status: { planned: 0, completed: 1, cancelled: 2 }
+
   belongs_to :user
   belongs_to :club
   has_many :attendances
+
+  # validates :name, presence: true
+
 
   scope :physical, -> { where(dev_aspect: 0).map(&:weightage).sum }
   scope :cultural, -> { where(dev_aspect: 1).map(&:weightage).sum }

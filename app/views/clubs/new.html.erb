@@ -1,6 +1,146 @@
 <h1>New Club</h1>
 <%= render 'shared/errors', obj: @club %>
-<%= render 'form' %>
+<%= form_for @club do |f| %>
+  
+  <!-- TODO: Semester -->
+  <%= f.text_field :semester_id, value: 1, class: 'form-control invisible' %>
+
+  <%= submit_tag "Add address", :type =>  "button", :id => "addAddress", :onclick => 'addAddressField()'%> 
+    <ul id="myActivity">
+    </ul>
+    <tbody>
+
+  <div class='form-group'>
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control', placeholder: 'DIKIR, NASYID DAN TAUSYEH (KDNDT)' %>
+  </div>
+
+  <div class='form-group'>
+    <%= f.label :about %>
+    <%= f.text_area :about, class: 'form-control', placeholder: 'This club acts as a platform in UBD for students to learn and enjoy Islamic songs (Nasyid & Tausyeh)' %>
+  </div>
+
+  <div class='form-group'>
+    <%= f.label :objective %>
+    <%= f.text_area :objective, class: 'form-control', placeholder: 'To expose members to various Islamic tunes and Qasidah' %>
+  </div>
+
+  <div class='form-group'>
+    <%= f.label :member_benefit %>
+    <%= f.text_area :member_benefit, class: 'form-control', placeholder: 'Widens their skills in singing Islamic tunes' %>
+  </div>
+
+  <div class='form-group'>
+    <%= f.label :community_benefit %>
+    <%= f.text_area :community_benefit, class: 'form-control', placeholder: 'Members can contribute in Formal Events ' %>
+  </div>
+
+  <div class='form-group'>
+    <%= f.label :usual_day %>
+    <%= f.text_field :usual_day, class: 'form-control', placeholder: 'CLT 1.05 (Muslimat) & SHBIE G.94 (Muslimin)' %>
+  </div>
+
+  <div class='form-group'>
+    <%= f.label :usual_venue %>
+    <%= f.text_field :usual_venue, class: 'form-control', placeholder: 'Thursday' %>
+  </div>
+
+  <div class='form-group'>
+    <%= f.label :hours_per_week %>
+    <%= f.text_field :hours_per_week, class: 'form-control', placeholder: '2 hours per week' %>
+  </div>
+
+
+  <!-- TODO: User -->
+  <%= f.text_field :user_id, value: 1, class: 'form-control invisible' %>
+ 
+  <h3>Activity Plan</h3><br/>
+
+  <table class='table table-bordered'>
+    <thead>
+      <tr>
+        <th scope="col">Aspect of Development</th>
+        <th scope="col">Activity</th>
+        <th scope="col">No. of Hours ( Hour )</th>
+        <th scope="col">Weightage (%) </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Physical, Health & Safety</td>
+        <td><%= f.text_field :phs_activity, class: 'form-control', placeholder: 'Larian Ukhwah' %></td>
+        <td><%= f.text_field :phs_hours, class: 'form-control', placeholder: '4' %></td>
+        <td><%= f.text_field :phs_weightage, class: 'form-control', placeholder: '14' %></td>
+      </tr>
+      <tr>
+        <td>Cultural</td>
+        <td><%= f.text_field :culture_activity, class: 'form-control', placeholder: 'Nasyid and Tausyeh Competition' %></td>
+        <td><%= f.text_field :culture_hours, class: 'form-control', placeholder: '3'  %></td>
+        <td><%= f.text_field :culture_weightage, class: 'form-control', placeholder: '10' %></td>
+      </tr>
+      <tr>
+        <td>Spiritual</td>
+        <td><%= f.text_field :spiritual_activity, class: 'form-control', placeholder: 'Lectures, Seminar, Taddabur' %></td>
+        <td><%= f.text_field :spiritual_hours, class: 'form-control', placeholder: '15' %></td>
+        <td><%= f.text_field :spiritual_weightage, class: 'form-control', placeholder: '50' %></td>
+      </tr>
+      <tr>
+        <td>Social and Community</td>
+        <td><%= f.text_field :social_activity, class: 'form-control', placeholder: 'Showcase Booth, Invite IPT participation, invite schools' %></td>
+        <td><%= f.text_field :social_hours, class: 'form-control', placeholder: '5' %></td>
+        <td><%= f.text_field :social_weightage, class: 'form-control', placeholder: '16' %></td>
+      </tr>
+      <tr>
+        <td>Mental and Psychological</td>
+        <td><%= f.text_field :mental_activity, class: 'form-control', placeholder: 'Forum' %></td>
+        <td><%= f.text_field :mental_hours, class: 'form-control', placeholder: '3' %></td>
+        <td><%= f.text_field :mental_weightage, class: 'form-control', placeholder: '10' %></td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <h3>Activity</h3><br/>
+
+  <table class='table table-bordered'>
+    <thead>
+      <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Week No</th>
+        <th scope="col">Name</th>
+        <th scope="col">No of Hours</th>
+        <th scope="col">Venue</th>
+        <th scope="col">Weightage</th>
+        <th scope="col">Remove</th>
+      </tr>
+    </thead>
+
+      <%= f.fields_for :activities do |act| %>
+        <ul id="myActivity">
+        <tr>
+            <td><%= act.date_field :date, class: 'form-control', value: Date.today + ( (act.options[:child_index] + 1) * 7).to_i.days, order: [:day, :year, :month] %></td>          
+            <td><%= act.text_field :week_no, value: act.options[:child_index] + 1, :readonly => true, class: 'form-control' %></td>
+            <td><%= act.text_field :name, class: 'form-control' %></td>
+            <td><%= act.text_field :no_of_hours, class: 'form-control' %></td>
+            <td><%= act.text_field :venue, class: 'form-control' %></td>
+            <td><%= act.text_field :weightage, class: 'form-control' %></td>
+            <td>  
+            </td>
+        </tr>
+        </ul>
+            <%= act.hidden_field :user_id, value: 1, class: 'form-control invisible' %>
+      <% end %>  
+    </tbody>
+  </table>
+
+    <div id="addressHeader" style="display:none"> 
+       Address information: 
+    </div>
+   
+
+  <%= f.submit 'Save', class: 'btn btn-success' %>
+
+<% end %>
 
 <br/>
 <%#= @club.inspect %>
