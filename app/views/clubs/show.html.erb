@@ -1,9 +1,55 @@
-<h1><%= @club.name.titleize %> Club </h1>
+<div class="row pl-3"><i class="fa fa-home fa-2x pt-2 pr-3"></i><h1><%= @club.name.titleize %> Club </h1></div>
 <%= link_to 'Back', clubs_path, class: 'btn btn-secondary' %> | <%= link_to 'Edit', edit_club_path(@club), class: 'btn btn-success' %> | 
 <%= link_to 'Delete', club_path(@club), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-danger' %>
 
 <br/>
 <br/>
+
+<hr>
+<div>
+  <h1>Activity</h1>
+  <table class="table">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Week No</th>
+      <th scope="col">Activity Name</th>
+      <th scope="col">Status</th>
+      <th scope="col">Action</th>
+      <!-- <th scope="col">Activity Action</th> -->
+    </tr>
+    <% @club_activities.each_with_index do |activity, index| %>
+      <tbody>
+        <tr>
+          <td><%= index %></td>
+          <td><%= activity.date %></td>
+          <td><%= activity.name %></td>
+          <td>
+            <% if activity.status == 'planned' %>
+              <i class="btn btn-warning fa fa-spinner"></i>
+            <% elsif activity.status == 'cancelled' %>
+              <i class="btn btn-danger fa fa-times"></i>
+            <% else %>
+              <i class="btn btn-success fa fa-check"></i>
+            <% end %>
+          </td>
+          <td><%= link_to 'Record Attendance', new_activity_attendance_path(@club, activity) %> </td>
+<!--           <td>
+            <% if activity.status == 'planned' %>
+              <%= link_to '', new_activity_attendance_path(@club, activity), class: 'btn btn-warning fa fa-spinner' %>
+            <% elsif activity.status == 'cancelled' %>
+              <%= link_to '', new_activity_attendance_path(@club, activity), class: 'btn btn-danger fa fa-times' %>
+            <% else %>
+              <%= link_to '', new_activity_attendance_path(@club, activity), class: 'btn btn-success fa fa-check' %>
+            <% end %>
+          </td>
+ -->        
+        </tr>
+      </tbody>
+    <% end %>
+  </table>
+
+</div>
+
 <h4>Club Details</h4>
 <br/>
 <table class="table table-bordered">
@@ -96,35 +142,6 @@
   </tbody>
 </table>
 
-<div class='container'>
-  <div class='offset-md-2 col-md-8 bg-secondary pt-3 pb-2'>
-  <h4><strong>Automated Points Calculation</strong></h4>
-  <br/>
-  <h5>Total Points Calculation</h5>
-  <div class='offset-md-1'>
-    <table class='table table-bordered table-secondary'>
-      <tr><td>1 hour = 10 points</td></tr>
-      <tr><td>Total Points = Total Number of Hours * 10 Points</td></tr>
-    </table>
-  <p>Total Points = <%= @club.total_planned_hours %> hours * 10 points = <i><%= @club.total_points %> Points </i></p>
-  </div>
-  <hr>
-  
-  <h5>Points Allocation Calculation</h5>
-  <div class='offset-md-1'>
-    <table class='table table-bordered table-secondary'>
-      <tr><td>Points Allocated = Weightage of Development Aspect * Total Points</td></tr>
-    </table>
-    <p>Physical, Health & Safety = <%= @phs_weightage %>% of <%= @club.total_points %> = <i><%= @club.phs_points_to_percentage.round %> Points </i></p>
-    <p>Cultural = <%= @cult_weightage %>% of <%= @club.total_points %> = <i><%= @club.culture_points_to_percentage.round  %>  Points </i></p>
-    <p>Spiritual = <%= @sprt_weightage %>% of <%= @club.total_points %> = <i><%= @club.spiritual_points_to_percentage.round %> Points </i></p>
-    <p>Social and Community = <%= @soc_weightage %>% of <%= @club.total_points %> =<i> <%= @club.social_points_to_percentage.round %> Points </i></p>
-    <p>Mental and Psychological = <%= @ment_weightage %>% of <%= @club.total_points %> = <i><%= @club.mental_points_to_percentage.round %> Points </i></p>
-  </div>
-  </div>
-</div>
-<br/>
-
 
 <div class='container'>
   <div class="offset-md-2 col-md-8 bg-secondary pt-3 pb-2">
@@ -166,6 +183,35 @@
       </tr>
     </tbody>
   </table>
+  </div>
+</div>
+<br/>
+
+<div class='container'>
+  <div class='offset-md-2 col-md-8 bg-secondary pt-3 pb-2'>
+  <h4><strong>Automated Points Calculation</strong></h4>
+  <br/>
+  <h5>Total Points Calculation</h5>
+  <div class='offset-md-1'>
+    <table class='table table-bordered table-secondary'>
+      <tr><td>1 hour = 10 points</td></tr>
+      <tr><td>Total Points = Total Number of Hours * 10 Points</td></tr>
+    </table>
+  <p>Total Points = <%= @club.total_planned_hours %> hours * 10 points = <i><%= @club.total_points %> Points </i></p>
+  </div>
+  <hr>
+  
+  <h5>Points Allocation Calculation</h5>
+  <div class='offset-md-1'>
+    <table class='table table-bordered table-secondary'>
+      <tr><td>Points Allocated = Weightage of Development Aspect * Total Points</td></tr>
+    </table>
+    <p>Physical, Health & Safety = <%= @phs_weightage %>% of <%= @club.total_points %> = <i><%= @club.phs_points_to_percentage.round %> Points </i></p>
+    <p>Cultural = <%= @cult_weightage %>% of <%= @club.total_points %> = <i><%= @club.culture_points_to_percentage.round  %>  Points </i></p>
+    <p>Spiritual = <%= @sprt_weightage %>% of <%= @club.total_points %> = <i><%= @club.spiritual_points_to_percentage.round %> Points </i></p>
+    <p>Social and Community = <%= @soc_weightage %>% of <%= @club.total_points %> =<i> <%= @club.social_points_to_percentage.round %> Points </i></p>
+    <p>Mental and Psychological = <%= @ment_weightage %>% of <%= @club.total_points %> = <i><%= @club.mental_points_to_percentage.round %> Points </i></p>
+  </div>
   </div>
 </div>
 <br/>

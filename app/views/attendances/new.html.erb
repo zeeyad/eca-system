@@ -1,0 +1,40 @@
+<h1><% if @activity.status == 'planned' %>
+  <i class="btn btn-warning fa fa-spinner"></i>
+<% elsif @activity.status == 'cancelled' %>
+  <i class="btn btn-danger fa fa-times"></i>
+<% else %>
+  <i class="btn btn-success fa fa-check"></i>
+<% end %>Club Name: <%= @activity.club.name %></h1>
+
+<h3><%= @activity.name %></h3>
+<%= link_to 'Back', club_path(@activity.club.id), class: 'btn btn-secondary mb-3' %>
+<%= link_to '', activity_plan_path(@club, @activity), class: 'btn btn-warning fa fa-spinner' %>
+<%= link_to '', activity_complete_path(@club, @activity), class: 'btn btn-success fa fa-check' %>
+
+
+<%= form_for @club do |f| %>
+
+  <table class="table">
+
+    <thead>
+      <th scope="col">#</th>
+      <th>Name</th>
+      <th>Action</th>
+    </thead>
+
+  	<% @club.members.each_with_index do |member,index| %>
+  	  <tbody>
+  	  	<tr>
+  	  	  <td><%= index %></td>
+  	  	  <td><%= member.name %></td>
+  	  	  <td><%= link_to 'Attend', activity_attendances_path(@club) %></td>
+  	  	</tr>
+  	  </tbody>
+  	<% end %>
+  </table>
+
+  <%#= f.fields_for :attendances do |attend| %>
+    <!-- <p><%#= attend.check_box :status %></p> -->
+  <%# end %>
+
+<% end %>

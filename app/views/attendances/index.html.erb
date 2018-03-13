@@ -1,6 +1,6 @@
 <h1>Club Name: <%= @activity.club.name %></h1>
-<h1>Activity: <%= @activity.name %></h1>
-<%= link_to 'Back', activity_club_path(@activity.club.id, @activity) %>
+<h3>Activity: <%= @activity.name %></h3>
+<%= link_to 'Back', club_path(@activity.club.id), class: 'btn btn-secondary' %>
 
 <% if @attendances.empty? %>
   <h3>No record found</h3>
@@ -13,4 +13,9 @@
           <%= link_to 'Present', present_activity_attendance_path(@activity, @activity, attendance), class: 'btn btn-success', id: "present_#{attendance.id}" %></p>
     	<% end %>
   <% end %>
+<% end %>
+
+
+<% @club.members.each_with_index do |member,index| %>
+  <p>#<%= index %> | <%= member.name %> | <%= link_to 'Attend', activity_attendances_path(@club) %></p>
 <% end %>

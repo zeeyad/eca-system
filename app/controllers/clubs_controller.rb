@@ -31,6 +31,7 @@ class ClubsController < ApplicationController
 
   def show
     @club = Club.find(params[:id])
+    @club_activities = @club.activities.order('week_no ASC')
     @phs_weightage = @club.phs_weightage
     @cult_weightage = @club.culture_weightage
     @sprt_weightage = @club.spiritual_weightage

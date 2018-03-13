@@ -15,6 +15,18 @@ class ActivitiesController < ApplicationController
 
   end
 
+  def complete
+    @activity = Activity.find(params[:activity_id])
+    @activity.completed!
+    redirect_to new_activity_attendance_path(params[:id])
+  end
+
+  def plan
+    @activity = Activity.find(params[:activity_id])
+    @activity.planned!
+    redirect_to new_activity_attendance_path(params[:id])
+  end
+
   def new
     @activity = Activity.new
     @clubs = Club.all.collect {|club| [club.name, club.id] }
@@ -33,6 +45,7 @@ class ActivitiesController < ApplicationController
   def show
     @activity = Activity.find(params[:activity_id])
     @club = Club.find(params[:id])
+
   end
 
   private

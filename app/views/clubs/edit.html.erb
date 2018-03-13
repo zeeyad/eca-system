@@ -105,7 +105,7 @@
         <th scope="col">No of Hours</th>
         <th scope="col">Venue</th>
         <th scope="col">Weightage</th>
-        <th scope="col">Status</th>
+        <!-- <th scope="col">Status</th> -->
         <th scope="col">Remove</th>
       </tr>
     </thead>
@@ -118,13 +118,15 @@
             <td><%= act.text_field :no_of_hours, class: 'form-control' %></td>
             <td><%= act.text_field :venue, class: 'form-control' %></td>
             <td><%= act.text_field :weightage, class: 'form-control' %></td>
-            <td>
+<!--             <td>
               <div class="form-group">
                 <%= act.select :status, Activity.statuses.keys.to_a %>
               </div>
             </td>
+ -->        
             <td><%= act.check_box :_destroy %></td>
         </tr>
+
             <%= act.hidden_field :user_id, value: 1, class: 'form-control invisible' %>
       <% end %>  
     </tbody>

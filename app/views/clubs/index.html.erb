@@ -1,8 +1,23 @@
 <%= render 'shared/messages' %><br/>
 <h3>Clubs ( Total: <%= @clubs.count %> ) <%= link_to 'New Club', new_club_path, class: 'btn btn-success' %></h3>
-<% @clubs.each_with_index do |club, index| %>
-  <p>#<%= index + 1 %> | <%= truncate(club.name.titleize, length: 35) %> |  
-  	  <%= link_to '', club_path(club), id: "club_#{club.id}", class: 'btn btn-info fa fa-info' %> | 
-  	  <%= link_to '', members_club_path(club), id: "member_club_#{club.id}", class: 'btn btn-warning fa fa-users' %> ( <%= club.members.count %> members )
-  </p>
-<% end %>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Club Details</th>
+      <th scope="col">Club Member</th>
+    </tr>
+  </thead>
+  <% @clubs.each_with_index do |club, index| %>
+    <tbody>
+      <tr>
+        <th scope="row"><%= index + 1 %></th>
+        <td><%= truncate(club.name.titleize, length: 35) %></td>
+        <td><%= link_to '', club_path(club), id: "club_#{club.id}", class: 'btn btn-info fa fa-info' %></td>
+        <td><%= link_to '', members_club_path(club), id: "member_club_#{club.id}", class: 'btn btn-warning fa fa-users' %> ( <%= club.members.count %> members )</td>
+      </tr>
+    </tbody>
+
+  <% end %>
+</table>
