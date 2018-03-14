@@ -27,6 +27,12 @@ class ActivitiesController < ApplicationController
     redirect_to new_activity_attendance_path(params[:id])
   end
 
+  def cancel
+    @activity = Activity.find(params[:activity_id])
+    @activity.cancelled!
+    redirect_to new_activity_attendance_path(params[:id])
+  end
+
   def new
     @activity = Activity.new
     @clubs = Club.all.collect {|club| [club.name, club.id] }

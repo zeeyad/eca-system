@@ -10,6 +10,7 @@
 <%= link_to 'Back', club_path(@activity.club.id), class: 'btn btn-secondary mb-3' %>
 <%= link_to '', activity_plan_path(@club, @activity), class: 'btn btn-warning fa fa-spinner' %>
 <%= link_to '', activity_complete_path(@club, @activity), class: 'btn btn-success fa fa-check' %>
+<%= link_to '', activity_cancel_path(@club, @activity), class: 'btn btn-danger fa fa-times' %>
 
 
 <%= form_for @club do |f| %>

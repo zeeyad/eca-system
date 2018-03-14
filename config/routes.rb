@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       resources :activities do 
         get 'complete', to: 'activities#complete'
         get 'plan', to: 'activities#plan'
+        get 'cancel', to: 'activities#cancel'
         resources :attendances, only: %i(index new create absent) do
           member do
             get 'absent', to: 'attendances#absent'
