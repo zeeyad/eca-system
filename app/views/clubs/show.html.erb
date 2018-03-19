@@ -20,19 +20,19 @@
     <% @club_activities.each_with_index do |activity, index| %>
       <tbody>
         <tr>
-          <td><%= index %></td>
+          <td><%= index + 1 %></td>
           <td><%= activity.date %></td>
           <td><%= activity.name %></td>
           <td>
             <% if activity.status == 'planned' %>
-              <i class="btn btn-warning fa fa-spinner"></i>
+              Planned
             <% elsif activity.status == 'cancelled' %>
-              <i class="btn btn-danger fa fa-times"></i>
+              Cancelled
             <% else %>
-              <i class="btn btn-success fa fa-check"></i>
+              Completed
             <% end %>
           </td>
-          <td><%= link_to 'Record Attendance', new_activity_attendance_path(@club, activity) %> </td>
+          <td><%= link_to '', new_activity_attendance_path(@club, activity), class: 'fa fa-list' %> </td>
 <!--           <td>
             <% if activity.status == 'planned' %>
               <%= link_to '', new_activity_attendance_path(@club, activity), class: 'btn btn-warning fa fa-spinner' %>

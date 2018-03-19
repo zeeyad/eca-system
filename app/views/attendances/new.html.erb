@@ -1,17 +1,15 @@
-<h1><% if @activity.status == 'planned' %>
-  <i class="btn btn-warning fa fa-spinner"></i>
-<% elsif @activity.status == 'cancelled' %>
-  <i class="btn btn-danger fa fa-times"></i>
-<% else %>
-  <i class="btn btn-success fa fa-check"></i>
-<% end %>Club Name: <%= @activity.club.name %></h1>
+<h2>Club Name: <%= @activity.club.name %></h2>
 
-<h3><%= @activity.name %></h3>
-<%= link_to 'Back', club_path(@activity.club.id), class: 'btn btn-secondary mb-3' %>
-<%= link_to '', activity_plan_path(@club, @activity), class: 'btn btn-warning fa fa-spinner' %>
-<%= link_to '', activity_complete_path(@club, @activity), class: 'btn btn-success fa fa-check' %>
-<%= link_to '', activity_cancel_path(@club, @activity), class: 'btn btn-danger fa fa-times' %>
-
+<h4>Activity Name: <%= @activity.name %></h4>
+<h4>Date: <%= @activity.date_in_words %></h4>
+<h4>Week: <%= @activity.week_no %></h4>
+<%= link_to 'Back', club_path(@activity.club.id), class: 'btn btn-secondary mt-3 mb-3' %>
+<br/>
+<div class="mb-3">
+  <%= link_to 'Planned', activity_plan_path(@club, @activity), class: 'btn btn-warning' if !@activity.planned? %>
+  <%= link_to 'Completed', activity_complete_path(@club, @activity), class: 'btn btn-success' if !@activity.completed? %>
+  <%= link_to 'Cancelled', activity_cancel_path(@club, @activity), class: 'btn btn-danger' if !@activity.cancelled? %>
+</div>
 
 <%= form_for @club do |f| %>
 
@@ -26,9 +24,9 @@
   	<% @club.members.each_with_index do |member,index| %>
   	  <tbody>
   	  	<tr>
-  	  	  <td><%= index %></td>
+  	  	  <td><%= index + 1%></td>
   	  	  <td><%= member.name %></td>
-  	  	  <td><%= link_to 'Attend', activity_attendances_path(@club) %></td>
+  	  	  <td><%= link_to 'Attend', new_activity_attendance_path(@club, @activity), :method => :post if @activity.status != 'cancelled' %></td>
   	  	</tr>
   	  </tbody>
   	<% end %>

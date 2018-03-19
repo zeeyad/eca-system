@@ -1,1 +1,27 @@
-Homepage
+<h1>Dashboard</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Semester Session</th>
+      <th>Clubs</th>
+      <th>Members</th>
+      <th>Total Activities</th>
+      <th>Activity Completed</th>
+      <th>Activity Plan</th>
+      <th>Activity Cancelled</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @semesters.each do |semester| %>
+      <tr>
+        <td><%= semester.session %></td>
+        <td><%= semester.clubs.count %></td>
+        <td><%= semester.members.count %></td>
+        <td><%= semester.activities.count %></td>
+        <td><%= semester.activities.completed.count %></td>
+        <td><%= semester.activities.planned.count %></td>
+        <td><%= semester.activities.cancelled.count %></td>
+      </tr>
+  	  <% end %>
+  </tbody>
+</table>

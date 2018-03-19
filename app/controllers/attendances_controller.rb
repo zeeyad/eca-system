@@ -14,17 +14,21 @@ class AttendancesController < ApplicationController
   end
 
   def present
-    @attendance = Attendance.find(params[:id])
-    @attendance.present!
-    redirect_to action: 'index'
+    if Attendance.find(params.has_key?(:id))
+      @attendance.present!
+      redirect_to action: 'index'
+    else
+      @attendance.user_id = 1
+      @attendance = Attendance.new(attendance_params)
+    end
   end
 
   def new
+    @attendance = Attendance.new
     @club = Club.find(params[:id])
     @activity = Activity.find(params[:activity_id])
-    @attendances = @activity.attendances.order(:member_id)
-    @attendance = Attendance.new
-    @club.members.count.times { @club.attendances.build }    
+    # @attendances = @activity.attendances.order(:member_id)
+    # @club.members.count.times { @club.attendances.build }    
   end
 
   def create
@@ -37,7 +41,7 @@ class AttendancesController < ApplicationController
   private
 
   def attendance_params
-    params.require(:attendance).permit(:club_id, :name)
+    params.require(:attendance).permit(:club_id, :name, :member_id)
   end
 
 end

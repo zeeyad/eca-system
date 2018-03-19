@@ -16,6 +16,7 @@ Rails.application.routes.draw do
           member do
             get 'absent', to: 'attendances#absent'
             get 'present', to: 'attendances#present'
+            post 'present', to: 'attendances#create'
           end
         end
       end
