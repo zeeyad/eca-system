@@ -16,21 +16,27 @@ class ActivitiesController < ApplicationController
   end
 
   def complete
+    @club = Club.find(params[:id])
     @activity = Activity.find(params[:activity_id])
     @activity.completed!
-    redirect_to new_activity_attendance_path(params[:id])
+    flash[:success] = 'Activity status is changed to COMPLETED.'
+    redirect_to club_path(@club)
   end
 
   def plan
+    @club = Club.find(params[:id])
     @activity = Activity.find(params[:activity_id])
     @activity.planned!
-    redirect_to new_activity_attendance_path(params[:id])
+    flash[:success] = 'Activity status is changed to PLANNED.'
+    redirect_to club_path(@club)
   end
 
   def cancel
+    @club = Club.find(params[:id])
     @activity = Activity.find(params[:activity_id])
     @activity.cancelled!
-    redirect_to new_activity_attendance_path(params[:id])
+    flash[:success] = 'Activity status is changed to CANCELLED.'
+    redirect_to club_path(@club)
   end
 
   def new

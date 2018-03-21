@@ -13,7 +13,7 @@
     <tbody>
       <tr>
         <th scope="row"><%= index + 1 %></th>
-        <td><%= truncate(club.name.titleize, length: 35) %></td>
+        <td><%= truncate(club.name, length: 35) %></td>
         <td><%= link_to '', club_path(club), id: "club_#{club.id}", class: 'btn btn-info fa fa-info' %></td>
         <td><%= link_to '', members_club_path(club), id: "member_club_#{club.id}", class: 'btn btn-warning fa fa-users' %> ( <%= club.members.count %> members )</td>
       </tr>

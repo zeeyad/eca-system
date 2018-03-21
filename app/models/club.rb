@@ -4,11 +4,12 @@ class Club < ApplicationRecord
 
   has_many :members
   has_many :activities, dependent: :destroy
-  has_many :attendances, through: :activities
+  has_many :attendances
 
   accepts_nested_attributes_for :activities, reject_if: proc { |attributes| attributes[:week_no].blank? }, allow_destroy: true
+  accepts_nested_attributes_for :attendances
 
-  validates :name, presence: true
+  #validates :name, presence: true
   # validates :about, presence: true
   # validates :objective, presence: true
   # validates :member_benefit, presence: true
@@ -70,6 +71,12 @@ class Club < ApplicationRecord
 
   def mental_points_to_percentage
   	mental_weightage.to_i * total_points * 0.01   	
+  end
+
+  def attendance_rate(activity)
+    if activity.attendances.count != 0
+      (activity.attendances.where(status: true).count.to_f / activity.attendances.count.to_f * 100).round(1)
+    end
   end
 
   private

@@ -17,11 +17,22 @@ class ClubsController < ApplicationController
     10.times { @club.activities.build }
   end
 
+  def new_attendance
+    @club = Club.find(params[:id])
+    @members = @club.members.order(:position)
+    @activity = Activity.find(params[:activity_id])   
+  end
+
+  def update_attendance
+    @club = Club.find(params[:id])
+    @activity = Activity.find(params[:activity_id])
+    @attendances = @activity.attendances.order(:id)
+    
+  end
+
   def create
     params[:user_id] = 1
     @club = Club.new(club_params)
-    # @club.user_id = 1
-    # @club.semester_id = 1
     if @club.save(club_params)
       redirect_to clubs_path
     else
@@ -44,9 +55,9 @@ class ClubsController < ApplicationController
   end
 
   def update
-    if @club.update_attributes(club_params)
-      flash[:success] = 'Club was successfully updated.'
-      redirect_to clubs_path
+    if @club.update(club_params)
+      flash[:success] = "Club was successfully updated."
+      redirect_to club_path(@club)
     else
       render 'edit'
     end    
@@ -94,8 +105,13 @@ class ClubsController < ApplicationController
         :mental_activity,
         :mental_hours,
         :mental_weightage,
-        activities_attributes: [:id, :date, :name, :week_no, :user_id, :no_of_hours, :weightage, :venue, :status, :_destroy]
+        activities_attributes: [:id, :date, :name, :week_no, :user_id, :no_of_hours, :weightage, :venue, :status, :_destroy],
+        attendances_attributes: [:id, :club_id, :member_id, :activity_id, :status]
        )
+  end
+
+  def club_attendance_params
+     params.require(:club).permit(:semester_id, :user_id, attendances_attributes: [:id, :club_id, :member_id, :activity_id, :status])
   end
 
 end

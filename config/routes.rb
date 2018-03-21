@@ -12,6 +12,10 @@ Rails.application.routes.draw do
         get 'complete', to: 'activities#complete'
         get 'plan', to: 'activities#plan'
         get 'cancel', to: 'activities#cancel'
+        get :new_attendance, to: 'clubs#new_attendance'
+        get :update_attendance, to: 'clubs#update_attendance'
+        post 'update_attendance', to: 'clubs#update_attendance'
+        post :new_attendance, to: 'clubs#create_attendance'
         resources :attendances, only: %i(index new create absent) do
           member do
             get 'absent', to: 'attendances#absent'
@@ -30,5 +34,7 @@ Rails.application.routes.draw do
 
   get 'member_imports', to: 'member_imports#index', as: :member_imports
   post 'member_imports', to: 'member_imports#create'
+
+  post 'create_attendance', to: 'attendances#create_attendance'
 
 end

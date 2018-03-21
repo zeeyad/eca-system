@@ -1,3 +1,4 @@
+<%= render 'shared/messages' %><br/>
 <div class="row pl-3"><i class="fa fa-home fa-2x pt-2 pr-3"></i><h1><%= @club.name.titleize %> Club </h1></div>
 <%= link_to 'Back', clubs_path, class: 'btn btn-secondary' %> | <%= link_to 'Edit', edit_club_path(@club), class: 'btn btn-success' %> | 
 <%= link_to 'Delete', club_path(@club), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-danger' %>
@@ -15,6 +16,7 @@
       <th scope="col">Activity Name</th>
       <th scope="col">Status</th>
       <th scope="col">Record Attendance</th>
+      <th scope="col">Attendance Rate (%)</th>
       <!-- <th scope="col">Activity Action</th> -->
     </tr>
     <% @club_activities.each_with_index do |activity, index| %>
@@ -32,17 +34,11 @@
               Completed
             <% end %>
           </td>
-          <td><%= link_to '', new_activity_attendance_path(@club, activity), class: 'fa fa-list' %> </td>
-<!--           <td>
-            <% if activity.status == 'planned' %>
-              <%= link_to '', new_activity_attendance_path(@club, activity), class: 'btn btn-warning fa fa-spinner' %>
-            <% elsif activity.status == 'cancelled' %>
-              <%= link_to '', new_activity_attendance_path(@club, activity), class: 'btn btn-danger fa fa-times' %>
-            <% else %>
-              <%= link_to '', new_activity_attendance_path(@club, activity), class: 'btn btn-success fa fa-check' %>
-            <% end %>
+          <td>
+            <%= link_to '', activity_new_attendance_path(@club, activity), class: 'fa fa-list' if activity.attendances.empty? %>
+            <%= link_to '', activity_update_attendance_path(@club, activity), class: 'fa fa-list', style: 'color:green;' if !activity.attendances.empty? %>
           </td>
- -->        
+          <td><%= @club.attendance_rate(activity) %></td>
         </tr>
       </tbody>
     <% end %>
