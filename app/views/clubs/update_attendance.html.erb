@@ -1,4 +1,5 @@
-<h2>Club Name: <%= @activity.club.name %></h2>
+<%= render 'shared/messages' %><br/>
+<div class="row pl-3"><i class="fa fa-home fa-2x pr-2"></i><h2>Club Name: <%= @activity.club.name %></h2></div>
 
 <div class="container col-md-6 mt-4">
 <table class="table table-bordered">
@@ -22,7 +23,7 @@
 </div>
 
 <br/>
-<div class="mb-3">Change Activity Status:
+<div class="mb-3 mx-auto col-md-6"><strong>Change Activity Status:</strong>
   <%= link_to 'Planned', activity_plan_path(@club, @activity), class: 'btn btn-warning' if !@activity.planned? %>
   <%= link_to 'Completed', activity_complete_path(@club, @activity), class: 'btn btn-success' if !@activity.completed? %>
   <%= link_to 'Cancelled', activity_cancel_path(@club, @activity), class: 'btn btn-danger' if !@activity.cancelled? %>
@@ -65,4 +66,4 @@
 <%= link_to 'Back to Club Details', club_path(@activity.club.id), class: 'btn btn-secondary mt-3 mb-3' %>
 
 
-<%= params.inspect %>
+<%#= params.inspect %>

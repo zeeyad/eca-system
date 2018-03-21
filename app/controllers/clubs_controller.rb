@@ -19,7 +19,7 @@ class ClubsController < ApplicationController
 
   def new_attendance
     @club = Club.find(params[:id])
-    @members = @club.members.order(:position)
+    @members = @club.members.order(:id)
     @activity = Activity.find(params[:activity_id])   
   end
 

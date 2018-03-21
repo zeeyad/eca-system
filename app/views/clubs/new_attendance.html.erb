@@ -42,7 +42,7 @@
       <th>Attendance</th>
     </thead>
 
-    <%= @members.count.times do %>
+    <% @members.count.times do %>
      <%= f.fields_for :attendances, @club.attendances.build do |attend| %>
       <tbody>
         <tr>
@@ -51,8 +51,8 @@
           <td><%= @club.members[attend.index].position %></td>
           <td>
             <%= attend.text_field :member_id, value: @club.members[attend.index].id, class: 'invisible', style: 'width: 0px;' %>
-            <%= attend.text_field :activity_id, value: @activity.id, class: '', style: 'width: ' %>
-            <%= attend.check_box :status, {}, true, false %></td>
+            <%= attend.text_field :activity_id, value: @activity.id, class: 'invisible', style: 'width: 0px;' %>
+            <%= attend.check_box :status, {}, true, false if !@activity.cancelled? %></td>
             <%= attend.text_field :club_id, value: @club.id , class: 'invisible', style: 'width: 0px;' %>
         </tr>
       </tbody>

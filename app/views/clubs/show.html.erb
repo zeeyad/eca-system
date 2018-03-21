@@ -1,13 +1,9 @@
 <%= render 'shared/messages' %><br/>
-<div class="row pl-3"><i class="fa fa-home fa-2x pt-2 pr-3"></i><h1><%= @club.name.titleize %> Club </h1></div>
+<div class="row pl-3"><i class="fa fa-home fa-2x pr-2"></i><h2><%= @club.name.titleize %> Club </h2></div>
 <%= link_to 'Back', clubs_path, class: 'btn btn-secondary' %> | <%= link_to 'Edit', edit_club_path(@club), class: 'btn btn-success' %> | 
 <%= link_to 'Delete', club_path(@club), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-danger' %>
 
-<br/>
-<br/>
-
-<hr>
-<div>
+<div class="pt-3">
   <h1>Activity</h1>
   <table class="table table-bordered">
     <tr>

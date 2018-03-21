@@ -27,33 +27,17 @@ class AttendancesController < ApplicationController
     @club = Club.find(params[:id])
     @club.members.count.times { @club.attendances.build }
     @activity = Activity.find(params[:activity_id])
-    # @attendances = @activity.attendances.order(:member_id)
-    # @club.members.count.times { @club.attendances.build }    
   end
 
   def create
     @club = Club.new(club_attendance_params)
-    # @attendance.user_id = 1
     if @club.save(club_attendance_params)
       redirect_to clubs_path
     else
       render :new_attendance
     end
-    # @attendance = Attendance.new(attendance_params)
-    # @attendance.save(attendance_params)
-    # redirect_to action: 'index'
   end
 
-  # def create_attendance
-  #   @attendance = Attendance.new(attendance_params)
-  #   if @attendance.save(attendance_params)
-  #     flash.now[:success] = "Attendance successfully."
-  #     redirect_to action: 'new'
-  #   else
-  #     flash.now[:danger] = "Error Detected in Spreadsheet."
-  #     redirect_to action: 'new'
-  #   end
-  # end
 
   private
 

@@ -75,7 +75,7 @@ class Club < ApplicationRecord
 
   def attendance_rate(activity)
     if activity.attendances.count != 0
-      (activity.attendances.where(status: true).count.to_f / activity.attendances.count.to_f * 100).round(1)
+      (activity.attendances.where(status: true).count.to_f / activity.attendances.count.to_f * 100).round
     end
   end
 
