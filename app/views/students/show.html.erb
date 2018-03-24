@@ -29,18 +29,40 @@
     <th scope='col'>Semester</th>
   </tr>
   <% @student.members.each_with_index do |member, index| %>
-  <tr>
-    <td><%= index + 1 %></td>
-    <td><%= member.club.name %></td>
-    <td><%= member.club.semester.session %></td>
-  </tr>
+    <tr>
+      <td><%= index + 1 %></td>
+      <td><%= member.club.name %></td>
+      <td><%= member.club.semester.session %></td>
+    </tr>
   <% end %>
 </table>
 
-<% @student.members.each do |member| %>
-  <% member.attendances.each do |attendance| %>
-    <%= attendance.activity.name %>/ <%= attendance.status %>  / <%= member.club.name %> <br/>
-  <% end %>
+<h4>Points from Attendance</h4>
+<table class="table table-bordered">
+  <tr>
+    <th scope='col'>Club</th>
+    <th scope='col'>Activity Name</th>
+    <th scope='col'>Activity Date</th>
+    <th scope='col'>Attendance Status</th>
+    <th scope='col'>Aspect Development</th>
+    <th scope='col'>Weightage</th>
+    <th scope='col'>No of Hours</th>
+    <th scope='col'>Points</th>
+  </tr>
+  <% @student.members.each do |member| %>
+    <% member.attendances.each do |attendance| %>
+      <tr>
+        <td><%= link_to "#{member.club.name}", club_path(member.club) %></td>
+        <td><%= attendance.activity.name %></td>
+        <td><%= attendance.activity.date_in_words %></td>
+        <td><%= attendance.status %></td>
+        <td><%= attendance.activity.dev_aspect %></td>
+        <td><%= attendance.activity.weightage %></td>
+        <td><%= attendance.activity.no_of_hours %></td>
+        <td><%= attendance.activity.weightage.to_i * attendance.activity.no_of_hours.to_i  %></td>
+      </tr>
+    <% end %>
 
   <p><%#= member.club.activities.map(&:no_of_hours).sum %></p>
-<% end %>
+  <% end %>
+</table>

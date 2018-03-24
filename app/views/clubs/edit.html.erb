@@ -1,4 +1,6 @@
 <div class="row pl-3"><i class="fa fa-pencil fa-2x pt-2 pr-3"></i><h1><%= @club.name.titleize %> Club</h1></div>
+<div><%= link_to "Back to #{@club.name.titleize}", club_path(@club), class: 'btn btn-outline-dark' %></div>
+
 <%= render 'shared/errors', obj: @club %>
 <%= form_for @club do |f| %>
   
@@ -134,6 +136,6 @@
 
 
 
-  <%= f.submit 'Save', class: 'btn btn-success' %>
+  <%= f.submit 'Update Club', class: 'col-md-2 btn btn-outline-success mb-5' %>
 
 <% end %>
