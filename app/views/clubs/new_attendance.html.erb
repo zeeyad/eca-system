@@ -1,70 +1,70 @@
-<h2>Club Name: <%= @activity.club.name %></h2>
+<h1><strong><%= @activity.club.name %> Attendance</strong></h1>
+<div><%= link_to "Back to #{@club.name.titleize}", club_path(@club), class: 'btn btn-outline-dark' %></div>
+<%= render 'shared/messages' %><br/>
 
-<div class="container col-md-6 mt-4">
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>Activity Name</th>
-      <th>Date</th>
-      <th>Week</th>
-      <th>Activity Status</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><%= @activity.name %></td>
-      <td><%= @activity.date_in_words %></td>
-      <td><%= @activity.week_no %></td>
-      <td><%= @activity.status.titleize %></td>
-    </tr>
-  </tbody>
-</table>
+<div class="mt-4 card bg-light p-3">
+  <table class="table table-bordered bg-white mt-3">
+    <h3><u>Activity Details</u></h3>
+    <thead>
+      <tr>
+        <th>Week</th>
+        <th>Date</th>
+        <th>Activity Name</th>
+        <th>Activity Status</th>
+        <th>Change Activity Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @activity.week_no %></td>
+        <td><%= @activity.date_in_words %></td>
+        <td><%= @activity.name %></td>
+        <td><%= @activity.status.titleize %></td>
+        <td>  
+          <%= link_to 'Planned', activity_plan_path(@club, @activity), class: 'btn btn-outline-primary' if !@activity.planned? %>
+          <%= link_to 'Completed', activity_complete_path(@club, @activity), class: 'btn btn-outline-primary' if !@activity.completed? %>
+          <%= link_to 'Cancelled', activity_cancel_path(@club, @activity), class: 'btn btn-outline-primary' if !@activity.cancelled? %>
+          </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
-
-<br/>
-<div class="mb-3">Change Activity Status:
-  <%= link_to 'Planned', activity_plan_path(@club, @activity), class: 'btn btn-warning' if !@activity.planned? %>
-  <%= link_to 'Completed', activity_complete_path(@club, @activity), class: 'btn btn-success' if !@activity.completed? %>
-  <%= link_to 'Cancelled', activity_cancel_path(@club, @activity), class: 'btn btn-danger' if !@activity.cancelled? %>
-</div>
-
 
 <%= form_for @club do |f|  %>
 
-  <table class="table table-bordered">
-    <%= f.text_field :semester_id, value: 1, class: 'form-control invisible', style: 'width: 0px; height: 0px;' %>
-    <%= f.text_field :user_id, value: 1, class: 'form-control invisible', style: 'width: 0px; height: 0px;' %>
+  <%= f.text_field :semester_id, value: 1, class: 'form-control invisible', style: 'width: 0px; height: 0px;' %>
+  <%= f.text_field :user_id, value: 1, class: 'form-control invisible', style: 'width: 0px; height: 0px;' %>
+  <div class="card bg-light p-3">
+    <table class="table table-bordered bg-white">
+      <h3><u>Attendance Sheet</u></h3>
+      <thead>
+        <th scope="col">#</th>
+        <th>Name</th>
+        <th>Position</th>
+        <th>Attendance</th>
+      </thead>
 
-    <thead>
-      <th scope="col">#</th>
-      <th>Name</th>
-      <th>Position</th>
-      <th>Attendance</th>
-    </thead>
+      <% @members.count.times do %>
+       <%= f.fields_for :attendances, @club.attendances.build do |attend| %>
+        <tbody>
+          <tr>
+            <td><%= attend.index + 1 %></td>
+            <td><%= @club.members[attend.index].name %></td>
+            <td><%= @club.members[attend.index].position %></td>
+            <td>
+              <%= attend.text_field :member_id, value: @club.members[attend.index].id, class: 'invisible', style: 'width: 0px; height: 0px;' %>
+              <%= attend.text_field :activity_id, value: @activity.id, class: 'invisible', style: 'width: 0px; height: 0px;' %>
+              <%= attend.check_box :status, {}, true, false if !@activity.cancelled? %></td>
+              <%= attend.text_field :club_id, value: @club.id , class: 'invisible', style: 'width: 0px; height: 0px;' %>
+          </tr>
+        </tbody>
+       <% end %>
+      <% end %>
+    </table>
+  </div>    
 
-    <% @members.count.times do %>
-     <%= f.fields_for :attendances, @club.attendances.build do |attend| %>
-      <tbody>
-        <tr>
-          <td><%= attend.index + 1 %></td>
-          <td><%= @club.members[attend.index].name %></td>
-          <td><%= @club.members[attend.index].position %></td>
-          <td>
-            <%= attend.text_field :member_id, value: @club.members[attend.index].id, class: 'invisible', style: 'width: 0px;' %>
-            <%= attend.text_field :activity_id, value: @activity.id, class: 'invisible', style: 'width: 0px;' %>
-            <%= attend.check_box :status, {}, true, false if !@activity.cancelled? %></td>
-            <%= attend.text_field :club_id, value: @club.id , class: 'invisible', style: 'width: 0px;' %>
-        </tr>
-      </tbody>
-     <% end %>
-    <% end %>
-  </table>    
-
-  <%= f.submit 'Save', class: 'btn btn-success' %>
+  <%= f.submit 'Save Attendance', class: 'btn btn-outline-success mt-3 mb-5' %>
 
 <% end %>
-
-<%= link_to 'Back to Club Details', club_path(@activity.club.id), class: 'btn btn-secondary mt-3 mb-3' %>
-
 
 <%#= params.inspect %>

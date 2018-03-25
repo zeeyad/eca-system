@@ -80,11 +80,11 @@ function addAddressField() {
     li.appendChild(inputStreet);
  
 
-    var labelUser = document.createElement("label");
-    labelUser.setAttribute("for", idAttributeUser);
-    var kindLabelUser = document.createTextNode("User");
-    labelUser.appendChild(kindLabelUser);
-    li.appendChild(labelUser);
+    // var labelUser = document.createElement("label");
+    // labelUser.setAttribute("for", idAttributeUser);
+    // var kindLabelUser = document.createTextNode("User");
+    // labelUser.appendChild(kindLabelUser);
+    // li.appendChild(labelUser);
  
     //create input for Kind, set it's type, id and name attribute, 
     //and append it to <li> element
@@ -92,6 +92,8 @@ function addAddressField() {
     inputUser.setAttribute("type", "text");
     inputUser.setAttribute("id", idAttributeUser);
     inputUser.setAttribute("name", nameAttributeUser);
+    inputUser.setAttribute("class", "invisible");
+    inputUser.setAttribute("style", "width: 0px; height: 0px;");
     inputUser.value = '1';
     li.appendChild(inputUser);
 

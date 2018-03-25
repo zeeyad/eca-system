@@ -1,4 +1,4 @@
-<h1><%= @club.name.titleize %> Club </h1>
+<h1><strong><%= @club.name.titleize %> Club </strong></h1>
 <%= link_to 'Back to Clubs', clubs_path, class: 'btn btn-outline-dark' %> &nbsp; <%= link_to 'Edit Club', edit_club_path(@club), class: 'btn btn-outline-warning' %> &nbsp; <%= link_to 'Delete Club', club_path(@club), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-outline-danger' %>
 <div class="mt-3"><%= render 'shared/messages' %></div>
 
@@ -6,15 +6,15 @@
 <!-- ACTIVITY -->
 
 <div class="pt-3 mb-5">
-  <h3 class="pb-3">Activity</h3>
-  <table class="table table-bordered table-striped">
+  <h3 class="pb-3"><u>Activity</u></h3>
+  <table class="table table-bordered table-striped table-responsive">
     <thead>
       <tr>
-        <th class='table-dark' scope="col">#</th>
         <th class='table-dark' scope="col">Week No</th>
+        <th class='table-dark' scope="col">Date</th>
         <th class='table-dark' scope="col">Activity Name</th>
         <th class='table-dark' scope="col">Status</th>
-        <th class='table-dark' scope="col">Attendance Rate (%)</th>
+        <th class='table-dark' scope="col" style="width: 15%;">Attendance Rate (%)</th>
         <th class='table-dark' scope="col">Action</th>
         <!-- <th scope="col">Activity Action</th> -->
       </tr>
@@ -23,9 +23,9 @@
       <td colspan="6" style="text-align: center;"><h4>There are no Activities. Please add some.</h4></td>
     <% else %>
         <tbody>
-      <% @club_activities.each_with_index do |activity, index| %>
+      <% @club_activities.each do |activity| %>
           <tr scope="row">
-            <td><%= index + 1 %></td>
+            <td><%= activity.week_no %></td>
             <td><%= activity.date_in_words %></td>
             <td><%= activity.name %></td>
             <td>
@@ -39,8 +39,8 @@
             </td>
             <td><%= @club.attendance_rate(activity) %></td>
             <td>
-              <%= link_to 'New Attendance', activity_new_attendance_path(@club, activity), class: 'btn btn-outline-success' if activity.attendances.empty? %>
-              <%= link_to 'Edit Attendance', activity_update_attendance_path(@club, activity), class: 'btn btn-outline-warning' if !activity.attendances.empty? %>
+              <%= link_to '', activity_new_attendance_path(@club, activity), class: 'fa fa-pencil btn btn-outline-success' if activity.attendances.empty? %>
+              <%= link_to '', activity_update_attendance_path(@club, activity), class: 'fa fa-pencil btn btn-outline-warning' if !activity.attendances.empty? %>
             </td>
           </tr>
       <% end %>
@@ -53,7 +53,7 @@
 <hr>
 
 <div class="mb-5 mt-5">
-  <h3 class="pb-3">Club Details</h3>
+  <h3 class="pb-3"><u>Club Details</u></h3>
   <table class="table table-bordered">
     <tr>
       <th class='table-dark' scope='row' style="width: 20%;">Name</th>
@@ -95,7 +95,7 @@
 <!-- ASPECT OF HOLISTIC DEVELOPMENT -->
 
 <div class="mb-5 mt-5">
-  <h3>Aspects of Student Holistic Development Plan</h3>
+  <h3><u>Aspects of Student Holistic Development Plan</u></h3>
   <br/>
   <table class="table table-bordered table-striped">
     <thead class='thead-dark'>
@@ -148,8 +148,8 @@
 </div>
 
 <div class='container'>
-  <div class="offset-md-2 col-md-8 pt-3 pb-2" style='background-color: #DCDCDC;'>
-  <h3>Automated Point Allocation & Distribution Table</h3>
+  <div class="offset-md-2 col-md-8 pt-3 pb-2 card card-block bg-dark">
+  <h3 style="color:white;">Automated Point Allocation & Distribution Table</h3>
   <br/>
   <table class="table table-bordered table-striped">
     <thead style='background-color: #C0C0C0;'>
@@ -194,30 +194,33 @@
 <!-- Automated Points Calculation -->
 
 <div class='container'>
-  <div class='offset-md-2 col-md-8 pt-3 pb-2' style='background-color: #DCDCDC;'>
-  <h3>Automated Points Calculation</h3>
+  <div class='offset-md-2 col-md-8 pt-3 pb-2 card card-block bg-dark'>
+  <h3 style="color:white;">Automated Points Calculation</h3>
   <br/>
-  <h5><u>Total Points Calculation</u></h5>
-  <div class='offset-md-1'>
-    <table class='table table-bordered table-secondary'>
-      <tr style='background-color: #C0C0C0;'><td><i>1 hour = 10 points</i></td></tr>
-      <tr style='background-color: #C0C0C0;'><td><i>Total Points = Total Number of Hours * 10 Points</i></td></tr>
-    </table>
+  <div class="card card-block bg-light p-3">
+    <h4><u>Total Points Calculation</u></h4>
+    <div class='offset-md-1'>
+      <table class='table table-bordered table-secondary'>
+        <tr style='background-color: #C0C0C0;'><td><i>1 hour = 10 points</i></td></tr>
+        <tr style='background-color: #C0C0C0;'><td><i>Total Points = Total Number of Hours * 10 Points</i></td></tr>
+      </table>
+    </div>
+    <p><strong>Total Points</strong> = <%= @club.total_planned_hours %> hours * 10 points = <i><%= @club.total_points %> Points </i></p>
   </div>
-  <p><strong>Total Points</strong> = <%= @club.total_planned_hours %> hours * 10 points = <i><%= @club.total_points %> Points </i></p>
   <hr>
-  
-  <h5><u>Points Allocation Calculation</u></h5>
-  <div class='offset-md-1'>
-    <table class='table table-bordered table-secondary'>
-      <tr style='background-color: #C0C0C0;'><td><i>Points Allocated = Weightage of Development Aspect * Total Points</i></td></tr>
-    </table>
-  </div>
-    <p><strong>Physical, Health & Safety</strong> = <%= @phs_weightage %>% of <%= @club.total_points %> = <i><%= @club.phs_points_to_percentage.round %> Points </i></p>
-    <p><strong>Cultural</strong> = <%= @cult_weightage %>% of <%= @club.total_points %> = <i><%= @club.culture_points_to_percentage.round  %>  Points </i></p>
-    <p><strong>Spiritual</strong> = <%= @sprt_weightage %>% of <%= @club.total_points %> = <i><%= @club.spiritual_points_to_percentage.round %> Points </i></p>
-    <p><strong>Social and Community</strong> = <%= @soc_weightage %>% of <%= @club.total_points %> =<i> <%= @club.social_points_to_percentage.round %> Points </i></p>
-    <p><strong>Mental and Psychological</strong> = <%= @ment_weightage %>% of <%= @club.total_points %> = <i><%= @club.mental_points_to_percentage.round %> Points </i></p>
+  <div class="card card-block bg-light p-3">
+    <h4><u>Points Allocation Calculation</u></h4>
+    <div class='offset-md-1'>
+      <table class='table table-bordered table-secondary'>
+        <tr style='background-color: #C0C0C0;'><td><i>Points Allocated = Weightage of Development Aspect * Total Points</i></td></tr>
+      </table>
+    </div>
+      <p><strong>Physical, Health & Safety</strong> = <%= @phs_weightage %>% of <%= @club.total_points %> = <i><%= @club.phs_points_to_percentage.round %> Points </i></p>
+      <p><strong>Cultural</strong> = <%= @cult_weightage %>% of <%= @club.total_points %> = <i><%= @club.culture_points_to_percentage.round  %>  Points </i></p>
+      <p><strong>Spiritual</strong> = <%= @sprt_weightage %>% of <%= @club.total_points %> = <i><%= @club.spiritual_points_to_percentage.round %> Points </i></p>
+      <p><strong>Social and Community</strong> = <%= @soc_weightage %>% of <%= @club.total_points %> =<i> <%= @club.social_points_to_percentage.round %> Points </i></p>
+      <p><strong>Mental and Psychological</strong> = <%= @ment_weightage %>% of <%= @club.total_points %> = <i><%= @club.mental_points_to_percentage.round %> Points </i></p>
+    </div>
   </div>
 </div>
 <br/>
