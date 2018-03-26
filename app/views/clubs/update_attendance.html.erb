@@ -1,15 +1,17 @@
-<div class="row pl-3"><i class="fa fa-pencil fa-2x pt-2 pr-3"></i><h1><strong><%= @activity.club.name %> Attendance</strong></h1></div>
+<%= render 'shared/messages' %>
+<h1><strong>Attendance Edit</strong> - <%= @activity.club.name %></h1>
 <div><%= link_to "Back to #{@club.name.titleize}", club_path(@club), class: 'btn btn-outline-dark' %></div>
-<%= render 'shared/messages' %><br/>
+<br/>
 
-<div class="mt-4 card bg-light p-3">
+<div class="mt-4 card bg-dark p-3">
   <table class="table table-bordered bg-white mt-3">
-    <h3><u>Activity Details</u></h3>
+    <h3 class="text-danger"><u><strong>Activity Details</strong></u></h3>
     <thead>
       <tr>
-        <th>Week</th>
+        <th style="width: 5%;">Week</th>
         <th>Date</th>
         <th>Activity Name</th>
+        <th>Venue</th>
         <th>Activity Status</th>
         <th>Change Activity Status</th>
       </tr>
@@ -19,6 +21,7 @@
         <td><%= @activity.week_no %></td>
         <td><%= @activity.date_in_words %></td>
         <td><%= @activity.name %></td>
+        <td><%= @activity.venue %></td>
         <td><%= @activity.status.titleize %></td>
         <td>  
           <%= link_to 'Planned', activity_plan_path(@club, @activity), class: 'btn btn-outline-primary' if !@activity.planned? %>

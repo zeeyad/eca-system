@@ -3,7 +3,7 @@
     <%= link_to 'Home', root_path, class: 'nav-link' %>
   </li>
 
-  <li class="<%= active?(clubs_path) %> nav-item">
+  <li class="<%= active?(clubs_path) %> <%= active?(club_path) if params[:id] %> nav-item">
     <%= link_to 'Clubs', clubs_path, class: 'nav-link' %>
   </li>
 

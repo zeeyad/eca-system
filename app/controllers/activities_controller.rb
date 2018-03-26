@@ -19,7 +19,7 @@ class ActivitiesController < ApplicationController
     @club = Club.find(params[:id])
     @activity = Activity.find(params[:activity_id])
     @activity.completed!
-    flash[:success] = 'Activity status is changed to COMPLETED.'
+    flash[:success] = "#{@activity.name.upcase}'s status is changed to COMPLETED."
     redirect_to club_path(@club)
   end
 
@@ -27,7 +27,7 @@ class ActivitiesController < ApplicationController
     @club = Club.find(params[:id])
     @activity = Activity.find(params[:activity_id])
     @activity.planned!
-    flash[:success] = 'Activity status is changed to PLANNED.'
+    flash[:success] = "#{@activity.name.upcase}'s status is changed to PLANNED."
     redirect_to club_path(@club)
   end
 
@@ -35,7 +35,7 @@ class ActivitiesController < ApplicationController
     @club = Club.find(params[:id])
     @activity = Activity.find(params[:activity_id])
     @activity.cancelled!
-    flash[:success] = 'Activity status is changed to CANCELLED.'
+    flash[:success] = "#{@activity.name.upcase}'s status is changed to CANCELLED."
     redirect_to club_path(@club)
   end
 

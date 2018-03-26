@@ -1,15 +1,15 @@
-<h1><strong><%= @club.name.titleize %> Club </strong></h1>
+<%= render 'shared/messages' %>
+<h1><strong>Club Page </strong> - <%= @club.name.titleize %></h1>
 <%= link_to 'Back to Clubs', clubs_path, class: 'btn btn-outline-dark' %> &nbsp; 
-<%= link_to 'View Members', members_club_path(@club), id: "member_club_#{@club}", class: 'btn btn-outline-secondary' %> </td> &nbsp;  
-<%= link_to 'Edit Club', edit_club_path(@club), class: 'btn btn-outline-warning' %> &nbsp; 
+<%= link_to 'View Club Members', members_club_path(@club), id: "member_club_#{@club}", class: 'btn btn-outline-dark' %> </td> &nbsp;  
+<%= link_to 'Edit Club', edit_club_path(@club), class: 'btn btn-outline-primary' %> &nbsp; 
 <%= link_to 'Delete Club', club_path(@club), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-outline-danger' %>
-<div class="mt-3"><%= render 'shared/messages' %></div>
 
 
 <!-- ACTIVITY -->
 
-<div class="pt-3 mb-5">
-  <h3 class="pb-3"><u>Activity</u></h3>
+<div class="pt-4 mb-4">
+  <h3 class="custom-underline">Activity</h3>
   <table class="table table-bordered table-striped table-responsive">
     <thead>
       <tr>
@@ -23,7 +23,7 @@
       </tr>
     </thead>
     <% if @club_activities.empty? %>
-      <td colspan="6" style="text-align: center;"><h4>There are no Activities. Please add some.</h4></td>
+      <td colspan="6" style="text-align: center;"><h4>There are no Activities. <br>Please add some by clicking on the 'Edit Club' button.</h4></td>
     <% else %>
         <tbody>
       <% @club_activities.each do |activity| %>
@@ -43,7 +43,7 @@
             <td><%= @club.attendance_rate(activity) %></td>
             <td>
               <%= link_to '', activity_new_attendance_path(@club, activity), class: 'fa fa-pencil btn btn-outline-success' if activity.attendances.empty? %>
-              <%= link_to '', activity_update_attendance_path(@club, activity), class: 'fa fa-pencil btn btn-outline-warning' if !activity.attendances.empty? %>
+              <%= link_to '', activity_update_attendance_path(@club, activity), class: 'fa fa-pencil btn btn-outline-primary' if !activity.attendances.empty? %>
             </td>
           </tr>
       <% end %>
@@ -53,10 +53,9 @@
 </div>
 
 <!-- CLUB DETAILS -->
-<hr>
 
-<div class="mb-5 mt-5">
-  <h3 class="pb-3"><u>Club Details</u></h3>
+<div class="mb-5 mt-2">
+  <h3 class="custom-underline">Club Details</h3>
   <table class="table table-bordered">
     <tr>
       <th class='table-dark' scope='row' style="width: 20%;">Name</th>
@@ -93,13 +92,10 @@
   </table>
 </div>
 
-<hr>
-
 <!-- ASPECT OF HOLISTIC DEVELOPMENT -->
 
-<div class="mb-5 mt-5">
-  <h3><u>Aspects of Student Holistic Development Plan</u></h3>
-  <br/>
+<div class="mb-5 mt-2">
+  <h3 class="custom-underline">Aspects of Student Holistic Development Plan</h3>
   <table class="table table-bordered table-striped">
     <thead class='thead-dark'>
       <tr>
@@ -152,8 +148,7 @@
 
 <div class='container'>
   <div class="offset-md-2 col-md-8 pt-3 pb-2 card card-block bg-dark">
-  <h3 style="color:white;">Automated Point Allocation & Distribution Table</h3>
-  <br/>
+  <h3 style="color:white;"><u>Automated Point Allocation & Distribution Table</u></h3>
   <table class="table table-bordered table-striped">
     <thead style='background-color: #C0C0C0;'>
       <tr>
@@ -198,10 +193,9 @@
 
 <div class='container'>
   <div class='offset-md-2 col-md-8 pt-3 pb-2 card card-block bg-dark'>
-  <h3 style="color:white;">Automated Points Calculation</h3>
-  <br/>
+  <h3 style="color:white;"><u>Automated Points Calculation</u></h3>
   <div class="card card-block bg-light p-3">
-    <h4><u>Total Points Calculation</u></h4>
+    <h4>Total Points Calculation</h4>
     <div class='offset-md-1'>
       <table class='table table-bordered table-secondary'>
         <tr style='background-color: #C0C0C0;'><td><i>1 hour = 10 points</i></td></tr>
@@ -212,7 +206,7 @@
   </div>
   <hr>
   <div class="card card-block bg-light p-3">
-    <h4><u>Points Allocation Calculation</u></h4>
+    <h4>Points Allocation Calculation</h4>
     <div class='offset-md-1'>
       <table class='table table-bordered table-secondary'>
         <tr style='background-color: #C0C0C0;'><td><i>Points Allocated = Weightage of Development Aspect * Total Points</i></td></tr>

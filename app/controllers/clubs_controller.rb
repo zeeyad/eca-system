@@ -56,7 +56,7 @@ class ClubsController < ApplicationController
 
   def update
     if @club.update(club_params)
-      flash[:success] = "Club was successfully updated."
+      flash[:success] = "#{@club.name} was successfully updated."
       redirect_to club_path(@club)
     else
       render 'edit'

@@ -1,8 +1,10 @@
+<div><%= render 'shared/messages' %></div>
 <h1><strong>Clubs</strong></h1>
-<%= link_to 'Create a Club', new_club_path, class: 'btn btn-outline-success mb-3' %>
-<div class="mt-3"><%= render 'shared/messages' %></div>
-<h4>Number of Clubs: <%= @clubs.count %></h4>
-<table class="table table-bordered">
+<div><%= link_to 'Create a Club', new_club_path, class: 'btn btn-outline-success mb-3' %></div>
+<h4 class="d-inline p-2 custom-underline">Club Listing</h4> -
+<h4 class="d-inline p-2">Total: <%= @clubs.count %> Clubs</h4>
+
+<table class="mt-3 table table-bordered">
   <thead>
     <tr>
       <th scope="col">#</th>

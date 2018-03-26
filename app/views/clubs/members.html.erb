@@ -1,26 +1,29 @@
-<h1><strong><%= @club.name %></strong> Members</h1>
-<div class="pb-3"><%= link_to "Back to #{@club.name.titleize}", club_path(@club), class: 'btn btn-outline-dark' %></div>
 <%= render 'shared/messages' %>
-
-<h3 class="pt-3">Total: <%= @club.members.count %> Club members</h3>
-  <table class="table table-bordered">
-    <thead>
+<h1><strong>Club Members</strong> - <%= @club.name.titleize %></h1>
+<div class="pb-3">
+  <%= link_to "Back to Clubs", clubs_path, class: 'btn btn-outline-dark' %> &nbsp;
+  <%= link_to "View Club Page", club_path(@club), class: 'btn btn-outline-dark' %>
+</div>
+<h4 class="d-inline p-2 custom-underline">Club Members Listing</h4> - 
+<h4 class="d-inline p-2 "> Total: <%= @club.members.count %> Club members</h4>
+<table class="table table-bordered mt-3">
+  <thead>
+    <tr>
+    	<td>#</td>
+    	<td>Student Name</td>
+    	<td>Position</td>
+    	<td>Action</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @club.members.each_with_index do |member, index| %>
       <tr>
-      	<td>Index</td>
-      	<td>Student Name</td>
-      	<td>Position</td>
-      	<td>Action</td>
-      </tr>
-    </thead>
-    <tbody>
-      <% @club.members.each_with_index do |member, index| %>
-        <tr>
-	        <td><%= index + 1 %></td>
-	        <td><%= link_to "#{member.student.name.titleize}", student_path(member.student)  %></td>
-	        <td><strong><%= member.position %></strong></td>
-			<td><%= link_to '', member_path(:id => @club.id, :member_id => member.id), method: :delete, data: {confirm: "Are you sure?"}, class: 'fa fa-trash btn btn-outline-danger' %> </td>
-			</tr
-	    </tr>
-      <% end %>
-    </tbody>
+        <td><%= index + 1 %></td>
+        <td><%= link_to "#{member.student.name.titleize}", student_path(member.student)  %></td>
+        <td><strong><%= member.position %></strong></td>
+		<td><%= link_to '', member_path(:id => @club.id, :member_id => member.id), method: :delete, data: {confirm: "Are you sure?"}, class: 'fa fa-trash btn btn-outline-danger' %> </td>
+		</tr
+    </tr>
+    <% end %>
+  </tbody>
 </table>

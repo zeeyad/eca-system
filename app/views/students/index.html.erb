@@ -1,5 +1,22 @@
 <h1><strong>Students</strong></h1>
 <br>
-<% @students.each_with_index do |student, index| %>
-  <p>#<%= index + 1 %> | <%= link_to student.name, student_path(student) %>, <%= student.student_reg %> </p>
-<% end %>
+<h4 class="d-inline p-2 custom-underline">Student Listing</h4> - 
+<h4 class="d-inline p-2">Total: <%= @students.count %> students</h4>
+<table class="table table-bordered table-striped mt-3">
+  <thead>
+  	<tr>
+      <th scope="col">#</th>
+      <th scope="col">Registration</th>
+      <th scope="col">Student Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @students.each_with_index do |student, index| %>
+    <tr>
+      <td><%= index + 1 %></td>
+      <td><%= student.student_reg %></td>
+      <td><%= link_to student.name.titleize, student_path(student) %></td>
+  	</tr>
+    <% end %>
+  </tbody>
+</table>

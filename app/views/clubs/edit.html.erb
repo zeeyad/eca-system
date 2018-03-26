@@ -1,7 +1,7 @@
-<div class="row pl-3"><i class="fa fa-pencil fa-2x pt-2 pr-3"></i><h1><strong><%= @club.name.titleize %> Club</strong></h1></div>
-<div><%= link_to "Back to #{@club.name.titleize}", club_path(@club), class: 'btn btn-outline-dark' %></div>
+<div><%= render 'shared/errors', obj: @club %></div>
+<h1><strong>Club Edit</strong> - <%= @club.name.titleize %></h1>
+<div><%= link_to "Back to Club Page", club_path(@club), class: 'btn btn-outline-dark' %></div>
 
-<%= render 'shared/errors', obj: @club %>
 <%= form_for @club do |f| %>
   
   <!-- TODO: Semester -->
