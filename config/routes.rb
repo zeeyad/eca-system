@@ -36,5 +36,7 @@ Rails.application.routes.draw do
   post 'member_imports', to: 'member_imports#create'
 
   post 'create_attendance', to: 'attendances#create_attendance'
+  
+  delete 'clubs/:id/members/:member_id', to: 'clubs#destroy'
 
 end
