@@ -20,6 +20,7 @@ class StudentsController < ApplicationController
   end
 
   def show
+    @total_points = []
     @student = Student.find(params[:id])
   end
 

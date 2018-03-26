@@ -1,16 +1,2 @@
-<h1>New Semester</h1>
-<%= form_for @semester do |f| %>
-  <div class='form-group'>
-    <%= f.label :session %>
-    <%= f.text_field :session, class: 'form-control' %>
-  </div>
-  <div class='form-group'>
-    <%= f.label :year %>
-    <%= f.number_field :year, class: 'form-control' %>
-  </div>
-  <div class='form-group'>
-    <%= f.label :status %>
-    <%= f.check_box :status, class: 'form-control' %>
-  </div>
-  <%= f.submit 'Submit', class: 'btn btn-success' %>
-<% end %>
+<h1><strong>New Semester</strong></h1>
+<%= render 'form' %>

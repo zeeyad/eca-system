@@ -1,4 +1,4 @@
-<h1>Students</h1>
+<h1><strong>Students</strong></h1>
 <br>
 <% @students.each_with_index do |student, index| %>
   <p>#<%= index + 1 %> | <%= link_to student.name, student_path(student) %>, <%= student.student_reg %> </p>

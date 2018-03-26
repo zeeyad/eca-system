@@ -17,6 +17,10 @@ class SemestersController < ApplicationController
   	end
   end
 
+  def edit
+    @semester = Semester.find(params[:id])
+  end
+
   private
 
   def semester_params
