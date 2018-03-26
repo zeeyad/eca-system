@@ -26,12 +26,14 @@
   <tr>
     <th scope='col'>#</th>
     <th scope='col'>Club</th>
+    <th scope='col'>Position</th>
     <th scope='col'>Semester</th>
   </tr>
   <% @student.members.each_with_index do |member, index| %>
     <tr>
       <td><%= index + 1 %></td>
       <td><%= member.club.name.titleize %></td>
+      <td><%= member.position %></td>
       <td><%= member.club.semester.session %></td>
     </tr>
   <% end %>
