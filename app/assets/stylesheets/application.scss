@@ -69,3 +69,19 @@ body {
     left: 8%;
     border-bottom: 1px solid;
 }
+
+
+/* Placeholder */
+
+::-webkit-input-placeholder {
+   font-style: italic;
+}
+:-moz-placeholder {
+   font-style: italic;  
+}
+::-moz-placeholder {
+   font-style: italic;  
+}
+:-ms-input-placeholder {  
+   font-style: italic; 
+}
