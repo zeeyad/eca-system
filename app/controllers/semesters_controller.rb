@@ -21,6 +21,11 @@ class SemestersController < ApplicationController
     @semester = Semester.find(params[:id])
   end
 
+  def show
+    @semester = Semester.find(params[:id])
+    @clubs = @semester.clubs
+  end
+
   private
 
   def semester_params

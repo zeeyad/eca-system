@@ -73,12 +73,6 @@ class Club < ApplicationRecord
   	mental_weightage.to_i * total_points * 0.01   	
   end
 
-  def attendance_rate(activity)
-    if activity.attendances.count != 0
-      (activity.attendances.where(status: true).count.to_f / activity.attendances.count.to_f * 100).round
-    end
-  end
-
   private
 
   def check_total_weightage

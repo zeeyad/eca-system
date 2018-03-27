@@ -16,7 +16,7 @@
   <tbody>
     <% @semesters.each do |semester| %>
       <tr>
-        <td><%= semester.session %></td>
+        <td><%= link_to "#{semester.session}", semester_path(semester) %></td>
         <td><%= semester.clubs.count %></td>
         <td><%= semester.members.count %></td>
         <td><%= semester.activities.count %></td>

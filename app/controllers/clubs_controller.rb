@@ -48,6 +48,7 @@ class ClubsController < ApplicationController
     @sprt_weightage = @club.spiritual_weightage
     @soc_weightage= @club.social_weightage
     @ment_weightage = @club.mental_weightage
+    @complete_attendances = []
   end
 
   def edit
