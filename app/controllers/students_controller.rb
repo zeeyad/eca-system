@@ -22,6 +22,11 @@ class StudentsController < ApplicationController
   def show
     @total_points = []
     @student = Student.find(params[:id])
+    @student_phs = @student.activities.physical
+    @student_c = @student.activities.cultural
+    @student_s = @student.activities.spiritual
+    @student_sc = @student.activities.social_community
+    @student_mp = @student.activities.mental_psychological
   end
 
   private
