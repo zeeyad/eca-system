@@ -26,7 +26,7 @@ class ClubsController < ApplicationController
   def update_attendance
     @club = Club.find(params[:id])
     @activity = Activity.find(params[:activity_id])
-    @attendances = @activity.attendances.order(:id)
+    @attendances = @activity.attendances.order(:member_id)
     
   end
 

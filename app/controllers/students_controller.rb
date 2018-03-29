@@ -21,12 +21,18 @@ class StudentsController < ApplicationController
 
   def show
     @total_points = []
+    @total_hours = []
     @student = Student.find(params[:id])
     @student_phs = @student.activities.physical
     @student_c = @student.activities.cultural
     @student_s = @student.activities.spiritual
     @student_sc = @student.activities.social_community
     @student_mp = @student.activities.mental_psychological
+    @phs_aspect = []
+    @c_aspect = []
+    @s_aspect = []
+    @sc_aspect = []
+    @mp_aspect = []
   end
 
   private

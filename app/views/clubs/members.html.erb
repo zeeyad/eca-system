@@ -12,6 +12,7 @@
     	<td>#</td>
     	<td>Student Name</td>
     	<td>Position</td>
+      <td>Attendance Rate</td>
     	<td>Action</td>
     </tr>
   </thead>
@@ -21,9 +22,9 @@
         <td><%= index + 1 %></td>
         <td><%= link_to "#{member.student.name.titleize}", student_path(member.student)  %></td>
         <td><strong><%= member.position %></strong></td>
-		<td><%= link_to '', member_path(:id => @club.id, :member_id => member.id), method: :delete, data: {confirm: "Are you sure?"}, class: 'fa fa-trash btn btn-outline-danger' %> </td>
-		</tr
-    </tr>
+        <td><%= member.average_attendance(member.activities) %></td>
+        <td><%= link_to '', member_path(:id => @club.id, :member_id => member.id), method: :delete, data: {confirm: "Are you sure?"}, class: 'fa fa-trash btn btn-outline-danger' %> </td>
+  		</tr>
     <% end %>
   </tbody>
 </table>

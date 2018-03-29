@@ -47,7 +47,6 @@
       <th scope='col'>Club</th>
       <th scope='col'>Activity Name</th>
       <th scope='col'>Activity Date</th>
-      <!-- <th scope='col'>Attendance Status</th> -->
       <th scope='col'>Aspect Development</th>
       <th scope='col'>Weightage</th>
       <th scope='col'>No of Hours</th>
@@ -57,17 +56,24 @@
   <tbody>
     <% @student.members.each do |member| %>
       <% member.attendances.each do |attendance| %>
+        <% if attendance.status == true %>
         <tr>
           <td><%= link_to "#{member.club.name}", club_path(member.club) %></td>
-          <td><%= attendance.activity.name %></td>
+          <td><%= attendance.activity.name.titleize %></td>
           <td><%= attendance.activity.date_in_words %></td>
-          <!-- <td><%#= attendance.status %></td> -->
           <td><%= attendance.activity.dev_aspect %></td>
           <td><%= attendance.activity.weightage %></td>
           <td><%= attendance.activity.no_of_hours %></td>
           <td><%= attendance.activity.weightage.to_i * attendance.activity.no_of_hours.to_i  %></td>
         </tr>
-        <p><% @total_points.push(attendance.activity.weightage.to_i * attendance.activity.no_of_hours.to_i)  %></p>
+        <% @total_hours.push(attendance.activity.no_of_hours.to_i) %>
+        <% @total_points.push(attendance.activity.weightage.to_i * attendance.activity.no_of_hours.to_i)  %>
+        <% @phs_aspect.push(attendance.activity.weightage.to_i * attendance.activity.no_of_hours.to_i) if attendance.activity.dev_aspect == "Physical Health and Safety"  %>
+        <% @c_aspect.push(attendance.activity.weightage.to_i * attendance.activity.no_of_hours.to_i) if attendance.activity.dev_aspect == "Cultural"  %>
+        <% @s_aspect.push(attendance.activity.weightage.to_i * attendance.activity.no_of_hours.to_i) if attendance.activity.dev_aspect == "Spiritual"  %>
+        <% @mp_aspect.push(attendance.activity.weightage.to_i * attendance.activity.no_of_hours.to_i) if attendance.activity.dev_aspect == "Mental and Psychological"  %>
+        <% @sc_aspect.push(attendance.activity.weightage.to_i * attendance.activity.no_of_hours.to_i) if attendance.activity.dev_aspect == "Social and Community"  %>
+        <% end %>
       <% end %>
     <% end %>
   </tbody>
@@ -81,7 +87,7 @@
     <th scope='col'>Total Points</th>
   </tr>
   <tr>
-    <td><%= @student.activities.map(&:no_of_hours).compact.sum %></td>
+    <td><%= @total_hours.sum %></td>
     <td><%= @total_points.sum %></td>
   </tr>
 </table>
@@ -95,23 +101,23 @@
   </tr>
   <tr>
     <td>Physical, Health and Safety</td>
-    <td><%= @student_phs %></td>
+    <td><%= @phs_aspect.sum %></td>
   </tr>
   <tr>
     <td>Cultural</td>
-    <td><%= @student_c %></td>
+    <td><%= @c_aspect.sum %></td>
   </tr>
   <tr>
     <td>Spiritual</td>
-    <td><%= @student_s %></td>
+    <td><%= @s_aspect.sum %></td>
   </tr>
   <tr>
     <td>Mental and Psychological</td>
-    <td><%= @student_mp %></td>
+    <td><%= @mp_aspect.sum %></td>
   </tr>
   <tr>
     <td>Social and Community</td>
-    <td><%= @student_sc %></td>
+    <td><%= @sc_aspect.sum %></td>
   </tr>
 </table>
 
