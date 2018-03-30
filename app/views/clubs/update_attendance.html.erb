@@ -13,7 +13,9 @@
         <th>Activity Name</th>
         <th>Venue</th>
         <th>Activity Status</th>
-        <th>Change Activity Status</th>
+        <% if !activity_completed_or_cancelled %>
+          <th>Change Activity Status</th>
+        <% end %>
       </tr>
     </thead>
     <tbody>
@@ -23,11 +25,12 @@
         <td><%= @activity.name %></td>
         <td><%= @activity.venue %></td>
         <td><%= @activity.status.titleize %></td>
-        <td>  
-          <%= link_to 'Planned', activity_plan_path(@club, @activity), class: 'btn btn-outline-primary' if !@activity.planned? %>
-          <%= link_to 'Completed', activity_complete_path(@club, @activity), class: 'btn btn-outline-primary' if !@activity.completed? %>
-          <%= link_to 'Cancelled', activity_cancel_path(@club, @activity), class: 'btn btn-outline-primary' if !@activity.cancelled? %>
-          </td>
+        <% if !activity_completed_or_cancelled %>
+          <td>  
+            <%= link_to 'Planned', activity_plan_path(@club, @activity), class: 'btn btn-outline-primary'  if !activity_planned %>
+            <%= link_to 'Completed', activity_complete_path(@club, @activity), class: 'btn btn-outline-primary' if !@activity.completed? %>
+            </td>
+          <% end %>
       </tr>
     </tbody>
   </table>
@@ -44,29 +47,36 @@
       
       <thead>
         <th scope="col">#</th>
+        <th>Student Registration</th>
         <th>Name</th>
         <th>Position</th>
-        <th>Attendance</th>
+        <% if !activity_cancelled %>
+          <th>Attendance</th>
+        <% end %>
       </thead>
 
        <%= f.fields_for :attendances, @attendances do |attend| %>
         <tbody>
           <tr>
             <td><%= attend.index + 1 %></td>
+            <td><%= "#{@club.members[attend.index].student_reg}" %></td>
             <td><%= link_to "#{@club.members[attend.index].name}", student_path(@club.members[attend.index].student) %></td>
             <td><%= @club.members[attend.index].position %></td>
-            <td>
+            <% if !activity_cancelled %>
+              <td>
               <%= attend.text_field :club_id, class: 'invisible', style: 'width: 0px; height: 0px;' %>
               <%= attend.text_field :member_id, class: 'invisible', style: 'width: 0px; height: 0px;' %>
               <%= attend.text_field :activity_id, class: 'invisible', style: 'width: 0px; height: 0px;' %>
-              <%= attend.check_box :status, {}, "true", "false" %></td>
+                <%= attend.check_box :status, {}, "true", "false" %>
+              </td>
+            <% end %>
           </tr>
         </tbody>
       <% end %>
     </table>
   </div>    
 
-  <%= f.submit 'Update Attendance', class: 'btn btn-outline-success mb-5 mt-4' %>
+  <%= f.submit 'Update Attendance', class: 'btn btn-outline-success mb-5 mt-4' if !activity_cancelled %>
 
 <% end %>
 

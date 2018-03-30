@@ -39,6 +39,7 @@
       <h3><u>Attendance Sheet</u></h3>
       <thead>
         <th scope="col">#</th>
+        <th>Student Registration</th>
         <th>Name</th>
         <th>Position</th>
         <th>Attendance</th>
@@ -49,6 +50,7 @@
         <tbody>
           <tr>
             <td><%= attend.index + 1 %></td>
+            <td><%= @club.members[attend.index].student_reg %></td>
             <td><%= @club.members[attend.index].name %></td>
             <td><%= @club.members[attend.index].position %></td>
             <td>

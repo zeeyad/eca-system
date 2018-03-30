@@ -27,7 +27,6 @@ class ClubsController < ApplicationController
     @club = Club.find(params[:id])
     @activity = Activity.find(params[:activity_id])
     @attendances = @activity.attendances.order(:member_id)
-    
   end
 
   def create

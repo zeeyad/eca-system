@@ -32,19 +32,17 @@
             <td><%= activity.date_in_words %></td>
             <td><%= activity.name %></td>
             <td>
-              <% if activity.status == 'planned' %>
-                Planned
-              <% elsif activity.status == 'cancelled' %>
-                Cancelled
-              <% else %>
-                Completed
-              <% end %>
+              <%= activity_planned_and_have_attendance(activity) ? "In-Progress" : "Planned" if activity_is_planned(activity) %>
+              <%= "Completed" if activity_is_completed(activity) %>
+              <%= "Cancelled" if activity_is_cancelled(activity) %>
             </td>
             <td><%= @club.attendance_rate(activity) %></td>
-            <td>
-              <%= link_to '', activity_new_attendance_path(@club, activity), class: 'fa fa-pencil btn btn-outline-success' if activity.attendances.empty? %>
-              <%= link_to '', activity_update_attendance_path(@club, activity), class: 'fa fa-pencil btn btn-outline-primary' if !activity.attendances.empty? %>
-            </td>
+            <% if !activity_is_cancelled(activity) %>
+              <td>
+                <%= link_to '', activity_new_attendance_path(@club, activity), class: 'fa fa-pencil btn btn-outline-success' if activity.attendances.empty? %>
+                <%= link_to '', activity_update_attendance_path(@club, activity), class: 'fa fa-pencil btn btn-outline-primary' if !activity.attendances.empty? %>
+              </td>
+            <% end %>
           </tr>
           <% @complete_attendances.push(@club.attendance_rate(activity)) if activity.status == "completed" %>
         <% end %>

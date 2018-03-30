@@ -12,7 +12,7 @@ class Activity < ApplicationRecord
   belongs_to :user
   belongs_to :club
 
-  has_many :attendances
+  has_many :attendances, dependent: :delete_all
 
   # validates :name, presence: true
 

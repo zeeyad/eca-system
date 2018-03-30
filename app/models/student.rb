@@ -8,8 +8,4 @@ class Student < ApplicationRecord
 				uniqueness: { case_sensitive: false }
   validates :user_id, presence: true
 
-  def check_association
-  	is_a?(ActiveRecord::AssociationRelation)
-  end
-
 end
