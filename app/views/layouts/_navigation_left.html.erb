@@ -12,8 +12,14 @@
   </li>
 
 
-  <li class="<%= active?(students_path) %> nav-item">
-    <%= link_to 'Students', students_path, class: 'nav-link' %>
+ <li class="<%= active?(students_path) %> nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Student
+    </a>
+    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
+      <a class="dropdown-item" href="<%= students_path %>">All Students</a>
+      <a class="dropdown-item" href="<%= student_lookup_path %>">Lookup Student</a>
+    </div>
   </li>
 
  <li class="nav-item dropdown">

@@ -35,8 +35,11 @@ Rails.application.routes.draw do
   get 'member_imports', to: 'member_imports#index', as: :member_imports
   post 'member_imports', to: 'member_imports#create'
 
+  get '/student/lookup', to: 'students#lookup'
+  post '/student/lookup', to: 'students#lookup'
+
   post 'create_attendance', to: 'attendances#create_attendance'
-  
+    
   delete 'clubs/:id/members/:member_id', to: 'clubs#destroy'
 
 end
