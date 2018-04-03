@@ -1,22 +1,28 @@
 <h1><strong>Students</strong></h1>
 <br>
 <h4 class="d-inline p-2 custom-underline">Student Listing</h4> - 
-<h4 class="d-inline p-2">Total: <%= @students.count %> students</h4>
+<h4 class="d-inline p-2">Total: <%= @total_students %> students</h4>
+
+<div class="container pagination justify-content-center pt-5" >
+  <%= paginate @students, theme: 'twitter-bootstrap-4' %>
+</div>
+
 <table class="table table-bordered table-striped mt-3">
   <thead>
   	<tr>
-      <th scope="col">#</th>
-      <th scope="col">Registration</th>
+      <th scope="col" style="width: 10%;">Registration</th>
       <th scope="col">Student Name</th>
     </tr>
   </thead>
   <tbody>
-    <% @students.each_with_index do |student, index| %>
+    <% @students.each do |student| %>
     <tr>
-      <td><%= index + 1 %></td>
       <td><%= student.student_reg %></td>
       <td><%= link_to student.name.titleize, student_path(student) %></td>
   	</tr>
     <% end %>
   </tbody>
 </table>
+<div class="container pagination justify-content-center" >
+  <%= paginate @students, theme: 'twitter-bootstrap-4' %>
+</div>

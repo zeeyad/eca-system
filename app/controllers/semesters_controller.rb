@@ -1,7 +1,7 @@
 class SemestersController < ApplicationController
 
   def index
-  	@semesters = Semester.all
+  	@semesters = Semester.all.order(year: :desc)
   end
 
   def new
@@ -19,6 +19,16 @@ class SemestersController < ApplicationController
 
   def edit
     @semester = Semester.find(params[:id])
+  end
+
+  def update
+    @semester = Semester.find(params[:id])
+    if @semester.update(semester_params)
+      flash[:success] = "#{@semester.name} was successfully updated."
+      redirect_to semesters_path
+    else
+      render :new
+    end
   end
 
   def show

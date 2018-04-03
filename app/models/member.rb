@@ -5,4 +5,7 @@ class Member < ApplicationRecord
   has_many :attendances
   accepts_nested_attributes_for :attendances
   has_many :activities, through: :student
+
+
+
 end

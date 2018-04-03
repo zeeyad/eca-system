@@ -73,6 +73,12 @@ class Club < ApplicationRecord
   	mental_weightage.to_i * total_points * 0.01   	
   end
 
+  def club_personnal
+    @member = ["MEMBER", "Member", "Club member", "Member "]
+    members.where.not(position: @member)
+  end
+
+
   private
 
   def check_total_weightage

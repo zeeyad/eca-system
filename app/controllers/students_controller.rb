@@ -1,7 +1,8 @@
 class StudentsController < ApplicationController
 
   def index
-    @students = Student.all
+    @total_students = Student.all.count
+    @students = Student.all.page(params[:page]).per(20)
   end
 
   def new

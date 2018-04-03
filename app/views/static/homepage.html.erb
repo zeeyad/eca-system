@@ -1,16 +1,15 @@
 <h1><strong>Home</strong></h1>
 <%= render 'shared/messages' %><br/>
 <h4 class="custom-underline">Semester Listing</h4>
-<table class="table table-bordered">
+<table class="table table-responsive-md table-bordered table-striped">
   <thead>
     <tr>
       <th>Semester Session</th>
       <th>Clubs</th>
       <th>Members</th>
-      <th>Total Activities</th>
+      <th>Activity Proposed</th>
       <th>Activity Completed</th>
       <th>Activity Plan</th>
-      <th>Activity Cancelled</th>
     </tr>
   </thead>
   <tbody>
@@ -22,8 +21,7 @@
         <td><%= semester.activities.count %></td>
         <td><%= semester.activities.completed.count %></td>
         <td><%= semester.activities.planned.count %></td>
-        <td><%= semester.activities.cancelled.count %></td>
       </tr>
-  	  <% end %>
+  	<% end %>
   </tbody>
 </table>
