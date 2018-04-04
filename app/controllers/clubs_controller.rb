@@ -34,9 +34,10 @@ class ClubsController < ApplicationController
   def create
     params[:user_id] = current_user.id
     @club = Club.new(club_params)
-    if @club.save
+    if @club.save(club_params)
       redirect_to clubs_path
     else
+      @act = Activity.dev_aspects.keys
       render 'new'
     end
   end

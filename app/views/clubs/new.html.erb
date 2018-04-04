@@ -124,7 +124,7 @@
               <td><%= act.text_field :week_no, value: act.options[:child_index] + 1, :readonly => true, class: 'form-control' %></td>
               <td><%= act.date_field :date, class: 'form-control', value: Date.today + ( (act.options[:child_index] + 1) * 7).to_i.days, order: [:day, :year, :month] %></td>          
               <td><%= act.text_field :name, class: 'form-control' %></td>
-              <td><%= act.select :dev_aspect, options_for_select(@act), class: 'form-control' %></td>
+              <td><%= act.select :dev_aspect, options_for_select(@act), class: 'btn btn-secondary', type: 'button' %></td>
               <td><%= act.text_field :no_of_hours, class: 'form-control' %></td>
               <td><%= act.text_field :venue, class: 'form-control' %></td>
               <td><%= act.text_field :weightage, class: 'form-control' %></td>
