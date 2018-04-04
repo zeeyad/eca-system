@@ -106,12 +106,13 @@
   <div class="card card-body bg-light">
     <h3 class="pt-3 pb-3"><u>Activity</u></h3>
 
-    <table class='table table-bordered'>
+    <table class='table table-bordered table-striped'>
       <thead>
-        <tr>
+        <tr class='bg-light'>
           <th scope="col" style="width: 10%;">Week No</th>
           <th scope="col">Date</th>
           <th scope="col">Name</th>
+          <th scope="col">Development Aspect</th>
           <th scope="col">No of Hours</th>
           <th scope="col">Venue</th>
           <th scope="col">Weightage</th>
@@ -123,6 +124,7 @@
               <td><%= act.text_field :week_no, value: act.options[:child_index] + 1, :readonly => true, class: 'form-control' %></td>
               <td><%= act.date_field :date, class: 'form-control', value: Date.today + ( (act.options[:child_index] + 1) * 7).to_i.days, order: [:day, :year, :month] %></td>          
               <td><%= act.text_field :name, class: 'form-control' %></td>
+              <td><%= act.select :dev_aspect, options_for_select(@act), class: 'form-control' %></td>
               <td><%= act.text_field :no_of_hours, class: 'form-control' %></td>
               <td><%= act.text_field :venue, class: 'form-control' %></td>
               <td><%= act.text_field :weightage, class: 'form-control' %></td>

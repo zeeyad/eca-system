@@ -17,8 +17,8 @@
       <tr>
         <th scope="row"><%= index + 1 %></th>
         <td><%= truncate(club.name.titleize, length: 50) %></td>
-        <td><%= link_to '', club_path(club), id: "club_#{club.id}", class: 'fa fa-info btn btn-outline-info mr-3' %>
-        <%= link_to '', members_club_path(club), id: "member_club_#{club.id}", class: 'fa fa-users btn btn-outline-dark' %> </td>
+        <td><%= link_to '', club_path(club), id: "club_#{club.id}", title: "View Club Details", class: 'fa fa-info btn btn-outline-info mr-3' %>
+        <%= link_to '', members_club_path(club), id: "member_club_#{club.id}", title: "View Club Members", class: 'fa fa-users btn btn-outline-dark' %> </td>
       </tr>
     </tbody>
 

@@ -1,13 +1,14 @@
 class Activity < ApplicationRecord
   enum dev_aspect: { 
-  	    "Physical Health and Safety": 0,
-  	    Cultural: 1, 
-  	    Spiritual: 2, 
+  	    "Physical": 0,
+  	    "Cultural": 1, 
+  	    "Spiritual": 2, 
   	    "Social and Community": 3,
   	    "Mental and Psychological": 4  
   	   }
 
   enum status: { planned: 0, completed: 1, cancelled: 2 }
+
 
   belongs_to :user
   belongs_to :club
@@ -15,6 +16,7 @@ class Activity < ApplicationRecord
   has_many :attendances, dependent: :delete_all
 
   # validates :name, presence: true
+  validates :dev_aspect, presence: true
 
 
   scope :physical, -> { where(dev_aspect: 0).map(&:weightage).compact.reduce(:+) }

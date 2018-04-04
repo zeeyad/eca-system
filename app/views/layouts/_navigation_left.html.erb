@@ -7,11 +7,6 @@
     <%= link_to 'Clubs', clubs_path, class: 'nav-link' %>
   </li>
 
-  <li class="<%= active?(semesters_path) %> nav-item">
-    <%= link_to 'Semesters', semesters_path, class: 'nav-link' %>
-  </li>
-
-
  <li class="<%= active?(students_path) %> nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Student
@@ -29,6 +24,7 @@
     <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
       <a class="dropdown-item" href="<%= student_imports_path %>">Upload New Students</a>
       <a class="dropdown-item" href="<%= member_imports_path %>">Upload Club Members</a>
+      <a class="dropdown-item active?(semesters_path)" href="<%= semesters_path %>">Manage Semester</a>
     </div>
   </li>
 

@@ -85,3 +85,15 @@ body {
 :-ms-input-placeholder {  
    font-style: italic; 
 }
+
+
+/* Form */
+
+
+.field_with_errors {
+  padding: 2px;
+  .form-control {
+    border: 2px solid #721c24;
+  }
+}
+

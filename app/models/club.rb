@@ -9,7 +9,7 @@ class Club < ApplicationRecord
   accepts_nested_attributes_for :activities, reject_if: proc { |attributes| attributes[:week_no].blank? }, allow_destroy: true
   accepts_nested_attributes_for :attendances
 
-  #validates :name, presence: true
+  validates :name, presence: true
   # validates :about, presence: true
   # validates :objective, presence: true
   # validates :member_benefit, presence: true

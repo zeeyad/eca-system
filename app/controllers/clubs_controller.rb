@@ -1,6 +1,7 @@
 class ClubsController < ApplicationController
 
   before_action :set_club, only: [:edit, :update, :destroy]
+  before_action :set_aspect, only: [:new, :create]
 
   def index
     @clubs = Club.all.order(:name)    
@@ -15,6 +16,7 @@ class ClubsController < ApplicationController
     @semesters = Semester.all
     @sessions = @semesters.map {|semester| [semester.session, semester.id] }
     10.times { @club.activities.build }
+    @act = Activity.dev_aspects.keys
   end
 
   def new_attendance
@@ -30,12 +32,12 @@ class ClubsController < ApplicationController
   end
 
   def create
-    params[:user_id] = 1
+    params[:user_id] = current_user.id
     @club = Club.new(club_params)
-    if @club.save(club_params)
+    if @club.save
       redirect_to clubs_path
     else
-      render :new
+      render 'new'
     end
   end
 
@@ -105,13 +107,17 @@ class ClubsController < ApplicationController
         :mental_activity,
         :mental_hours,
         :mental_weightage,
-        activities_attributes: [:id, :date, :name, :week_no, :user_id, :no_of_hours, :weightage, :venue, :status, :_destroy],
+        activities_attributes: [:id, :date, :name, :week_no, :user_id, :dev_aspect, :no_of_hours, :weightage, :venue, :status, :_destroy],
         attendances_attributes: [:id, :club_id, :member_id, :activity_id, :status]
        )
   end
 
   def club_attendance_params
      params.require(:club).permit(:semester_id, :user_id, attendances_attributes: [:id, :club_id, :member_id, :activity_id, :status])
+  end
+
+  def set_aspect
+    @devs = [['Physical, Health & Safety', 0], ['Cultural', 1], ['Spiritual', 2], ['Social & Community', 3], ['Mental & Psychological', 4] ]
   end
 
 end

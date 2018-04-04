@@ -16,6 +16,7 @@
         <th class='table-dark' scope="col">Week No</th>
         <th class='table-dark' scope="col">Date</th>
         <th class='table-dark' scope="col">Activity Name</th>
+        <th class='table-dark' scope="col">Development Aspect</th>
         <th class='table-dark' scope="col">Status</th>
         <th class='table-dark' scope="col" style="width: 15%;">Attendance Rate (%)</th>
         <th class='table-dark' scope="col">Action</th>
@@ -31,6 +32,7 @@
             <td><%= activity.week_no %></td>
             <td><%= activity.date_in_words %></td>
             <td><%= activity.name %></td>
+            <td><%= activity.dev_aspect %></td>
             <td>
               <%= activity_planned_and_have_attendance(activity) ? "In-Progress" : "Planned" if activity_is_planned(activity) %>
               <%= "Completed" if activity_is_completed(activity) %>
@@ -39,8 +41,8 @@
             <td><%= @club.attendance_rate(activity) %></td>
             <% if !activity_is_cancelled(activity) %>
               <td>
-                <%= link_to '', activity_new_attendance_path(@club, activity), class: 'fa fa-pencil btn btn-outline-success' if activity.attendances.empty? %>
-                <%= link_to '', activity_update_attendance_path(@club, activity), class: 'fa fa-pencil btn btn-outline-primary' if !activity.attendances.empty? %>
+                <%= link_to '', activity_new_attendance_path(@club, activity), title: 'New Attendance', class: 'fa fa-pencil btn btn-outline-success' if activity.attendances.empty? %>
+                <%= link_to '', activity_update_attendance_path(@club, activity), title: 'Update Attendance',class: 'fa fa-pencil btn btn-outline-primary' if !activity.attendances.empty? %>
               </td>
             <% end %>
           </tr>
