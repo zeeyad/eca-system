@@ -104,14 +104,15 @@
   
   <div class="card card-body bg-light">
     <h3 class="pt-3 pb-3"><u>Activity</u></h3>
-    <table class='table table-bordered bg-white'>
+    <table class='table table-bordered bg-white' id="thetable">
       <thead>
         <tr>
-          <th style="width: 10%;" scope="col">Week No</th>
-          <th scope="col">Date</th>
+          <th style="width: 3%;" scope="col">Week No</th>
+          <th style="width: 3%;" scope="col">Date</th>
           <th scope="col">Name</th>
-          <th style="width: 10%;" scope="col">No of Hours</th>
           <th scope="col">Venue</th>
+          <th scope="col">Dev Aspect</th>
+          <th style="width: 2%;" scope="col">No of Hours</th>
           <th style="width: 10%;" scope="col">Weightage</th>
           <th scope="col">Status</th>
           <th scope="col">Remove</th>
@@ -122,9 +123,10 @@
           <tr>
               <td><%= act.text_field :week_no, :readonly => true, class: 'form-control' %></td>
               <td><%= act.date_field :date, class: 'form-control' %></td>
-              <td><%= act.text_field :name, class: 'form-control'  %></td>
-              <td><%= act.text_field :no_of_hours, class: 'form-control' %></td>
+              <td><%= act.text_field :name, class: 'form-control' %></td>
               <td><%= act.text_field :venue, class: 'form-control' %></td>
+              <td><%= act.select(:dev_aspect, Activity.dev_aspects.keys.to_a, {}, class: 'form-control') %></td>
+              <td><%= act.text_field :no_of_hours, class: 'form-control' %></td>
               <td><%= act.text_field :weightage, class: 'form-control' %></td>
               <td>
                 <!-- <div class="form-group">
@@ -132,13 +134,17 @@
                 </div> -->
                 <%= act.text_field :status, class: 'form-control', disabled: true %>
               </td>
+
               <td><%= act.check_box :_destroy %></td>
           </tr>
 
-              <%= act.hidden_field :user_id, value: 1, class: 'form-control invisible' %>
+          <%= act.hidden_field :user_id, value: 1, class: 'form-control invisible' %>
         <% end %>  
       </tbody>
     </table>
+    <div><%= submit_tag "Add New Activity", :type =>  "button", :id => "addAddress", :onclick => 'addAddressField()', class: 'btn btn-outline-primary' %></div>
+    <ul id="myActivity"></ul>
+
   </div>
   
   <%= f.submit 'Update Club', class: 'col-md-2 btn btn-outline-success mt-3 mb-5' %>

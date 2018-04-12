@@ -12,7 +12,7 @@ class StudentImportsController < ApplicationController
 
     else
       flash.now[:danger] = "Error Detected in Spreadsheet."
-      render :new
+      render :index
     end
   end
 end

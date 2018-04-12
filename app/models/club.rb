@@ -1,19 +1,19 @@
 class Club < ApplicationRecord
+  has_many :activities, dependent: :destroy
+  has_many :attendances, dependent: :destroy
+  has_many :members, dependent: :destroy
+
   belongs_to :semester
   belongs_to :user
-
-  has_many :members
-  has_many :activities, dependent: :destroy
-  has_many :attendances
 
   accepts_nested_attributes_for :activities, reject_if: proc { |attributes| attributes[:week_no].blank? }, allow_destroy: true
   accepts_nested_attributes_for :attendances
 
   validates :name, presence: true
-  # validates :about, presence: true
-  # validates :objective, presence: true
-  # validates :member_benefit, presence: true
-  # validates :community_benefit, presence: true
+  validates :about, presence: true
+  validates :objective, presence: true
+  validates :member_benefit, presence: true
+  validates :community_benefit, presence: true
 
 
   # validates :phs_activity, presence: true
@@ -32,8 +32,8 @@ class Club < ApplicationRecord
   # validates :mental_hours, presence: true
   # validates :mental_weightage, presence: true
   
-  # validate :check_total_weightage
-  # validate :check_total_hours
+  validate :check_total_weightage
+  validate :check_total_hours
 
   POINTS_PER_HOUR = 10
 

@@ -43,20 +43,29 @@ function addAddressField() {
     nameAttributeWeightage =  
           "club[activities_attributes][0][weightage]".replace("0", mSec);
 
+    nameAttributeDevelopmentAspect =  
+                "club[activities_attributes][0][date]".replace("0", mSec); 
+
 
     //create <li> tag
     var li = document.createElement("li");
+
+    // append to table
+    var table = document.getElementById("thetable");
+
+
  
     //create label for Kind, set it's for attribute, 
     //and append it to <li> element
-    var labelDate = document.createElement("label");
-    labelDate.setAttribute("for", idAttributeDate);
+    var labelDatetr = document.createElement("tr");
+    labelDatetr.setAttribute("for", idAttributeDate);
     var kindLabelText = document.createTextNode("Date");
-    labelDate.appendChild(kindLabelText);
-    li.appendChild(labelDate);
+    labelDatetr.appendChild(kindLabelText);
+    li.appendChild(labelDatetr);
  
     //create input for Kind, set it's type, id and name attribute, 
     //and append it to <li> element
+
     var inputDate = document.createElement("INPUT");
     inputDate.setAttribute("type", "date");
     inputDate.setAttribute("id", idAttributeDate);
@@ -73,12 +82,15 @@ function addAddressField() {
  
     //create input for Street, set it's type, id and name attribute, 
     //and append it to <li> element
-    var inputStreet = document.createElement("INPUT");
-    inputStreet.setAttribute("type", "text");
-    inputStreet.setAttribute("id", idAttributeWeekNo);
-    inputStreet.setAttribute("name", nameAttributeWeekNo);
-    li.appendChild(inputStreet);
+    var inputWeek = document.createElement("INPUT");
+    inputWeek.setAttribute("type", "text");
+    inputWeek.setAttribute("id", idAttributeWeekNo);
+    inputWeek.setAttribute("name", nameAttributeWeekNo);
+
+    li.appendChild(inputWeek);
  
+
+
 
     // var labelUser = document.createElement("label");
     // labelUser.setAttribute("for", idAttributeUser);
@@ -110,6 +122,7 @@ function addAddressField() {
     inputName.setAttribute("id", idAttributeName);
     inputName.setAttribute("name", nameAttributeName);
     li.appendChild(inputName);
+
 
 
     var labelNumberOfHours = document.createElement("label");
@@ -156,9 +169,92 @@ function addAddressField() {
     inputWeightage.setAttribute("name", nameAttributeWeightage);
     li.appendChild(inputWeightage);
 
-    //add created <li> element with its child elements 
-    //(label and input) to myList (<ul>) element
-    document.getElementById("myActivity").appendChild(li);
+
+    // Create Row
+    var tr = document.createElement("tr");
+
+
+
+    // 1.  Week No
+    var td_weekno = document.createElement("td");
+    inputWeek.className += 'form-control';
+    td_weekno.appendChild(inputWeek);
+
+
+
+    // 2. date
+    var td_date = document.createElement("td");
+
+    inputDate.setAttribute("type", "date");
+    inputDate.setAttribute("id", idAttributeDate);
+    inputDate.setAttribute("value", "2018-06-14");
+    inputDate.className += 'form-control';
+    inputDate.value = "2018-06-14";
+    td_date.appendChild(inputDate);
+
+
+
+
+    // 3. Name
+    var td_name = document.createElement("td");
+    inputName.className += 'form-control';
+    td_name.appendChild(inputName);
+
+
+
+
+    // 4. Development Aspect
+    // var td_dev = document.createElement("td");
+    // var devselect = document.createElement("select");
+    // devselect.setAttribute("type", "select");
+
+    // devselect.setAttribute("name", nameAttributeDevelopmentAspect);
+
+    // devselect.options.add( new Option("Physical","Physical") );
+    // devselect.options.add( new Option("Cultural","Cultural") );
+    // devselect.options.add( new Option("Spiritual","Spiritual") );
+    // devselect.options.add( new Option("Social and Community","Social and Community") );
+    // devselect.options.add( new Option("Mental and Psychological","Mental and Psychological") );
+    // td_dev.appendChild(devselect);
+
+
+
+    // 5. Venue
+    var td_venue = document.createElement("td");
+    inputVenue.className += 'form-control';
+    td_venue.appendChild(inputVenue);
+
+    // 6. No of Hours
+    var td_hours = document.createElement("td");
+    inputNumberofHours.className += 'form-control';
+    td_hours.appendChild(inputNumberofHours);
+
+    // 7. Weightage
+    var td_weightage = document.createElement("td");
+    inputWeightage.className += 'form-control';
+    td_weightage.appendChild(inputWeightage);
+
+    var inputUser = document.createElement("INPUT");
+    inputUser.setAttribute("type", "text");
+    inputUser.setAttribute("id", idAttributeUser);
+    inputUser.setAttribute("name", nameAttributeUser);
+    inputUser.setAttribute("class", "invisible");
+    inputUser.setAttribute("style", "width: 0px; height: 0px;");
+    inputUser.value = '1';
+    table.appendChild(inputUser);
+
+
+    tr.appendChild(td_weekno);
+    tr.appendChild(td_date);
+    tr.appendChild(td_name);
+    // tr.appendChild(td_dev);
+    tr.appendChild(td_venue);
+    tr.appendChild(td_hours);
+    tr.appendChild(td_weightage);
+
+    table.appendChild(tr);
+
+
  
     //show address header
     //$("#addressHeader").show(); 

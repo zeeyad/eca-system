@@ -68,7 +68,7 @@
         </tr>
         <% @total_hours.push(attendance.activity.no_of_hours.to_i) %>
         <% @total_points.push(attendance.activity.weightage.to_i * attendance.activity.no_of_hours.to_i)  %>
-        <% @phs_aspect.push(attendance.activity.weightage.to_i * attendance.activity.no_of_hours.to_i) if attendance.activity.dev_aspect == "Physical Health and Safety"  %>
+        <% @phs_aspect.push(attendance.activity.weightage.to_i * attendance.activity.no_of_hours.to_i) if attendance.activity.dev_aspect == "Physical, Health and Safety"  %>
         <% @c_aspect.push(attendance.activity.weightage.to_i * attendance.activity.no_of_hours.to_i) if attendance.activity.dev_aspect == "Cultural"  %>
         <% @s_aspect.push(attendance.activity.weightage.to_i * attendance.activity.no_of_hours.to_i) if attendance.activity.dev_aspect == "Spiritual"  %>
         <% @mp_aspect.push(attendance.activity.weightage.to_i * attendance.activity.no_of_hours.to_i) if attendance.activity.dev_aspect == "Mental and Psychological"  %>

@@ -7,6 +7,7 @@ class ClubsController < ApplicationController
     @clubs = Club.all.order(:name)    
   end
 
+
   def members
     @club = Club.find(params[:id])
   end
@@ -55,6 +56,7 @@ class ClubsController < ApplicationController
 
   def edit
     @activities = @club.activities.order('week_no')
+    @act = Activity.dev_aspects.keys
   end
 
   def update
@@ -67,8 +69,10 @@ class ClubsController < ApplicationController
   end
 
   def destroy
-    @club.activities.delete_all
-    @club.delete
+    @club.activities.each {|activity| activity.attendances.destroy}
+    # @club.attendances.delete_all
+    # @club.members.delete_all
+    @club.destroy
     flash[:danger] = "#{@club.name} was successfully deleted"
     redirect_to clubs_path
   end
