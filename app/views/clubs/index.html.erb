@@ -1,14 +1,15 @@
-<div><%= render 'shared/messages' %></div>
+<%= render 'shared/messages' %>
 <h1><strong>Clubs</strong></h1>
 <div><%= link_to 'Create a Club', new_club_path, class: 'btn btn-outline-success mb-3' %></div>
 <h4 class="d-inline p-2 custom-underline">Club Listing</h4> -
 <h4 class="d-inline p-2">Total: <%= @clubs.count %> Clubs</h4>
 
-<table class="mt-3 table table-bordered">
+<table class="mt-3 table table-bordered table-hover">
   <thead>
-    <tr>
+    <tr class="bg-dark text-white">
       <th scope="col">#</th>
       <th scope="col">Name</th>
+      <th scope="col">Office</th>
       <th scope="col">Actions</th>
     </tr>
   </thead>
@@ -16,7 +17,8 @@
     <tbody>
       <tr>
         <th scope="row"><%= index + 1 %></th>
-        <td><%= truncate(club.name.titleize, length: 50) %></td>
+        <td><%= truncate(club.name, length: 50) %></td>
+        <td><%= club.office %></td>
         <td><%= link_to '', club_path(club), id: "club_#{club.id}", title: "View Club Details", class: 'fa fa-info btn btn-outline-info mr-3' %>
         <%= link_to '', members_club_path(club), id: "member_club_#{club.id}", title: "View Club Members", class: 'fa fa-users btn btn-outline-dark' %> </td>
       </tr>

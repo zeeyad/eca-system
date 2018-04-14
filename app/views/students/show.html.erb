@@ -3,7 +3,7 @@
 <%#= link_to 'Back', clubs_path %>
 <h4 class="custom-underline">Student Details</h4>
 <table class="table table-bordered">
-  <tr class="bg-light">
+  <tr class="bg-dark text-white">
     <th style="width:20%;" scope='row'>Student Registration</th>
     <td><%= @student.student_reg %></td>
   </tr>
@@ -23,7 +23,7 @@
 
 <h4 class="pt-3 custom-underline">Club Member Details</h4>
 <table class="table table-bordered table-striped">
-  <tr>
+  <tr class="bg-dark text-white">
     <th scope='col'>#</th>
     <th scope='col'>Club</th>
     <th scope='col'>Position</th>
@@ -32,7 +32,7 @@
   <% @student.members.each_with_index do |member, index| %>
     <tr>
       <td><%= index + 1 %></td>
-      <td><%= member.club.name.titleize %></td>
+      <td><%= member.club.name %></td>
       <td><%= member.position.titleize %></td>
       <td><%= member.club.semester.session %></td>
     </tr>
@@ -43,7 +43,7 @@
 
 <table class="table table-bordered table-striped">
   <thead>
-    <tr>
+    <tr class="bg-dark text-white">
       <th scope='col'>Club</th>
       <th scope='col'>Activity Name</th>
       <th scope='col'>Activity Date</th>
@@ -82,7 +82,7 @@
 <div class="mt-3">
 <h4 class="pt-3 custom-underline">Points Tally</h4>
 <table class="table table-bordered table-striped">
-  <tr>
+  <tr class="bg-dark text-white">
     <th scope='col'>Total Hours</th>
     <th scope='col'>Total Points</th>
   </tr>
@@ -95,7 +95,7 @@
 <h4 class="pt-3 custom-underline">Aspect Development Points Distribution</h4>
 
 <table class="table table-bordered table-striped">
-  <tr>
+  <tr class="bg-dark text-white">
     <th scope='col'>Aspect Development</th>
     <th scope='col'>Points</th>
   </tr>

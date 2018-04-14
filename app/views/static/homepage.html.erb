@@ -1,23 +1,36 @@
-<%= render 'shared/devise_messages' %><br/>
-<h1><strong>Home</strong></h1>
+<%= render 'shared/devise_messages' %>
+<h1><strong>Home</strong></h1><br>
 <h4 class="custom-underline">Semester Listing</h4>
+
 <table class="table table-responsive-md table-bordered table-striped">
   <thead>
-    <tr>
-      <th>Semester Session</th>
-      <th>Clubs</th>
-      <th>Members</th>
-      <th>Activity Proposed</th>
-      <th>Activity Completed</th>
-      <th>Activity Plan</th>
+    <tr class="bg-dark text-white">
+      <th rowspan="2">Semester Session</th>
+      <th rowspan="2">Clubs</th>
+      <th style="width: 5%;" rowspan="2">Registered Members</th>
+      <th rowspan="2" colspan="3" class="text-center">Offices</th>
+    <th rowspan="2">Activity Proposed</th>
+      <th rowspan="2">Activity Completed</th>
+      <th rowspan="2">Activity Plan</th>
     </tr>
   </thead>
   <tbody>
+    <tr class="bg-dark text-white">
+      <td colspan="3"></td>
+      <td>SAD</td>
+      <td>SCS</td>
+      <td>CDLN</td>
+      <td colspan="3"></td>
+    </tr>
+
     <% @semesters.each do |semester| %>
       <tr>
         <td><%= link_to "#{semester.session}", semester_path(semester) %></td>
         <td><%= semester.clubs.count %></td>
         <td><%= semester.members.count %></td>
+        <td><%= semester.clubs.SAD.count %></td>
+        <td><%= semester.clubs.SCS.count %></td>
+        <td><%= semester.clubs.CDLN.count %></td>
         <td><%= semester.activities.count %></td>
         <td><%= semester.activities.completed.count %></td>
         <td><%= semester.activities.planned.count %></td>

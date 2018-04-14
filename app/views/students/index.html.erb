@@ -1,15 +1,15 @@
 <h1><strong>Students</strong></h1>
 <br>
-<h4 class="d-inline p-2 custom-underline">Student Listing</h4> - 
-<h4 class="d-inline p-2">Total: <%= @total_students %> students</h4>
+<h4 class="d-inline custom-underline">Student Listing</h4> - 
+<h4 class="d-inline">Total: <%= @total_students %> students</h4>
 
-<div class="container pagination justify-content-center pt-5" >
+<div class="container pagination justify-content-center pt-3" >
   <%= paginate @students, theme: 'twitter-bootstrap-4' %>
 </div>
 
 <table class="table table-bordered table-striped mt-3">
   <thead>
-  	<tr>
+  	<tr class="bg-dark text-white">
       <th scope="col" style="width: 10%;">Registration</th>
       <th scope="col">Student Name</th>
     </tr>

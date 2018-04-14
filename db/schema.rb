@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180320142407) do
+ActiveRecord::Schema.define(version: 20180413030819) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,6 +85,8 @@ ActiveRecord::Schema.define(version: 20180320142407) do
     t.string "mental_activity"
     t.integer "mental_hours"
     t.integer "mental_weightage"
+    t.integer "office", default: 0
+    t.integer "executive", default: 0
     t.index ["semester_id"], name: "index_clubs_on_semester_id"
     t.index ["user_id"], name: "index_clubs_on_user_id"
   end

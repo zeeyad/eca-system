@@ -1,5 +1,5 @@
 <%= render 'shared/messages' %>
-<h1><strong>Club Page </strong> | <%= @club.name.titleize %></h1>
+<h1><strong>Club Page </strong> | <%= @club.name %></h1>
 <%= link_to 'Back to Clubs', clubs_path, class: 'btn btn-outline-dark' %> &nbsp; 
 <%= link_to 'View Club Members', members_club_path(@club), id: "member_club_#{@club}", class: 'btn btn-outline-dark' %> </td> &nbsp;  
 <%= link_to 'Edit Club', edit_club_path(@club), class: 'btn btn-outline-primary' %> &nbsp; 
@@ -33,7 +33,7 @@
 
 <div class="pt-4 mb-4">
   <h3 class="custom-underline">Activity</h3>
-  <table class="table table-bordered table-striped table-responsive">
+  <table class="table table-bordered table-striped table-responsive-md">
     <thead>
       <tr>
         <th class='table-dark' scope="col">Week No</th>
@@ -41,7 +41,7 @@
         <th class='table-dark' scope="col">Activity Name</th>
         <th class='table-dark' scope="col">Development Aspect</th>
         <th class='table-dark' scope="col">Status</th>
-        <th class='table-dark' scope="col" style="width: 15%;">Attendance Rate (%)</th>
+        <th class='table-dark' scope="col">Attendance (%)</th>
         <th class='table-dark' scope="col">Action</th>
         <!-- <th scope="col">Activity Action</th> -->
       </tr>

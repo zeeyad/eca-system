@@ -1,31 +1,125 @@
-<h1><strong>Semester Performance</strong> | <%= @semester.session %></h1>
-<%= render 'shared/messages' %><br/>
-<h4 class="custom-underline">Club Listing</h4>
+<%= render 'shared/messages' %>
+<h1><strong>Semester Performance</strong> | <%= @semester.session %></h1><br>
+<h4 class="custom-underline">Clubs under Offices & Executives</h4>
+
 <table class="table table-bordered table-striped table-responsive-md">
   <thead>
+    <tr class="bg-dark text-white">
+      <th colspan="2">Student, Activities and Development Office</th>
+      <th colspan="2">Spiritual and Community Service Office</th>
+      <th colspan="2">Counseling and Diverse Learning Needs Office</th>
+    </tr>
+  </thead>
+  <tbody>
     <tr>
-      <th>Club Name</th>
+      <tr>
+        <td>Executive Sports & Recreation</td>
+        <td><%= @semester.clubs.ESR.count %></td>
+        <td>Executive Religious and Spiritual</td>
+        <td><%= @semester.clubs.ERS.count %></td>
+        <td>Executive Community Service and Students' Welfare</td>
+        <td><%= @semester.clubs.ECSSW.count %></td>
+      </tr>
+    </tr>
+    <tr>
+      <tr>
+        <td>Executive Arts & Culture</td>
+        <td><%= @semester.clubs.EAC.count %></td>
+      </tr>
+    </tr>
+    <tr>
+      <tr>
+        <td>Executive Leadership & Innovation</td>
+        <td><%= @semester.clubs.ELI.count %></td>
+      </tr>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+<h4 class="custom-underline">Club Listing</h4>
+
+<table class="table table-bordered table-striped table-responsive-md table-hover">
+  <thead>
+    <tr class="bg-dark text-white">
+      <th style="width: 12%;">Club Name</th>
       <th>Club Personnel</th>
       <th>Registered Students</th>
       <th>Total Members</th>
       <th>Activity Proposed</th>
       <th>Activity Completed</th>
       <th>Activity Hours Completed</th>
-      <th>Average Attendance Rate( % )</th>
+      <th style="width: 12%;">Average Attendance %</th>
+      <th>Inactive Students</th>
     </tr>
   </thead>
   <tbody>
-    <% @clubs.each do |club| %>
-      <tr>
-        <td><%= club.name.titleize %></td>
+    <tr class="bg-secondary">
+      <td colspan="9" class="text-center"><strong>  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Button with data-target
+  </button></strong></td>
+    </tr>
+    <% @SAD_club.each do |club| %>
+      <tr class="collapse" id="collapseExample">
+        <td><strong><%= club.name %></strong></td>
         <td><%= club.club_personnal.count %></td>
         <td><%= club.members.count - club.club_personnal.count %></td>
         <td><%= club.members.count %></td>
         <td><%= club.activities.count %></td>
         <td><%= club.activities.completed.count %></td>
-        <td><%= club.activities.map(&:no_of_hours).compact.sum %></td>
+        <td><%= club.activities.completed.map(&:no_of_hours).compact.sum %></td>
         <td><%= @semester.average_attendance(club.activities) %></td>
       </tr>
-  	  <% end %>
+      <% @total_personnel.push(club.club_personnal.count) %>
+     <% end %>
+
+    <tr class="bg-secondary">
+      <td colspan="9" class="text-center"><strong>Spiritual and Community Service Office ( <%= @semester.clubs.SCS.count %> Clubs )</strong></td>
+    </tr>
+    <% @SCS_club.each do |club| %>
+      <tr>
+        <td><strong><%= club.name %></strong></td>
+        <td><%= club.club_personnal.count %></td>
+        <td><%= club.members.count - club.club_personnal.count %></td>
+        <td><%= club.members.count %></td>
+        <td><%= club.activities.count %></td>
+        <td><%= club.activities.completed.count %></td>
+        <td><%= club.activities.completed.map(&:no_of_hours).compact.sum %></td>
+        <td><%= @semester.average_attendance(club.activities) %></td>
+      </tr>
+      <% @total_personnel.push(club.club_personnal.count) %>
+     <% end %>
+
+     <tr class="bg-secondary">
+       <td colspan="9" class="text-center"><strong>Counseling and Diverse Learning Needs Office ( <%= @semester.clubs.CDLN.count %> Club )</strong></td>
+     </tr>
+     <% @CDLN_club.each do |club| %>
+       <tr>
+         <td><strong><%= club.name %></strong></td>
+         <td><%= club.club_personnal.count %></td>
+         <td><%= club.members.count - club.club_personnal.count %></td>
+         <td><%= club.members.count %></td>
+         <td><%= club.activities.count %></td>
+         <td><%= club.activities.completed.count %></td>
+         <td><%= club.activities.completed.map(&:no_of_hours).compact.sum %></td>
+         <td><%= @semester.average_attendance(club.activities) %></td>
+       </tr>
+       <% @total_personnel.push(club.club_personnal.count) %>
+      <% end %>
+
+      <tr class="bg-secondary">
+        <td colspan="9" class="text-center"><strong>Total</strong></td>
+      </tr>
+
+      <tr>
+       <td></td>
+       <td><%= @semester.clubs.count %></td>
+       <td><%= @total_personnel.sum %></td>
+       <td><%= @semester.members.count %></td>
+       <td><%= @semester.activities.count %></td>
+       <td><%= @semester.activities.completed.count %></td>
+       <td><%= @semester.activities.completed.map(&:no_of_hours).compact.sum %></td>
+      </tr>
   </tbody>
 </table>

@@ -6,8 +6,33 @@ class Club < ApplicationRecord
   belongs_to :semester
   belongs_to :user
 
+  enum office: { 
+            "Student, Activities and Development Office": 0, 
+            "Spiritual and Community Service Office": 1, 
+            "Counseling and Diverse Learning Needs Office": 2 
+            }
+
+  enum executive: { 
+            "Executive Sports & Recreation": 0, 
+            "Executive Arts & Culture": 1, 
+            "Executive Leadership & Innovation": 2, 
+            "Executive Religious and Spiritual": 3, 
+            "Executive Community Service and Students' Welfare": 4 
+            }
+
   accepts_nested_attributes_for :activities, reject_if: proc { |attributes| attributes[:week_no].blank? }, allow_destroy: true
   accepts_nested_attributes_for :attendances
+
+  scope :SAD, ->{ where(office: "Student, Activities and Development Office")}
+  scope :SCS, ->{ where(office: "Spiritual and Community Service Office")}
+  scope :CDLN, ->{ where(office: "Counseling and Diverse Learning Needs Office")}
+
+  scope :ESR, ->{ where(executive: "Executive Sports & Recreation")}
+  scope :EAC, ->{ where(executive: "Executive Arts & Culture")}
+  scope :ELI, ->{ where(executive: "Executive Leadership & Innovation")}
+  scope :ERS, ->{ where(executive: "Executive Religious and Spiritual")}
+  scope :ECSSW, ->{ where(executive: "Executive Community Service and Students' Welfare")}
+
 
   validates :name, presence: true
   validates :about, presence: true
@@ -78,6 +103,16 @@ class Club < ApplicationRecord
     members.where.not(position: @member)
   end
 
+  def office_short(office)
+    if office == "Student, Activities and Development Office"
+      "SAD"
+    elsif office == "Spiritual and Community Service Office"
+      "SCSO"
+    else
+      "CDLN"
+    end 
+
+  end
 
   private
 

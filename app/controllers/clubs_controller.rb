@@ -1,7 +1,6 @@
 class ClubsController < ApplicationController
 
   before_action :set_club, only: [:edit, :update, :destroy]
-  before_action :set_aspect, only: [:new, :create]
 
   def index
     @clubs = Club.all.order(:name)    
@@ -10,6 +9,7 @@ class ClubsController < ApplicationController
 
   def members
     @club = Club.find(params[:id])
+    @club_members = @club.members.order(:id)
   end
   
   def new
@@ -36,6 +36,7 @@ class ClubsController < ApplicationController
     params[:user_id] = current_user.id
     @club = Club.new(club_params)
     if @club.save(club_params)
+      flash[:success] = "#{@club.name} has been successfully created"
       redirect_to clubs_path
     else
       @act = Activity.dev_aspects.keys
@@ -90,6 +91,8 @@ class ClubsController < ApplicationController
       	:name, 
       	:semester_id, 
       	:user_id,
+        :office,
+        :executive,
         :about,
         :objective,
         :member_benefit,
@@ -121,8 +124,5 @@ class ClubsController < ApplicationController
      params.require(:club).permit(:semester_id, :user_id, attendances_attributes: [:id, :club_id, :member_id, :activity_id, :status])
   end
 
-  def set_aspect
-    @devs = [['Physical, Health & Safety', 0], ['Cultural', 1], ['Spiritual', 2], ['Social & Community', 3], ['Mental & Psychological', 4] ]
-  end
 
 end

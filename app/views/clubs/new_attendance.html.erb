@@ -1,12 +1,12 @@
 <h1><strong><%= @activity.club.name %> Attendance</strong></h1>
-<div><%= link_to "Back to #{@club.name.titleize}", club_path(@club), class: 'btn btn-outline-dark' %></div>
+<div><%= link_to "Back to #{@club.name}", club_path(@club), class: 'btn btn-outline-dark' %></div>
 <%= render 'shared/messages' %><br/>
 
 <div class="mt-4 card bg-light p-3">
   <table class="table table-bordered bg-white mt-3">
     <h3><u>Activity Details</u></h3>
     <thead>
-      <tr>
+      <tr class="bg-dark text-white">
         <th>Week</th>
         <th>Date</th>
         <th>Activity Name</th>
@@ -32,17 +32,19 @@
 
 <%= form_for @club do |f|  %>
 
-  <%= f.text_field :semester_id, value: 1, class: 'form-control invisible', style: 'width: 0px; height: 0px;' %>
-  <%= f.text_field :user_id, value: 1, class: 'form-control invisible', style: 'width: 0px; height: 0px;' %>
-  <div class="card bg-light p-3">
+  <% f.text_field :semester_id, value: 1, class: 'invisible', style: 'width: 0px; height: 0px;' %>
+  <% f.text_field :user_id, value: 1, class: 'invisible', style: 'width: 0px; height: 0px;' %>
+  <div class="card bg-light p-3 mt-5">
     <table class="table table-bordered bg-white">
       <h3><u>Attendance Sheet</u></h3>
       <thead>
-        <th scope="col">#</th>
-        <th>Student Registration</th>
-        <th>Name</th>
-        <th>Position</th>
-        <th>Attendance</th>
+        <tr class="bg-dark text-white">
+          <th scope="col">#</th>
+          <th>Student Registration</th>
+          <th>Name</th>
+          <th>Position</th>
+          <th>Attendance</th>
+        </tr>
       </thead>
 
       <% @members.count.times do %>
@@ -51,12 +53,12 @@
           <tr>
             <td><%= attend.index + 1 %></td>
             <td><%= @club.members[attend.index].student_reg %></td>
-            <td><%= @club.members[attend.index].name %></td>
+            <td><%= @club.members[attend.index].name.titleize %></td>
             <td><%= @club.members[attend.index].position %></td>
-            <td>
+            <td><%= attend.check_box :status, {}, true, false if !@activity.cancelled? %></td>
+            
               <%= attend.text_field :member_id, value: @club.members[attend.index].id, class: 'invisible', style: 'width: 0px; height: 0px;' %>
               <%= attend.text_field :activity_id, value: @activity.id, class: 'invisible', style: 'width: 0px; height: 0px;' %>
-              <%= attend.check_box :status, {}, true, false if !@activity.cancelled? %></td>
               <%= attend.text_field :club_id, value: @club.id , class: 'invisible', style: 'width: 0px; height: 0px;' %>
           </tr>
         </tbody>

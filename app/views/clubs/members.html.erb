@@ -8,16 +8,16 @@
 <h4 class="d-inline p-2 "> Total: <%= @club.members.count %> Club members</h4>
 <table class="table table-bordered mt-3">
   <thead>
-    <tr>
+    <tr class="bg-dark text-white">
     	<td>#</td>
     	<td>Student Name</td>
     	<td>Position</td>
-      <td>Attendance Rate</td>
+      <td>Attendance (%)</td>
     	<td>Action</td>
     </tr>
   </thead>
   <tbody>
-    <% @club.members.each_with_index do |member, index| %>
+    <% @club_members.each_with_index do |member, index| %>
       <tr>
         <td><%= index + 1 %></td>
         <td><%= link_to "#{member.student.name.titleize}", student_path(member.student)  %></td>

@@ -16,6 +16,16 @@
     </div>
 
     <div class='form-group'>
+      <%= f.label :office %>
+      <%= f.select(:office, [["Student, Activities and Development Office","Student, Activities and Development Office"],["Spiritual and Community Service Office","Spiritual and Community Service Office"], ["Counseling and Diverse Learning Needs Office","Counseling and Diverse Learning Needs Office"]], {}, class: 'form-control' ) %>
+    </div>
+
+    <div class='form-group'>
+      <%= f.label :executive %>
+      <%= f.select(:executive, [["Executive Sports & Recreation","Executive Sports & Recreation"],["Executive Arts & Culture","Executive Arts & Culture"], ["Executive Leadership & Innovation","Executive Leadership & Innovation"], ["Executive Religious and Spiritual","Executive Religious and Spiritual"], ["Executive Community Service and Students' Welfare","Executive Community Service and Students' Welfare"]], {}, class: 'form-control' ) %>
+    </div>
+
+    <div class='form-group'>
       <%= f.label :about %>
       <%= f.text_area :about, class: 'form-control' %>
     </div>
