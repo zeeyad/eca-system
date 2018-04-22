@@ -35,6 +35,9 @@ class SemestersController < ApplicationController
     @semester = Semester.find(params[:id])
     @clubs = @semester.clubs
     @SAD_club = @semester.clubs.SAD
+    @SAD_ESR_club = @semester.clubs.ESR
+    @EAC_ESR_club = @semester.clubs.EAC
+    @ELI_ESR_club = @semester.clubs.ELI
     @SCS_club = @semester.clubs.SCS
     @CDLN_club = @semester.clubs.CDLN
     @total_personnel = []

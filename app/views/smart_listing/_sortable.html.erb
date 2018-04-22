@@ -1,0 +1,25 @@
+<%# 
+  Sortable attribute listing header.
+
+  Available local variables:
+    container_classes:  classes for the main container
+    url:                sortable link url
+    attribute:          current attribute name
+    title:              current attribute title
+    order:              defines column sort order
+    smart_listing:      current SmartListing instance
+    builder:            current builder instance
+-%>
+
+<%= link_to url, :class => container_classes, :data => {:attr => attribute}, :remote => remote do %>
+  <%= title %>
+  <% if order %>
+    <% if order == "asc" %>
+      <span class="fa fa-sort-up"></span>
+    <% else order == "desc" %>
+      <span class="fa fa-sort-down"></span>
+    <% end %>
+  <% else %>
+    <span class="fa fa-sort"></span>
+  <% end %>
+<% end %>

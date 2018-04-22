@@ -12,4 +12,22 @@ class User < ApplicationRecord
     end
   end
 
+
+  def user_type(type)
+    if type == "SuperUser"
+      "Super User"
+    elsif type == "SadOffice"
+      "Student, Activities & Development Office"
+    elsif type == "DataAdmin"
+      "Data Admin"
+    elsif type == "ScsOffice"
+      "Spiritual and Community Service Office"
+    elsif type == "CdlnOffice"
+      "Counseling and Diverse Learning Needs Office"
+    else
+      "None"
+    end 
+  end
+
+
 end

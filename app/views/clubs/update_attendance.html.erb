@@ -3,12 +3,12 @@
 <div><%= link_to "Back to #{@club.name}", club_path(@club), class: 'btn btn-outline-dark' %></div>
 <br/>
 
-<div class="mt-4 card bg-dark p-3">
+<div class="mt-4 card p-3">
   <table class="table table-bordered bg-white mt-3">
-    <h3 class="text-white"><u><strong>Activity Details</strong></u></h3>
+    <h3><u>Activity Details</u></h3>
     <thead>
-      <tr>
-        <th style="width: 5%;">Week</th>
+      <tr class="bg-dark text-white">
+        <th>Week</th>
         <th>Date</th>
         <th>Activity Name</th>
         <th>Venue</th>
@@ -46,13 +46,15 @@
       <h3><u>Attendance Sheet</u></h3>
       
       <thead>
-        <th scope="col">#</th>
-        <th>Student Registration</th>
-        <th>Name</th>
-        <th>Position</th>
-        <% if !activity_cancelled %>
-          <th>Attendance</th>
-        <% end %>
+        <tr class="bg-dark text-white">
+          <th scope="col">#</th>
+          <th>Student Registration</th>
+          <th>Name</th>
+          <th>Position</th>
+          <% if !activity_cancelled %>
+            <th>Attendance</th>
+          <% end %>
+        </tr>
       </thead>
 
        <%= f.fields_for :attendances, @attendances do |attend| %>

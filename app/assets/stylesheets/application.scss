@@ -5,7 +5,7 @@ html,
 body {
 	overflow-x: hidden;
 	height: 100%;
-	font-family: 'Lato', sans-serif;
+	font-family: 'Nanum Myeongjo', sans-serif;
 	font-size:16px;
   letter-spacing: 0.3px;
 }
@@ -98,3 +98,13 @@ body {
 }
 
 
+
+/* Smart Listing Sortable */
+
+.sortable {
+  color: white;
+}
+
+.sortable:hover {
+  color: #F8F8FF;
+}

@@ -1,45 +1,81 @@
 <%= render 'shared/messages' %>
 <h1><strong>Semester Performance</strong> | <%= @semester.session %></h1><br>
-<h4 class="custom-underline">Clubs under Offices & Executives</h4>
-
-<table class="table table-bordered table-striped table-responsive-md">
-  <thead>
-    <tr class="bg-dark text-white">
-      <th colspan="2">Student, Activities and Development Office</th>
-      <th colspan="2">Spiritual and Community Service Office</th>
-      <th colspan="2">Counseling and Diverse Learning Needs Office</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <tr>
-        <td>Executive Sports & Recreation</td>
-        <td><%= @semester.clubs.ESR.count %></td>
-        <td>Executive Religious and Spiritual</td>
-        <td><%= @semester.clubs.ERS.count %></td>
-        <td>Executive Community Service and Students' Welfare</td>
-        <td><%= @semester.clubs.ECSSW.count %></td>
-      </tr>
-    </tr>
-    <tr>
-      <tr>
-        <td>Executive Arts & Culture</td>
-        <td><%= @semester.clubs.EAC.count %></td>
-      </tr>
-    </tr>
-    <tr>
-      <tr>
-        <td>Executive Leadership & Innovation</td>
-        <td><%= @semester.clubs.ELI.count %></td>
-      </tr>
-    </tr>
-    
-  </tbody>
-</table>
-
 
 <h4 class="custom-underline">Club Listing</h4>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-info ml-2 mb-2" data-toggle="modal" data-target="#exampleModalCenter">
+  Executive's Club
+</button>
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">List of Executive & Offices</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-bordered table-striped table-responsive-md">
+          <thead>
+            <tr class="bg-dark text-white">
+              <th>Student, Activities and Development Office ( <%= @semester.clubs.SAD.count %> )</th>
+              <th>Spiritual and Community Service Office ( <%= @semester.clubs.SCS.count %> )</th>
+              <th>Counseling and Diverse Learning Needs Office ( <%= @semester.clubs.CDLN.count %> )</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <p style="font-size: 18px;"><strong><u>Executive Sports & Recreation</u></strong></p>
+                <% @SAD_ESR_club.each_with_index do |club, index| %>
+                 <div>
+                   <span><%= index + 1 %>. <%= club.name %></span>
+                 </div>
+                <% end %>
+                <br>
+                <p style="font-size: 18px;"><strong><u>Executive Arts & Culture</u></strong></p>
+                <% @EAC_ESR_club.each_with_index do |club, index| %>
+                 <div>
+                   <span><%= index + 1 %>. <%= club.name %></span>
+                 </div>
+                <% end %>
+                <br>
+                <p style="font-size: 18px;"><strong><u>Executive Leadership & Innovation</u></strong></p>
+                <% @ELI_ESR_club.each_with_index do |club, index| %>
+                 <div>
+                   <span><%= index + 1 %>. <%= club.name %></span>
+                 </div>
+                <% end %>
+              </td>
+              <td>
+                <p style="font-size: 18px;"><strong><u>Executive Religious & Spiritual</u></strong></p>
+                <% @SCS_club.each_with_index do |club, index| %>
+                 <div>
+                   <span><%= index + 1 %>. <%= club.name %></span>
+                 </div>
+                <% end %>
+              </td>
+              <td>
+                <p style="font-size: 18px;"><strong><u>Executive Community Service and Students' Welfare</u></strong></p>
+                <% @CDLN_club.each_with_index do |club, index| %>
+                 <div>
+                   <span><%= index + 1 %>. <%= club.name %></span>
+                 </div>
+                <% end %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 <table class="table table-bordered table-striped table-responsive-md table-hover">
   <thead>
     <tr class="bg-dark text-white">
@@ -51,18 +87,17 @@
       <th>Activity Completed</th>
       <th>Activity Hours Completed</th>
       <th style="width: 12%;">Average Attendance %</th>
-      <th>Inactive Students</th>
+      <!-- <th>Inactive Students</th> -->
     </tr>
   </thead>
   <tbody>
-    <tr class="bg-secondary">
-      <td colspan="9" class="text-center"><strong>  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-    Button with data-target
-  </button></strong></td>
+    <tr>
+      <td colspan="9" class="text-center"><strong><h4>Student Activities and Development Office ( <%= @semester.clubs.SAD.count %> Clubs )</h4></strong>
+      </td>
     </tr>
-    <% @SAD_club.each do |club| %>
-      <tr class="collapse" id="collapseExample">
-        <td><strong><%= club.name %></strong></td>
+     <% @SAD_club.each do |club| %>
+      <tr>
+        <td><%= link_to club.name, club_path(club) %></td>
         <td><%= club.club_personnal.count %></td>
         <td><%= club.members.count - club.club_personnal.count %></td>
         <td><%= club.members.count %></td>
@@ -74,8 +109,8 @@
       <% @total_personnel.push(club.club_personnal.count) %>
      <% end %>
 
-    <tr class="bg-secondary">
-      <td colspan="9" class="text-center"><strong>Spiritual and Community Service Office ( <%= @semester.clubs.SCS.count %> Clubs )</strong></td>
+    <tr>
+      <td colspan="9" class="text-center"><strong><h4>Spiritual and Community Service Office ( <%= @semester.clubs.SCS.count %> Clubs )</h4></strong></td>
     </tr>
     <% @SCS_club.each do |club| %>
       <tr>
@@ -91,8 +126,8 @@
       <% @total_personnel.push(club.club_personnal.count) %>
      <% end %>
 
-     <tr class="bg-secondary">
-       <td colspan="9" class="text-center"><strong>Counseling and Diverse Learning Needs Office ( <%= @semester.clubs.CDLN.count %> Club )</strong></td>
+     <tr>
+       <td colspan="9" class="text-center"><strong><h4>Counseling and Diverse Learning Needs Office ( <%= @semester.clubs.CDLN.count %> Club )</h4></strong></td>
      </tr>
      <% @CDLN_club.each do |club| %>
        <tr>
@@ -108,8 +143,8 @@
        <% @total_personnel.push(club.club_personnal.count) %>
       <% end %>
 
-      <tr class="bg-secondary">
-        <td colspan="9" class="text-center"><strong>Total</strong></td>
+      <tr>
+        <td colspan="9" class="text-center"><strong><h4>Total</h4></strong></td>
       </tr>
 
       <tr>

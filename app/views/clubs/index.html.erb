@@ -4,25 +4,6 @@
 <h4 class="d-inline p-2 custom-underline">Club Listing</h4> -
 <h4 class="d-inline p-2">Total: <%= @clubs.count %> Clubs</h4>
 
-<table class="mt-3 table table-bordered table-hover">
-  <thead>
-    <tr class="bg-dark text-white">
-      <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col">Office</th>
-      <th scope="col">Actions</th>
-    </tr>
-  </thead>
-  <% @clubs.each_with_index do |club, index| %>
-    <tbody>
-      <tr>
-        <th scope="row"><%= index + 1 %></th>
-        <td><%= truncate(club.name, length: 50) %></td>
-        <td><%= club.office %></td>
-        <td><%= link_to '', club_path(club), id: "club_#{club.id}", title: "View Club Details", class: 'fa fa-info btn btn-outline-info mr-3' %>
-        <%= link_to '', members_club_path(club), id: "member_club_#{club.id}", title: "View Club Members", class: 'fa fa-users btn btn-outline-dark' %> </td>
-      </tr>
-    </tbody>
 
-  <% end %>
-</table>
+
+<%= smart_listing_render(:clubs) %>

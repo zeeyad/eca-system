@@ -1,0 +1,31 @@
+<% unless smart_listing.empty? %>
+
+<table class="mt-3 table table-bordered table-hover">
+  <thead>
+    <tr class="bg-dark text-white">
+      <th scope="col">#</th>
+      <th scope="col"><%= smart_listing.sortable "Club Name", :name %></th>
+      <th scope="col"><%= smart_listing.sortable "Office", :office %></th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <% @clubs.each_with_index do |club, index| %>
+    <tbody>
+      <tr>
+        <th scope="row"><%= index + 1 %></th>
+        <td><%= truncate(club.name, length: 50) %></td>
+        <td><%= club.office %></td>
+        <td><%= link_to '', club_path(club), id: "club_#{club.id}", title: "View Club Details", class: 'fa fa-info btn btn-outline-info mr-3' %>
+        <%= link_to '', members_club_path(club), id: "member_club_#{club.id}", title: "View Club Members", class: 'fa fa-users btn btn-outline-dark' %> </td>
+      </tr>
+    </tbody>
+  <% end %>
+  <div class="container pagination justify-content-center pt-3" >
+    <%#= smart_listing.paginate %>
+  </div>
+  <%#= smart_listing.pagination_per_page_links %>
+</table>
+
+<% else %>
+  <p class="warning">No records!</p>
+<% end %>

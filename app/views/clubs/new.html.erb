@@ -27,37 +27,37 @@
 
     <div class='form-group'>
       <%= f.label :about %>
-      <%= f.text_area :about, class: 'form-control', placeholder: 'e.g. This club acts as a platform in UBD for students to learn and enjoy Islamic songs (Nasyid & Tausyeh)', value: "It is a sports club which allows local or international students to interact and play together to build friendship among each other. We compete in local tournaments as well from time to time such as the UBD Cup which we have been successful in the past few years winning multiple times." %>
+      <%= f.text_area :about, class: 'form-control', placeholder: 'e.g. This club acts as a platform in UBD for students to learn and enjoy Islamic songs (Nasyid & Tausyeh)' %>
     </div>
 
     <div class='form-group'>
       <%= f.label :objective %>
-      <%= f.text_area :objective, class: 'form-control', placeholder: 'e.g. To expose members to various Islamic tunes and Qasidah', value: "To provide Club members with enjoyable leisure activity and to improve and polish members' skills and game play." %>
+      <%= f.text_area :objective, class: 'form-control', placeholder: 'e.g. To expose members to various Islamic tunes and Qasidah' %>
     </div>
 
     <div class='form-group'>
       <%= f.label :member_benefit %>
-      <%= f.text_area :member_benefit, class: 'form-control', placeholder: 'e.g. Widens their skills in singing Islamic tunes', value: "Gain new knowledge and experience to expertise." %>
+      <%= f.text_area :member_benefit, class: 'form-control', placeholder: 'e.g. Widens their skills in singing Islamic tunes' %>
     </div>
 
     <div class='form-group'>
       <%= f.label :community_benefit %>
-      <%= f.text_area :community_benefit, class: 'form-control', placeholder: 'e.g. Members can contribute in Formal Events', value: "Hosting social activities such as tournaments for the community" %>
+      <%= f.text_area :community_benefit, class: 'form-control', placeholder: 'e.g. Members can contribute in Formal Events' %>
     </div>
 
     <div class='form-group'>
       <%= f.label :usual_day %>
-      <%= f.text_field :usual_day, class: 'form-control', placeholder: 'e.g. CLT 1.05 (Muslimat) & SHBIE G.94 (Muslimin)', value: "Thursday" %>
+      <%= f.text_field :usual_day, class: 'form-control', placeholder: 'e.g. CLT 1.05 (Muslimat) & SHBIE G.94 (Muslimin)' %>
     </div>
 
     <div class='form-group'>
       <%= f.label :usual_venue %>
-      <%= f.text_field :usual_venue, class: 'form-control', placeholder: 'e.g. Thursday', value: "Multipurpose Hall" %>
+      <%= f.text_field :usual_venue, class: 'form-control', placeholder: 'e.g. Thursday' %>
     </div>
 
     <div class='form-group'>
       <%= f.label :hours_per_week %>
-      <%= f.text_field :hours_per_week, class: 'form-control', placeholder: 'e.g. 2 hours per week', value: '2' %>
+      <%= f.text_field :hours_per_week, class: 'form-control', placeholder: 'e.g. 2 hours per week' %>
     </div>
   </div>
 
@@ -80,33 +80,33 @@
       <tbody>
         <tr>
           <td>Physical, Health & Safety</td>
-          <td><%= f.text_field :phs_activity, class: 'form-control', placeholder: 'e.g. Larian Ukhwah', value: "Running, Cycling" %></td>
-          <td><%= f.text_field :phs_hours, class: 'form-control', placeholder: 'e.g. 4', value: 4 %></td>
-          <td><%= f.text_field :phs_weightage, class: 'form-control', placeholder: 'e.g. 14', value: 14 %></td>
+          <td><%= f.text_field :phs_activity, class: 'form-control', placeholder: 'e.g. Larian Ukhwah' %></td>
+          <td><%= f.text_field :phs_hours, class: 'form-control', placeholder: 'e.g. 4' %></td>
+          <td><%= f.text_field :phs_weightage, class: 'form-control', placeholder: 'e.g. 14' %></td>
         </tr>
         <tr>
           <td>Cultural</td>
-          <td><%= f.text_field :culture_activity, class: 'form-control', placeholder: 'e.g. Nasyid and Tausyeh Competition', value: "Bruneian Cultural Competition" %></td>
-          <td><%= f.text_field :culture_hours, class: 'form-control', placeholder: 'e.g. 3', value: 3  %></td>
-          <td><%= f.text_field :culture_weightage, class: 'form-control', placeholder: 'e.g. 10', value: 10 %></td>
+          <td><%= f.text_field :culture_activity, class: 'form-control', placeholder: 'e.g. Nasyid and Tausyeh Competition' %></td>
+          <td><%= f.text_field :culture_hours, class: 'form-control', placeholder: 'e.g. 3'  %></td>
+          <td><%= f.text_field :culture_weightage, class: 'form-control', placeholder: 'e.g. 10' %></td>
         </tr>
         <tr>
           <td>Spiritual</td>
-          <td><%= f.text_field :spiritual_activity, class: 'form-control', placeholder: 'e.g. Lectures, Seminar, Taddabur', value: "Lectures, Seminars" %></td>
-          <td><%= f.text_field :spiritual_hours, class: 'form-control', placeholder: 'e.g. 15', value: 15 %></td>
-          <td><%= f.text_field :spiritual_weightage, class: 'form-control', placeholder: 'e.g. 50', value: 50 %></td>
+          <td><%= f.text_field :spiritual_activity, class: 'form-control', placeholder: 'e.g. Lectures, Seminar, Taddabur' %></td>
+          <td><%= f.text_field :spiritual_hours, class: 'form-control', placeholder: 'e.g. 15' %></td>
+          <td><%= f.text_field :spiritual_weightage, class: 'form-control', placeholder: 'e.g. 50' %></td>
         </tr>
         <tr>
           <td>Social and Community</td>
-          <td><%= f.text_field :social_activity, class: 'form-control', placeholder: 'e.g. Showcase Booth, Invite IPT participation, invite schools', value: "Showcase Booth, Invite IPT participation, invite schools" %></td>
-          <td><%= f.text_field :social_hours, class: 'form-control', placeholder: 'e.g. 5', value: 5 %></td>
-          <td><%= f.text_field :social_weightage, class: 'form-control', placeholder: 'e.g. 16', value: 16 %></td>
+          <td><%= f.text_field :social_activity, class: 'form-control', placeholder: 'e.g. Showcase Booth, Invite IPT participation, invite schools' %></td>
+          <td><%= f.text_field :social_hours, class: 'form-control', placeholder: 'e.g. 5' %></td>
+          <td><%= f.text_field :social_weightage, class: 'form-control', placeholder: 'e.g. 16' %></td>
         </tr>
         <tr>
           <td>Mental and Psychological</td>
-          <td><%= f.text_field :mental_activity, class: 'form-control', placeholder: 'e.g. Forum', value: "Forum" %></td>
-          <td><%= f.text_field :mental_hours, class: 'form-control', placeholder: 'e.g. 3', value: 3 %></td>
-          <td><%= f.text_field :mental_weightage, class: 'form-control', placeholder: 'e.g. 10', value: 10 %></td>
+          <td><%= f.text_field :mental_activity, class: 'form-control', placeholder: 'e.g. Forum' %></td>
+          <td><%= f.text_field :mental_hours, class: 'form-control', placeholder: 'e.g. 3' %></td>
+          <td><%= f.text_field :mental_weightage, class: 'form-control', placeholder: 'e.g. 10' %></td>
         </tr>
 
       </tbody>
@@ -133,11 +133,11 @@
           <tr>
               <td><%= act.text_field :week_no, value: act.options[:child_index] + 1, :readonly => true, class: 'form-control' %></td>
               <td><%= act.date_field :date, class: 'form-control', value: Date.new(2016, 8, 1) + ( (act.options[:child_index] + 1) * 7).to_i.days %></td>          
-              <td><%= act.text_field :name, class: 'form-control', value: "Activity #{act.options[:child_index] + 1}" %></td>
+              <td><%= act.text_field :name, class: 'form-control' %></td>
               <td><%= act.text_field :venue, class: 'form-control' %></td>
               <td><%= act.select(:dev_aspect, options_for_select(@act), {}, class: 'form-control') %></td>
-              <td><%= act.text_field :no_of_hours, class: 'form-control', value: 2 %></td>
-              <td><%= act.text_field :weightage, class: 'form-control', value: 10 %></td>
+              <td><%= act.text_field :no_of_hours, class: 'form-control' %></td>
+              <td><%= act.text_field :weightage, class: 'form-control' %></td>
           </tr>
           </ul>
               <%= act.hidden_field :user_id, value: 1, class: 'form-control invisible', style: "width: 0px; height: 0px;" %>

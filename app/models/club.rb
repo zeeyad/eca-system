@@ -23,15 +23,15 @@ class Club < ApplicationRecord
   accepts_nested_attributes_for :activities, reject_if: proc { |attributes| attributes[:week_no].blank? }, allow_destroy: true
   accepts_nested_attributes_for :attendances
 
-  scope :SAD, ->{ where(office: "Student, Activities and Development Office")}
-  scope :SCS, ->{ where(office: "Spiritual and Community Service Office")}
-  scope :CDLN, ->{ where(office: "Counseling and Diverse Learning Needs Office")}
+  scope :SAD, ->{ where(office: 0)}
+  scope :SCS, ->{ where(office: 1)}
+  scope :CDLN, ->{ where(office: 2)}
 
-  scope :ESR, ->{ where(executive: "Executive Sports & Recreation")}
-  scope :EAC, ->{ where(executive: "Executive Arts & Culture")}
-  scope :ELI, ->{ where(executive: "Executive Leadership & Innovation")}
-  scope :ERS, ->{ where(executive: "Executive Religious and Spiritual")}
-  scope :ECSSW, ->{ where(executive: "Executive Community Service and Students' Welfare")}
+  scope :ESR, ->{ where(executive: 0)}
+  scope :EAC, ->{ where(executive: 1)}
+  scope :ELI, ->{ where(executive: 2)}
+  scope :ERS, ->{ where(executive: 3)}
+  scope :ECSSW, ->{ where(executive: 4)}
 
 
   validates :name, presence: true
@@ -111,7 +111,6 @@ class Club < ApplicationRecord
     else
       "CDLN"
     end 
-
   end
 
   private

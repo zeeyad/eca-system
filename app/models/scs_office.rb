@@ -1,0 +1,3 @@
+class ScsOffice < User
+
+end

@@ -1,0 +1,3 @@
+class CdlnOffice < User
+
+end

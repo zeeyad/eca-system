@@ -3,7 +3,7 @@ class ClubsController < ApplicationController
   before_action :set_club, only: [:edit, :update, :destroy]
 
   def index
-    @clubs = Club.all.order(:name)    
+    @clubs = smart_listing_create(:clubs, Club.all, partial: "clubs/list",default_sort: {name: "asc"} ).per(40)
   end
 
 
@@ -29,7 +29,7 @@ class ClubsController < ApplicationController
   def update_attendance
     @club = Club.find(params[:id])
     @activity = Activity.find(params[:activity_id])
-    @attendances = @activity.attendances.order(:member_id)
+    @attendances = @activity.attendances.order(member_id: :DESC )
   end
 
   def create

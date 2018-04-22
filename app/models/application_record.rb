@@ -9,13 +9,11 @@ class ApplicationRecord < ActiveRecord::Base
 
 
   def attendance_rate(activity)
-    if activity.attendances.count != 0
-      (activity.attendances.where(status: true).count.to_f / activity.attendances.count.to_f * 100).round
-    end
+    (activity.attendances.where(status: true).count.to_f / activity.attendances.count.to_f * 100).round(1) if activity.attendances.count != 0
   end
 
   def average_attendance(activities)
-    activities.map{|activity| attendance_rate(activity).to_f if ( !activity.status.empty? || !activity.status.nil? )  }.sum / activities.count if !activities.empty?
+    (activities.map{|activity| attendance_rate(activity).to_f if ( !activity.status.empty? || !activity.status.nil? )  }.sum / activities.completed.count if !activities.empty?).round(1)
   end
 
 end

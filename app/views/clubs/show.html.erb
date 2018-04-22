@@ -55,7 +55,7 @@
             <td><%= activity.week_no %></td>
             <td><%= activity.date_in_words %></td>
             <td><%= activity.name %></td>
-            <td><%= activity.dev_aspect %></td>
+            <td><%= full_dev_form(activity.dev_aspect) %></td>
             <td>
               <%= activity_planned_and_have_attendance(activity) ? "In-Progress" : "Planned" if activity_is_planned(activity) %>
               <%= "Completed" if activity_is_completed(activity) %>

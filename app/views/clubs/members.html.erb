@@ -1,5 +1,5 @@
 <%= render 'shared/messages' %>
-<h1><strong>Club Members</strong> - <%= @club.name.titleize %></h1>
+<h1><strong>Club Members</strong> - <%= @club.name %></h1>
 <div class="pb-3">
   <%= link_to "Back to Clubs", clubs_path, class: 'btn btn-outline-dark' %> &nbsp;
   <%= link_to "View Club Page", club_path(@club), class: 'btn btn-outline-dark' %>
@@ -21,7 +21,7 @@
       <tr>
         <td><%= index + 1 %></td>
         <td><%= link_to "#{member.student.name.titleize}", student_path(member.student)  %></td>
-        <td><strong><%= member.position %></strong></td>
+        <td><%= member.position.titleize %></td>
         <td><%= member.average_attendance(member.activities) %></td>
         <td><%= link_to '', member_path(:id => @club.id, :member_id => member.id), method: :delete, data: {confirm: "Are you sure?"}, class: 'fa fa-trash btn btn-outline-danger' %> </td>
   		</tr>

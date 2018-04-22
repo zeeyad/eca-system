@@ -35,5 +35,22 @@ module ApplicationHelper
   	activity.planned? && !activity.attendances.empty?
   end
 
+  def full_dev_form(dev_aspect)
+    if dev_aspect == "phs"
+     "Physical, Health and Safety"
+    elsif dev_aspect == "cultural"
+     "Cultural"
+    elsif dev_aspect == "spiritual"
+      "Spiritual"
+    elsif dev_aspect == "sc"
+      "Social and Community"
+    elsif dev_aspect == "mp"
+      "Mental and Psychological"
+    else
+     "none"
+    end
+  end
+
+
 
 end

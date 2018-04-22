@@ -1,0 +1,3 @@
+class DataAdmin < User
+
+end

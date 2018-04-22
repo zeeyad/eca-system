@@ -1,0 +1,4 @@
+class SadOffice < User
+
+
+end

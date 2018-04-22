@@ -28,14 +28,11 @@
     </div>
   <% end %>
 
-
-<div class="input-group mb-3">
-  <div class="custom-file">
-    <%= f.label :file, class: 'custom-file-label', for: 'inputGroupFile02' %>
-    <%= f.file_field :file, class: 'custom-file-label' %>
-
+<div class="container">
+  <div class="pb-3">
+    <%= f.file_field :file %>
   </div>
-  <div class="col-md-4 offset-md-5 buttons">
+  <div>
     <%= f.submit "Import", class: "input-group-text" %>
   </div>
 </div>

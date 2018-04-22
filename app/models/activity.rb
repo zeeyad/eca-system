@@ -1,10 +1,10 @@
 class Activity < ApplicationRecord
   enum dev_aspect: { 
-  	    "Physical, Health and Safety": 0,
-  	    "Cultural": 1, 
-  	    "Spiritual": 2, 
-  	    "Social and Community": 3,
-  	    "Mental and Psychological": 4  
+  	    phs: 0,
+  	    cultural: 1, 
+  	    spiritual: 2, 
+  	    sc: 3,
+  	    mp: 4  
   	   }
 
   enum status: { planned: 0, completed: 1, cancelled: 2 }
