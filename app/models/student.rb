@@ -21,7 +21,7 @@ class Student < ApplicationRecord
   end
 
   def total_cultural_points
-    attendances.where(status: true).map{|attend| attend.activity.phs? ? attend.activity.no_of_hours * attend.activity.weightage : 0}.sum
+    attendances.where(status: true).map{|attend| attend.activity.cultural? ? attend.activity.no_of_hours * attend.activity.weightage : 0}.sum
   end
 
   def total_spiritual_points

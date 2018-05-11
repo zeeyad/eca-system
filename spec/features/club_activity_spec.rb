@@ -15,7 +15,7 @@ describe 'navigate' do
     end
 
     it 'can be reach' do
-      expect(page).to have_content(/Club Activity Profile/)
+      expect(page).to have_content(/Club Page/)
     end
   end
 

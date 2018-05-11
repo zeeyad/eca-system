@@ -31,5 +31,17 @@ FactoryBot.define do
     user
     club
     dev_aspect 1 
+    no_of_hours 3
+    weightage 5
+    date Date.today
   end
+
+  factory :attendance do
+    activity
+    member
+    club
+    status 0
+  end
+
+
 end
