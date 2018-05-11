@@ -1,24 +1,17 @@
-# README
+# UBD Extracurricular Activity
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+UBD Extracurricular Activity is a Point-Awarding System where it captures student's extracurricular activity and classified it into 5 categories.
 
-Things you may want to cover:
+# Key features in the system:
 
-* Ruby version
+1. Authentication
 
-* System dependencies
+2. User Level
 
-* Configuration
+3. Spreadsheet Import
 
-* Database creation
+4. Key Performance Indicator
 
-* Database initialization
+5. CRUD Functionality for Club, Member, Activity.
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+6. Points Calculation for each Student's Participation in the 5 categories.
